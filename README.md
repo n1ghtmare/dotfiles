@@ -18,7 +18,7 @@ Clone TPM:
 $ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-Reaload the Tmux enviroment (if Tmux is already running) so TMP is sourced:
+Reload the Tmux enviroment (if Tmux is already running) so TMP is sourced:
 
 ```
 $ tmux source ~/.tmux.conf
@@ -47,4 +47,7 @@ $ curl -fLo ~/.var/app/io.neovim.nvim/data/nvim/site/autoload/plug.vim \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-Start `nvim` and run :PlugInstall then restart nvim and it should be working.
+Start `nvim` and run `:PlugInstall` then restart nvim and it should be working.
+
+# CoC Setup
+Run `:CocInstall coc-tsserver coc-html coc-json coc-css`
