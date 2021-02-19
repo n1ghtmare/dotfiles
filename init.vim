@@ -4,6 +4,9 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'mengelbrecht/lightline-bufferline'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
 call plug#end()
 
 
@@ -11,7 +14,31 @@ call plug#end()
 set termguicolors
 syntax enable
 
-let g:lightline = { 'colorscheme' : 'challenger_deep' }
+" Netrw Settings
+let g:netrw_liststyle = 3
+
+" Let buffers be clickable
+let g:lightline#bufferline#clickable=1
+let g:lightline#bufferline#shorten_path=1
+let g:lightline#bufferline#min_buffer_count=1
+
+let g:lightline = {
+      \ 'colorscheme': 'challenger_deep',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ [''] ]
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ }
+      \ }
+
 colorscheme challenger_deep
 
 
@@ -34,6 +61,15 @@ filetype plugin indent on
 " Disable auto text line wrapping
 set formatoptions+=t
 set tw=0
+set mouse=a
+" File/Buffer navigation/search and Git nav
+nnoremap <C-p> :Files<Cr>
+nnoremap <C-e> :Rg<Cr>
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-h> :History<CR>
+nmap <Leader>g :GFiles<CR>
+nmap <Leader>g? :GFiles?<CR>
+
 
 " Coc Settings (DEFAULTS)
 " TextEdit might fail if hidden is not set.
@@ -149,15 +185,16 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
+" NOTE: The below interferes with my NERDTree shortcuts, disabled for the time
 " Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
+" if has('nvim-0.4.0') || has('patch-8.2.0750')
+"   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+"   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+"   inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+"   inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+"   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+"   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+" endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
