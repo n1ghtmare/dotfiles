@@ -1,16 +1,32 @@
 " Plugins
+" ---------------------------------------------
 call plug#begin(stdpath('data') . '/plugged')
+    " Lightline bar and tabs
     Plug 'itchyny/lightline.vim'
-    Plug 'christoomey/vim-tmux-navigator'
-    Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'mengelbrecht/lightline-bufferline'
+    " Navigate between tmux panes from vim
+    Plug 'christoomey/vim-tmux-navigator'
+    " Theme
+    Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+    " Searching for files in vim (mapped to Ctrl+p)
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
+    " Typescript/HTML/CSS/JSON auto-completion
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " Javascript syntax support
+    Plug 'pangloss/vim-javascript'
+    " TypeScript syntax support
+    Plug 'leafgarland/typescript-vim'
+    " JSX syntax support
+    Plug 'maxmellon/vim-jsx-pretty'
+    " C# auto-completion
+    Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
 
 
+
 " Theme
+" ---------------------------------------------
 set termguicolors
 syntax enable
 
@@ -42,7 +58,9 @@ let g:lightline = {
 colorscheme challenger_deep
 
 
+
 " Settings
+" ---------------------------------------------
 filetype plugin indent on
 
 " Show existing tab with 4 spaces with
@@ -69,9 +87,15 @@ nnoremap <C-b> :Buffers<CR>
 nnoremap <C-h> :History<CR>
 nmap <Leader>g :GFiles<CR>
 nmap <Leader>g? :GFiles?<CR>
+" Shortcuts for switching between splits 
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 
 " Coc Settings (DEFAULTS)
+" ---------------------------------------------
 " TextEdit might fail if hidden is not set.
 set hidden
 
