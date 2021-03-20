@@ -9,6 +9,9 @@ call plug#begin(stdpath('data') . '/plugged')
     " Themes
     Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
     Plug 'morhetz/gruvbox'
+    Plug 'atelierbram/Base2Tone-vim'
+    Plug 'embark-theme/vim', { 'as': 'embark' }
+    Plug 'n1ghtmare/noirblaze-vim'
     " Searching for files in vim (mapped to Ctrl+p)
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -41,7 +44,7 @@ let g:lightline#bufferline#shorten_path=1
 let g:lightline#bufferline#min_buffer_count=1
 
 let g:lightline = {
-      \ 'colorscheme': 'challenger_deep',
+      \ 'colorscheme': 'noirblaze',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
       \ },
@@ -55,10 +58,10 @@ let g:lightline = {
       \ 'component_type': {
       \   'buffers': 'tabsel'
       \ }
-      \ }
+      \}
 
 "let g:gruvbox_contrast_dark = 'hard'
-colorscheme challenger_deep
+colorscheme noirblaze
 
 
 
@@ -99,6 +102,34 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 " Format the whole file (F7 key)
 map <F7> gg=G<C-o><C-o>
+" Turn hybrid line numbers on
+set number relativenumber
+set nu rnu
+" Turn hybrid line numbers off
+"set nonumber norelativenumber
+"set nonu nornu
+"Unset the "last search pattern" register by hitting enter
+nnoremap <CR> :noh<CR><CR>
+
+
+
+" Fzf Settings
+" ---------------------------------------------
+"  Match the colors with the current colorscheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 
 
