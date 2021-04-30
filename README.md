@@ -51,3 +51,18 @@ Start `nvim` and run `:PlugInstall` then restart nvim and it should be working.
 
 # CoC Setup
 Run `:CocInstall coc-tsserver coc-html coc-json coc-css`
+
+
+#Bspwm Setup
+Create a symlink for `bspwmrc` (or rather the entire `bspwm` config folder`) as follows:
+
+```
+$ ln -sv ~/Dev-Config/dotfiles/bspwm ~/.config
+```
+
+Same goes for `sxhkd`:
+
+```
+$ ln -sv ~/Dev-Config/dotfiles/sxhkd ~/.config
+```
+
