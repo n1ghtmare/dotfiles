@@ -53,16 +53,9 @@ Start `nvim` and run `:PlugInstall` then restart nvim and it should be working.
 Run `:CocInstall coc-tsserver coc-html coc-json coc-css`
 
 
-#Bspwm Setup
-Create a symlink for `bspwmrc` (or rather the entire `bspwm` config folder`) as follows:
+#Window Manager (bspwm) Setup
+Run `window-manager-setup.sh`, which will manage all the configs required:
 
 ```
-$ ln -sv ~/Dev-Config/dotfiles/bspwm ~/.config
+$ ./window-manager-setup.sh
 ```
-
-Same goes for `sxhkd`:
-
-```
-$ ln -sv ~/Dev-Config/dotfiles/sxhkd ~/.config
-```
-
