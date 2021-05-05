@@ -22,7 +22,7 @@ if [[ -d $bspwm_path ]]; then
 fi
 
 printf '=> Creating bspwm config folder symlink\n'
-ln -sv $dotfiles_path/bspwm $HOME/.config
+ln -sv $dotfiles_path/bspwm $bspwm_path
 printf '=> Setting up permissions (execute) for bspwmrc and autoload.sh\n'
 chmod -v +x $bspwm_path/bspwmrc
 chmod -v +x $bspwm_path/autoload.sh
@@ -40,7 +40,7 @@ if [[ -d $sxhkd_path ]]; then
 fi
 
 printf '=> Creating sxhkd config folder symlink\n'
-ln -sv $dotfiles_path/sxhkd $HOME/.config
+ln -sv $dotfiles_path/sxhkd $sxhkd_path
 
 
 # picom
@@ -55,7 +55,7 @@ if [[ -d $picom_path ]]; then
 fi
 
 printf '=> Creating picom config folder symlink\n'
-ln -sv $dotfiles_path/picom $HOME/.config
+ln -sv $dotfiles_path/picom $picom_path
 
 
 # polybar
@@ -70,6 +70,6 @@ if [[ -d $polybar_path ]]; then
 fi
 
 printf '=> Creating polybar config folder symlink\n'
-ln -sv $dotfiles_path/polybar $HOME/.config
+ln -sv $dotfiles_path/polybar $polybar_path 
 
 
