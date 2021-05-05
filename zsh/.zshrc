@@ -1,0 +1,25 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.cache/zsh/history
+HISTSIZE=7000
+SAVEHIST=7000
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/ddimitrov/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+# Starship prompt
+eval "$(starship init zsh)"
+
+# zsh scripts from github
+# source ~/Dev-Config/zsh-plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/Dev-Config/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/Dev-Config/zsh-plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/Dev-Config/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# fzf keybindings
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh

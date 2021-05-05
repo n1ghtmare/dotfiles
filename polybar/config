@@ -18,12 +18,12 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
-background-alt = #444
+background = #121212
+background-alt = #212121
 ;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
+foreground = #f5f5f5
 foreground-alt = #555
-primary = #ffb52a
+primary = #ff0088
 secondary = #e60053
 alert = #bd2c40
 
@@ -63,7 +63,7 @@ tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
 
-wm-restack = bspwm
+;wm-restack = bspwm
 ;wm-restack = i3
 
 ;override-redirect = true

@@ -73,3 +73,16 @@ printf '=> Creating polybar config folder symlink\n'
 ln -sv $dotfiles_path/polybar $polybar_path 
 
 
+# rofi
+# -------------------------------
+printf '\n=> Setting up rofi\n'
+
+rofi_path=$HOME/.config/rofi
+
+if [[ -d $rofi_path ]]; then
+	printf '=> An existing rofi config folder exists - will delete it...\n'
+	rm -rf $rofi_path 
+fi
+
+printf '=> Creating rofi config folder symlink\n'
+ln -sv $dotfiles_path/rofi $rofi_path 
