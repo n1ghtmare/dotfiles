@@ -5,7 +5,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Wallpaper
 # ---------------------------------------------
-nitrogen --set-zoom-fill --random /home/ddimitrov/Pictures/UltraWideScreen --save &
+nitrogen --set-zoom-fill --random /home/ddimitrov/Pictures/RiceWallpapers --save &
 
 
 # Picom

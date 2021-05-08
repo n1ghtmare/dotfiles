@@ -10,8 +10,6 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " Themes
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-Plug 'morhetz/gruvbox'
-Plug 'atelierbram/Base2Tone-vim'
 Plug 'embark-theme/vim', { 'as': 'embark' }
 Plug 'n1ghtmare/noirblaze-vim'
 
