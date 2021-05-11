@@ -101,3 +101,18 @@ fi
 
 printf '=> Creating dunst config folder symlink\n'
 ln -sv $dotfiles_path/dunst $dunst_path 
+
+
+# kitty
+# -------------------------------
+printf '\n=> Setting up kitty\n'
+
+kitty_path=$HOME/.config/kitty
+
+if [[ -d $kitty_path ]]; then
+	printf '=> An existing kitty config folder exists - will delete it...\n'
+	rm -rf $kitty_path 
+fi
+
+printf '=> Creating kitty config folder symlink\n'
+ln -sv $dotfiles_path/kitty $kitty_path 
