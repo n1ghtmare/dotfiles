@@ -86,3 +86,18 @@ fi
 
 printf '=> Creating rofi config folder symlink\n'
 ln -sv $dotfiles_path/rofi $rofi_path 
+
+
+# dunst
+# -------------------------------
+printf '\n=> Setting up dunst\n'
+
+dunst_path=$HOME/.config/dunst
+
+if [[ -d $dunst_path ]]; then
+	printf '=> An existing dunst config folder exists - will delete it...\n'
+	rm -rf $dunst_path 
+fi
+
+printf '=> Creating dunst config folder symlink\n'
+ln -sv $dotfiles_path/dunst $dunst_path 

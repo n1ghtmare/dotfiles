@@ -13,6 +13,11 @@ nitrogen --set-zoom-fill --random /home/ddimitrov/Pictures/RiceWallpapers --save
 pgrep picom || picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 
 
+# Dunst (notifications)
+# ---------------------------------------------
+dunst &
+
+
 # Launch Polybar
 # ---------------------------------------------
 # Terminate already running bar instances
