@@ -5,6 +5,9 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 
+" File Explorer
+Plug 'preservim/nerdtree'
+
 " Navigate between tmux panes from vim
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -143,6 +146,12 @@ if Is_WSL()
         augroup END
     end
 end
+
+
+
+" NERD Tree Settings
+" ---------------------------------------------
+nnoremap <leader>b :NERDTreeToggle<CR>
 
 
 
