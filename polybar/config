@@ -27,23 +27,41 @@ primary = #ff0088
 secondary = #e60053
 alert = #bd2c40
 
+[section/baseBar]
+font-0 = Iosevka:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=13;1
+override-redirect = true
+radius = 6.0
+padding-left = 2
+padding-right = 2
+module-margin-left = 2
+module-margin-right = 2
+height = 29
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 3
+offset-y = 10
+wm-restack = bspwm
+
+
 [bar/example]
 monitor = ${env:MONITOR:DP-2}
 width = 100%:-22
 height = 27
 offset-x = 11
-offset-y = 5
-radius = 6.0
+offset-y = 10
+radius = 5.0
 fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-line-color = #f00
+;line-color = #f00
 
-border-size = 4
-border-color = #00000000
+;border-size = 4
+;border-color = #00000000
 
 padding-left = 0
 padding-right = 2
