@@ -18,31 +18,49 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #121212
-background-alt = #212121
 ;foreground = ${xrdb:color7:#222}
-foreground = #f5f5f5
-foreground-alt = #555
-primary = #ff0088
-secondary = #e60053
-alert = #bd2c40
+;background = #121212
+;background-alt = #323232
+;foreground = #f5f5f5
+;foreground-alt = #7a7a7a
 
-[section/baseBar]
+background = #121212 
+background-alt = #323232
+accent = #ff0088
+text = #f5f5f5
+text-alt = #535353
+underline = #323232
+icon = #535353
+alert = #ff0088
+
+
+[bar/main]
+monitor = ${env:MONITOR:DP-2}
 font-0 = Iosevka:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=13;1
-override-redirect = true
+background = ${colors.background}
+foreground = ${colors.text}
+;override-redirect = true
 radius = 6.0
-padding-left = 2
+padding-left = 0
 padding-right = 2
 module-margin-left = 2
 module-margin-right = 2
-height = 29
-background = ${colors.background}
-foreground = ${colors.foreground}
 line-size = 3
 offset-y = 10
+offset-x = 8%
+width = 84%
+height = 29
 wm-restack = bspwm
+modules-left = bspwm
+modules-center = xwindow 
+modules-right = xkeyboard filesystem pulseaudio memory cpu eth temperature date powermenu
+cursor-click = pointer
+cursor-scroll = ns-resize
+tray-position = right
+tray-padding = 2
+tray-background = ${colors.background}
 
 
 [bar/example]
@@ -55,7 +73,7 @@ radius = 5.0
 fixed-center = true
 
 background = ${colors.background}
-foreground = ${colors.foreground}
+foreground = ${colors.text}
 
 line-size = 3
 ;line-color = #f00
@@ -79,7 +97,6 @@ modules-right = filesystem pulseaudio memory cpu eth temperature date powermenu
 
 tray-position = right
 tray-padding = 2
-;tray-background = #0063ff
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -89,31 +106,31 @@ tray-padding = 2
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:60:...%
+label-underline = ${colors.underline}
 
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
+format-prefix-foreground = ${colors.icon}
+format-prefix-underline = ${colors.underline}
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
+label-layout-underline = ${colors.underline}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+label-indicator-background = ${colors.background-alt}
+label-indicator-underline = ${colors.underline}
+
 
 [module/filesystem]
 type = internal/fs
@@ -121,16 +138,18 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-mounted = %{F#ff0088}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+label-unmounted-foreground = ${colors.text-alt}
+label-mounted-underline = ${colors.underline}
+
 
 [module/bspwm]
 type = internal/bspwm
 
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-underline= ${colors.accent}
 label-focused-padding = 2
 
 label-occupied = %index%
@@ -141,48 +160,155 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
+label-empty-foreground = ${colors.text-alt}
 label-empty-padding = 2
 
-; Separator in between workspaces
-; label-separator = |
 
-;[module/i3]
-;type = internal/i3
-;format = <label-state> <label-mode>
-;index-sort = true
-;wrapping-scroll = false
-;
-;; Only show workspaces on the same output as the bar
-;;pin-workspaces = true
-;
-;label-mode-padding = 2
-;label-mode-foreground = #000
-;label-mode-background = ${colors.primary}
-;
-;; focused = Active workspace on focused monitor
-;label-focused = %index%
-;label-focused-background = ${colors.background-alt}
-;label-focused-underline= ${colors.primary}
-;label-focused-padding = 2
-;
-;; unfocused = Inactive workspace on any monitor
-;label-unfocused = %index%
-;label-unfocused-padding = 2
-;
-;; visible = Active workspace on unfocused monitor
-;label-visible = %index%
-;label-visible-background = ${self.label-focused-background}
-;label-visible-underline = ${self.label-focused-underline}
-;label-visible-padding = ${self.label-focused-padding}
-;
-;; urgent = Workspace with urgency hint set
-;label-urgent = %index%
-;label-urgent-background = ${colors.alert}
-;label-urgent-padding = 2
-;
-;; Separator in between workspaces
-;; label-separator = |
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.icon}
+format-underline = ${colors.underline}
+label = %percentage:2%%
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.icon}
+format-underline = ${colors.underline}
+label = %percentage_used%%
+
+
+[module/eth]
+type = internal/network
+interface = enp4s0
+interval = 3.0
+
+format-connected-underline = ${colors.underline}
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.text-alt}
+label-connected = %ifname% %downspeed%
+
+format-disconnected = <label-disconnected>
+format-disconnected-prefix = " "
+format-disconnected-prefix-foreground = ${colors.text-alt}
+format-disconnected-underline = ${colors.alert}
+label-disconnected = %ifname% disconnected
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = 
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-prefix-foreground = ${colors.text-alt}
+format-underline = ${colors.underline}
+
+label = %date% %time%
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+use-ui-max = false
+format-volume = <ramp-volume> <label-volume> <bar-volume>
+format-volume-foreground = ${colors.icon}
+format-volume-underline = ${colors.underline}
+label-volume-foreground = ${colors.text}
+
+label-muted =  muted
+label-muted-foreground = ${colors.text-alt}
+format-muted-underline = ${colors.underline}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+click-right = pavucontrol
+
+bar-volume-width = 13
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = ${colors.accent}
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.text-alt}
+
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = ${colors.underline}
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${colors.alert}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.alert}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.text-alt}
+; CPU - temperature path
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp2_input
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+format-underline = ${colors.underline}
+
+label-open = 
+label-open-foreground = ${colors.accent}
+label-close = cancel
+label-close-foreground = ${colors.accent}
+label-separator = |
+label-separator-foreground = ${colors.text-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = #powermenu.open.1
+menu-0-1 = power off
+menu-0-1-exec = #powermenu.open.2
+menu-0-2 = hibernate
+menu-0-2-exec = #powermenu.open.3
+
+menu-1-0 = cancel
+menu-1-0-exec = #powermenu.open.0
+menu-1-1 = reboot
+menu-1-1-exec = systemctl reboot
+
+menu-2-0 = power off
+menu-2-0-exec = systemctl poweroff
+menu-2-1 = cancel
+menu-2-1-exec = #powermenu.open.0
+
+menu-3-0 = hibernate
+menu-3-0-exec = systemctl hibernate
+menu-3-1 = cancel
+menu-3-1-exec = #powermenu.open.0
+
 
 
 [module/mpd]
@@ -214,28 +340,12 @@ bar-fill-font = 2
 bar-fill-foreground = #9f78e1
 bar-empty = ─
 bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+bar-empty-foreground = ${colors.text-alt}
 
 [module/backlight-acpi]
 inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label = %percentage:2%%
-
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
@@ -250,83 +360,25 @@ format-disconnected = X
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+;label-disconnected-foreground = ${colors.text-alt}
 
 ramp-signal-0 = 
 ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-foreground = ${colors.text-alt}
 
-[module/eth]
-type = internal/network
-interface = enp4s0
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %ifname% %downspeed%
-
-format-disconnected = "no network"
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-[module/date]
-type = internal/date
-interval = 5
-
-date =
-date-alt = " %Y-%m-%d"
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
-
-label = %date% %time%
-
-[module/pulseaudio]
-type = internal/pulseaudio
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
-label-volume-foreground = ${root.foreground}
-
-label-muted =  muted
-label-muted-foreground = #666
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/alsa]
 type = internal/alsa
 
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL
-label-volume-foreground = ${root.foreground}
+label-volume-foreground = ${colors.text}
 
 format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
+format-muted-foreground = ${colors.text-alt}
 label-muted = sound muted
 
 bar-volume-width = 10
@@ -344,7 +396,7 @@ bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-empty-foreground = ${colors.text-alt}
 
 [module/battery]
 type = internal/battery
@@ -359,82 +411,25 @@ format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix-foreground = ${colors.text-alt}
 format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = ${colors.text-alt}
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground = ${colors.text-alt}
 animation-charging-framerate = 750
 
 animation-discharging-0 = 
 animation-discharging-1 = 
 animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-foreground = ${colors.text-alt}
 animation-discharging-framerate = 750
-
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
-; CPU - temperature path
-hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp2_input
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = #powermenu.open.1
-menu-0-1 = power off
-menu-0-1-exec = #powermenu.open.2
-menu-0-2 = hibernate
-menu-0-2-exec = #powermenu.open.3
-
-menu-1-0 = cancel
-menu-1-0-exec = #powermenu.open.0
-menu-1-1 = reboot
-menu-1-1-exec = systemctl reboot
-
-menu-2-0 = power off
-menu-2-0-exec = systemctl poweroff
-menu-2-1 = cancel
-menu-2-1-exec = #powermenu.open.0
-
-menu-3-0 = hibernate
-menu-3-0-exec = systemctl hibernate
-menu-3-1 = cancel
-menu-3-1-exec = #powermenu.open.0
 
 [settings]
 screenchange-reload = true
