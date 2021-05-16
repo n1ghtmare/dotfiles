@@ -11,9 +11,7 @@ Plug 'preservim/nerdtree'
 " Navigate between tmux panes from vim
 Plug 'christoomey/vim-tmux-navigator'
 
-" Themes
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-Plug 'embark-theme/vim', { 'as': 'embark' }
+" Theme
 Plug 'n1ghtmare/noirblaze-vim'
 
 " Searching for files in vim (mapped to Ctrl+p)
