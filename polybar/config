@@ -17,13 +17,6 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-;foreground = ${xrdb:color7:#222}
-;background = #121212
-;background-alt = #323232
-;foreground = #f5f5f5
-;foreground-alt = #7a7a7a
-
 background = #121212 
 background-alt = #323232
 accent = #ff0088
@@ -36,12 +29,13 @@ alert = #ff0088
 
 [bar/main]
 monitor = ${env:MONITOR:DP-2}
+
 font-0 = Iosevka:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=13;1
+
 background = ${colors.background}
 foreground = ${colors.text}
-;override-redirect = true
 radius = 6.0
 padding-left = 0
 padding-right = 2
@@ -60,55 +54,10 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 tray-position = right
 tray-padding = 2
-
-
-[bar/example]
-monitor = ${env:MONITOR:DP-2}
-width = 100%:-22
-height = 27
-offset-x = 11
-offset-y = 10
-radius = 5.0
-fixed-center = true
-
-background = ${colors.background}
-foreground = ${colors.text}
-
-line-size = 3
+;override-redirect = true
 ;line-color = #f00
-
 ;border-size = 4
 ;border-color = #00000000
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = Iosevka:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=13;1
-
-modules-left = bspwm
-modules-center = xwindow 
-modules-right = filesystem pulseaudio memory cpu eth temperature date powermenu
-
-tray-position = right
-tray-padding = 2
-tray-detached = true
-tray-offset-x = ${self.radius}
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-cursor-click = pointer
-cursor-scroll = ns-resize
 
 
 [module/xwindow]
