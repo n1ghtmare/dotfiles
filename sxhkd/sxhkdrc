@@ -14,6 +14,10 @@ alt + @space
 alt + Tab
   rofi -modi window -show
 
+# calculator
+super + equal
+  rofi -modi calc -show
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
