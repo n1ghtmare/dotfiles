@@ -10,6 +10,10 @@ super + Return
 alt + @space
 	rofi -modi drun -show
 
+# window switcher
+alt + Tab
+  rofi -modi window -show
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd

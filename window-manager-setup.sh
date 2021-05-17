@@ -116,3 +116,23 @@ fi
 
 printf '=> Creating kitty config folder symlink\n'
 ln -sv $dotfiles_path/kitty $kitty_path 
+
+
+# starship prompt
+# -------------------------------
+printf '\n=> Setting up starship prompt\n'
+rm -f $HOME/.config/starship.toml
+printf '=> Creating a starship prompt config symlink\n'
+ln -sv $dotfiles_path/starship/starship.toml $HOME/.config
+
+
+# xinit
+# -------------------------------
+printf '\n=> Setting up xinit (and dependencies)\n'
+rm -f $HOME/.Xresources
+rm -f $HOME/.xinitrc
+printf '=> Creating an Xresources symlink\n'
+ln -sv $dotfiles_path/xinit/.Xresources $HOME
+printf '=> Creating an xinitrc symlink\n'
+ln -sv $dotfiles_path/xinit/.xinitrc $HOME
+
