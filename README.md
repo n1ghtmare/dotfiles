@@ -1,3 +1,5 @@
+Dotfiles for my Arch setup running BSPWM.
+
 Create a `Dev-Config` folder in `~`:
 ```
 $ cd ~
@@ -10,7 +12,7 @@ Create a symlink for `.tmux.config` as follows:
 ```
 $ ln -sv ~/Dev-Config/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 ```
-
+https://github.com/n1ghtmare/dotfiles
 Install the [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm).
 Clone TPM:
 
@@ -45,3 +47,8 @@ Run `window-manager-setup.sh`, which will manage all the configs required:
 ```
 $ ./window-manager-setup.sh
 ```
+
+Here are some screenshots of the setup:
+
+![output](https://user-images.githubusercontent.com/3255810/118803603-3c456a80-b8ac-11eb-978a-3145e7893a8f.png)
+
