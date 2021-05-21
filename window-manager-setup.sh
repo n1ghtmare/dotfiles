@@ -136,3 +136,17 @@ ln -sv $dotfiles_path/xinit/.Xresources $HOME
 printf '=> Creating an xinitrc symlink\n'
 ln -sv $dotfiles_path/xinit/.xinitrc $HOME
 
+
+# bat
+# -------------------------------
+printf '\n=> Setting up bat\n'
+
+bat_path=$HOME/.config/bat
+
+if [[ -d $bat_path ]]; then
+	printf '=> An existing bat config folder exists - will delete it...\n'
+	rm -rf $bat_path 
+fi
+
+printf '=> Creating bat config folder symlink\n'
+ln -sv $dotfiles_path/bat $bat_path 

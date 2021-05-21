@@ -62,9 +62,7 @@ let g:lightline = {
       \ }
       \}
 
-"let g:gruvbox_contrast_dark = 'hard'
 colorscheme noirblaze
-
 
 
 " Settings
@@ -124,6 +122,7 @@ set undofile
 set clipboard+=unnamedplus
 
 
+
 " WSL Settings
 " ---------------------------------------------
 " Check if we're running on WSL
@@ -156,7 +155,7 @@ nnoremap <leader>b :NERDTreeToggle<CR>
 
 " Fzf Settings
 " ---------------------------------------------
-"  Match the colors with the current colorscheme
+" Match the colors with the current colorscheme
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -173,6 +172,8 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 
+"command! -bang -nargs=? -complete=dir Files
+"    \ call fzf#vim#files(<q-args>, {'options': ['--preview', 'bat --theme="base16" --color=always {}']}, <bang>0)
 
 " Coc Settings (DEFAULTS)
 " ---------------------------------------------

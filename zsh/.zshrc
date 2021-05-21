@@ -28,3 +28,6 @@ source ~/Dev-Config/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.
 # fzf keybindings
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{node_modules,.git}"' 
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
