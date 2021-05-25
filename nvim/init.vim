@@ -28,6 +28,9 @@ Plug 'dense-analysis/ale'
 " Syntax highlighting for various languages
 Plug 'sheerun/vim-polyglot'
 
+" Trailing whitespace
+Plug 'ntpeters/vim-better-whitespace'
+
 call plug#end()
 
 
@@ -84,7 +87,7 @@ set title
 set cursorline
 set cmdheight=1
 filetype plugin indent on
-" Set scroll offfset 
+" Set scroll offfset
 set scrolloff=8
 " Disable auto text line wrapping
 set formatoptions+=t
@@ -93,11 +96,11 @@ set mouse=a
 " File/Buffer navigation/search and Git nav
 nnoremap <C-p> :Files<Cr>
 nnoremap <C-e> :Rg<Cr>
-nnoremap <C-b> :Buffers<CR>
+nnoremap <Leader>b :Buffers<CR>
 nnoremap <C-h> :History<CR>
 nmap <Leader>g :GFiles<CR>
 nmap <Leader>g? :GFiles?<CR>
-" Shortcuts for switching between splits 
+" Shortcuts for switching between splits
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -147,9 +150,17 @@ end
 
 
 
+" Whitespace Settings
+" ---------------------------------------------
+let g:better_whitespace_enabled=1
+"let g:better_whitespace_ctermcolor = '#787878'
+let g:better_whitespace_guicolor = '#FE61B4'
+
+
+
 " NERD Tree Settings
 " ---------------------------------------------
-nnoremap <leader>b :NERDTreeToggle<CR>
+nnoremap <C-b> :NERDTreeToggle<CR>
 
 
 
@@ -277,7 +288,8 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>qf <Plug>(coc-codeaction-cursor)
+
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -330,7 +342,7 @@ let g:coc_global_extensions = [ 'coc-tsserver', 'coc-html', 'coc-css' ]
 let g:OmniSharp_highlighting = 0
 
 " Use fzf
-let g:OmniSharp_selector_ui = 'fzf'    
+let g:OmniSharp_selector_ui = 'fzf'
 let g:OmniSharp_selector_findusages = 'fzf'
 
 " Don't autoselect first omnicomplete option, show options even if there is only
@@ -394,3 +406,17 @@ augroup omnisharp_commands
   autocmd FileType cs nmap <silent> <buffer> <Leader>osst <Plug>(omnisharp_start_server)
   autocmd FileType cs nmap <silent> <buffer> <Leader>ossp <Plug>(omnisharp_stop_server)
 augroup END
+
+
+
+" Javascript Settings
+" ---------------------------------------------
+" Set Ale to use eslint for fixing
+let g:ale_fixers = {}
+let g:ale_fixers['*'] = ['remove_trailing_lines', 'trim_whitespace']
+let g:ale_fixers['javascript'] = ['eslint', 'prettier']
+let g:ale_fixers['typescript'] = ['eslint', 'prettier']
+let g:ale_fixers['typescriptreact'] = ['eslint', 'prettier']
+let g:ale_fixers['css'] = ['eslint']
+
+let g:ale_fix_on_save = 1
