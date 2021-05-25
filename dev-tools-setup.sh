@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf 'Setting up dev tool (nvim,tmux) configs:\n'
+printf 'Setting up dev tool configs:\n'
 printf 'This script will delete existing config folders and create symlinks with the ones in this repo!\n'
 
 read -r -p "Are you sure you want to contine? [y/N] " response
@@ -31,3 +31,40 @@ rm -rf $HOME/.tmux.conf
 printf "=> Creating tmux config symlink\n"
 ln -sv $dotfiles_path/tmux/.tmux.conf $HOME/.tmux.conf
 
+
+# starship prompt
+# -------------------------------
+printf '\n=> Setting up starship prompt\n'
+rm -f $HOME/.config/starship.toml
+printf '=> Creating a starship prompt config symlink\n'
+ln -sv $dotfiles_path/starship/starship.toml $HOME/.config
+
+
+# kitty
+# -------------------------------
+printf '\n=> Setting up kitty\n'
+
+kitty_path=$HOME/.config/kitty
+
+if [[ -d $kitty_path ]]; then
+	printf '=> An existing kitty config folder exists - will delete it...\n'
+	rm -rf $kitty_path
+fi
+
+printf '=> Creating kitty config folder symlink\n'
+ln -sv $dotfiles_path/kitty $kitty_path
+
+
+# bat
+# -------------------------------
+printf '\n=> Setting up bat\n'
+
+bat_path=$HOME/.config/bat
+
+if [[ -d $bat_path ]]; then
+	printf '=> An existing bat config folder exists - will delete it...\n'
+	rm -rf $bat_path
+fi
+
+printf '=> Creating bat config folder symlink\n'
+ln -sv $dotfiles_path/bat $bat_path

@@ -18,7 +18,7 @@ bspwm_path=$HOME/.config/bspwm
 
 if [[ -d $bspwm_path ]]; then
 	printf '=> An existing bspwm config folder exists - will delete it...\n'
-	rm -rf $bspwm_path 
+	rm -rf $bspwm_path
 fi
 
 printf '=> Creating bspwm config folder symlink\n'
@@ -36,7 +36,7 @@ sxhkd_path=$HOME/.config/sxhkd
 
 if [[ -d $sxhkd_path ]]; then
 	printf '=> An existing sxhkd config folder exists - will delete it...\n'
-	rm -rf $sxhkd_path 
+	rm -rf $sxhkd_path
 fi
 
 printf '=> Creating sxhkd config folder symlink\n'
@@ -51,7 +51,7 @@ picom_path=$HOME/.config/picom
 
 if [[ -d $picom_path ]]; then
 	printf '=> An existing picom config folder exists - will delete it...\n'
-	rm -rf $picom_path 
+	rm -rf $picom_path
 fi
 
 printf '=> Creating picom config folder symlink\n'
@@ -66,11 +66,11 @@ polybar_path=$HOME/.config/polybar
 
 if [[ -d $polybar_path ]]; then
 	printf '=> An existing polybar config folder exists - will delete it...\n'
-	rm -rf $polybar_path 
+	rm -rf $polybar_path
 fi
 
 printf '=> Creating polybar config folder symlink\n'
-ln -sv $dotfiles_path/polybar $polybar_path 
+ln -sv $dotfiles_path/polybar $polybar_path
 
 
 # rofi
@@ -81,11 +81,11 @@ rofi_path=$HOME/.config/rofi
 
 if [[ -d $rofi_path ]]; then
 	printf '=> An existing rofi config folder exists - will delete it...\n'
-	rm -rf $rofi_path 
+	rm -rf $rofi_path
 fi
 
 printf '=> Creating rofi config folder symlink\n'
-ln -sv $dotfiles_path/rofi $rofi_path 
+ln -sv $dotfiles_path/rofi $rofi_path
 
 
 # dunst
@@ -96,34 +96,11 @@ dunst_path=$HOME/.config/dunst
 
 if [[ -d $dunst_path ]]; then
 	printf '=> An existing dunst config folder exists - will delete it...\n'
-	rm -rf $dunst_path 
+	rm -rf $dunst_path
 fi
 
 printf '=> Creating dunst config folder symlink\n'
-ln -sv $dotfiles_path/dunst $dunst_path 
-
-
-# kitty
-# -------------------------------
-printf '\n=> Setting up kitty\n'
-
-kitty_path=$HOME/.config/kitty
-
-if [[ -d $kitty_path ]]; then
-	printf '=> An existing kitty config folder exists - will delete it...\n'
-	rm -rf $kitty_path 
-fi
-
-printf '=> Creating kitty config folder symlink\n'
-ln -sv $dotfiles_path/kitty $kitty_path 
-
-
-# starship prompt
-# -------------------------------
-printf '\n=> Setting up starship prompt\n'
-rm -f $HOME/.config/starship.toml
-printf '=> Creating a starship prompt config symlink\n'
-ln -sv $dotfiles_path/starship/starship.toml $HOME/.config
+ln -sv $dotfiles_path/dunst $dunst_path
 
 
 # xinit
@@ -135,18 +112,3 @@ printf '=> Creating an Xresources symlink\n'
 ln -sv $dotfiles_path/xinit/.Xresources $HOME
 printf '=> Creating an xinitrc symlink\n'
 ln -sv $dotfiles_path/xinit/.xinitrc $HOME
-
-
-# bat
-# -------------------------------
-printf '\n=> Setting up bat\n'
-
-bat_path=$HOME/.config/bat
-
-if [[ -d $bat_path ]]; then
-	printf '=> An existing bat config folder exists - will delete it...\n'
-	rm -rf $bat_path 
-fi
-
-printf '=> Creating bat config folder symlink\n'
-ln -sv $dotfiles_path/bat $bat_path 

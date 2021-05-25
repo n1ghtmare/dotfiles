@@ -1,6 +1,7 @@
 " Plugins
 " ---------------------------------------------
 call plug#begin(stdpath('data') . '/plugged')
+
 " Lightline bar and tabs
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
@@ -32,7 +33,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()
-
 
 
 " Theme
@@ -155,6 +155,10 @@ end
 let g:better_whitespace_enabled=1
 "let g:better_whitespace_ctermcolor = '#787878'
 let g:better_whitespace_guicolor = '#FE61B4'
+
+" Set Ale to fix trailing whitespace and lines
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
+let g:ale_fix_on_save = 1
 
 
 
@@ -332,8 +336,11 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+" Prettier command to format the document
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 " Coc Extensions to be installed when nvim starts
-let g:coc_global_extensions = [ 'coc-tsserver', 'coc-html', 'coc-css' ]
+let g:coc_global_extensions = [ 'coc-tsserver', 'coc-html', 'coc-css', 'coc-eslint', 'coc-prettier' ]
 
 
 
@@ -406,17 +413,3 @@ augroup omnisharp_commands
   autocmd FileType cs nmap <silent> <buffer> <Leader>osst <Plug>(omnisharp_start_server)
   autocmd FileType cs nmap <silent> <buffer> <Leader>ossp <Plug>(omnisharp_stop_server)
 augroup END
-
-
-
-" Javascript Settings
-" ---------------------------------------------
-" Set Ale to use eslint for fixing
-let g:ale_fixers = {}
-let g:ale_fixers['*'] = ['remove_trailing_lines', 'trim_whitespace']
-let g:ale_fixers['javascript'] = ['eslint', 'prettier']
-let g:ale_fixers['typescript'] = ['eslint', 'prettier']
-let g:ale_fixers['typescriptreact'] = ['eslint', 'prettier']
-let g:ale_fixers['css'] = ['eslint']
-
-let g:ale_fix_on_save = 1
