@@ -1,48 +1,36 @@
-Dotfiles for my Arch setup running BSPWM.
+Dotfiles for my Arch setup (running BSPWM) and my dev environment.
 
-Create a `Dev-Config` folder in `~`:
-```
-$ cd ~
-$ mkdir Dev-Config
-```
+If you want to use the setup scripts you need to create a `Dev-Config` folder in `~` and clone this repository in it (so you'll end up with `~/Dev-Config/dotfiles`):
 
-# Tmux Setup
-Create a symlink for `.tmux.config` as follows:
+# Dev Environment
 
-```
-$ ln -sv ~/Dev-Config/dotfiles/tmux/.tmux.conf ~/.tmux.conf
-```
-https://github.com/n1ghtmare/dotfiles
-Install the [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm).
-Clone TPM:
+### Prerequisites
 
-```
-$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
+Install the following:
 
-Reload the Tmux enviroment (if Tmux is already running) so TMP is sourced:
+- [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm).
+- [Vim-Plug](https://github.com/junegunn/vim-plug):
+- `nodejs` (for CoC to be able to run)
+
+### Setup
+
+For the dev environment (if you're on macOS, Linux or WSL), run the `dev-environment-setup.sh` (make sure you run `chmod +x` on it first):
 
 ```
-$ tmux source ~/.tmux.conf
+$ ./dev-environment-setup.sh
 ```
 
-# Neovim Setup
-Create a symlink for `init.vim` as follows:
+This will setup kitty, starship prompt, tmux, neovim and bat (this might be changing a lot, so it's a good idea to check the script in case I forgot to update the readme).
 
-```
-$ ln -sv ~/Dev-Config/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
-```
+# Window Manager
 
-Install [Vim-Plug](https://github.com/junegunn/vim-plug):
+### Prerequisites
 
-Start `nvim` and run `:PlugInstall` then restart nvim and it should be working.
+The window manager script assumes you have all the necessary packages installed using your favorite package manager (pacman, apt whatever). It's best to read the `window-manager-setup.sh` script to get an up-to-date dependency list.
 
-# CoC Setup
-You need `nodejs` and `npm` in order to load CoC.
+### Setup
 
-
-#Window Manager (bspwm) Setup
-Run `window-manager-setup.sh`, which will manage all the configs required:
+For the window manager run `window-manager-setup.sh`:
 
 ```
 $ ./window-manager-setup.sh
@@ -51,4 +39,3 @@ $ ./window-manager-setup.sh
 Here are some screenshots of the setup:
 
 ![output](https://user-images.githubusercontent.com/3255810/118803603-3c456a80-b8ac-11eb-978a-3145e7893a8f.png)
-
