@@ -123,7 +123,9 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set clipboard+=unnamedplus
-
+" Split on right and below (by default vim splits to the left and top)
+set splitright
+set splitbelow
 
 
 " WSL Settings
