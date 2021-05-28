@@ -342,7 +342,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Coc Extensions to be installed when nvim starts
-let g:coc_global_extensions = [ 'coc-tsserver', 'coc-html', 'coc-css', 'coc-eslint', 'coc-prettier' ]
+let g:coc_global_extensions = [ 'coc-tsserver', 'coc-html', 'coc-css', 'coc-eslint', 'coc-prettier', 'coc-tailwindcss' ]
 
 
 
