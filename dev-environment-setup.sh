@@ -68,3 +68,11 @@ fi
 
 printf '=> Creating bat config folder symlink\n'
 ln -sv $dotfiles_path/bat $bat_path
+
+
+# omnisharp
+# -------------------------------
+printf "\n=> Setting up omnisharp formatting\n"
+rm -rf $HOME/.omnisharp/omnisharp.json
+printf "=> Creating omnisharp config symlink\n"
+ln -sv $dotfiles_path/omnisharp/omnisharp.json $HOME/.omnisharp/omnisharp.json

@@ -70,7 +70,6 @@ colorscheme noirblaze
 
 " Settings
 " ---------------------------------------------
-filetype plugin indent on
 " Map Leader key to Space
 nnoremap <SPACE> <Nop>
 let mapleader = " "
@@ -93,6 +92,8 @@ set scrolloff=8
 set formatoptions+=t
 set tw=0
 set mouse=a
+" Disable auto insert of comments on new line
+set formatoptions-=cro
 " File/Buffer navigation/search and Git nav
 nnoremap <C-p> :Files<Cr>
 nnoremap <C-e> :Rg<Cr>
@@ -391,7 +392,7 @@ augroup omnisharp_commands
   autocmd FileType cs nmap <silent> <buffer> <Leader>ost <Plug>(omnisharp_type_lookup)
   autocmd FileType cs nmap <silent> <buffer> <Leader>osd <Plug>(omnisharp_documentation)
   autocmd FileType cs nmap <silent> <buffer> <Leader>fs <Plug>(omnisharp_find_symbol)
-  autocmd FileType cs nmap <silent> <buffer> <Leader>fx <Plug>(omnisharp_fix_usings)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>ufx <Plug>(omnisharp_fix_usings)
   autocmd FileType cs nmap <silent> <buffer> <C-\> <Plug>(omnisharp_signature_help)
   autocmd FileType cs imap <silent> <buffer> <C-\> <Plug>(omnisharp_signature_help)
 
@@ -401,8 +402,8 @@ augroup omnisharp_commands
   " Find all code errors/warnings for the current solution and populate the quickfix window
   autocmd FileType cs nmap <silent> <buffer> <Leader>gcc <Plug>(omnisharp_global_code_check)
   " Contextual code actions (uses fzf, vim-clap, CtrlP or unite.vim selector when available)
-  autocmd FileType cs nmap <silent> <buffer> <Leader>ca <Plug>(omnisharp_code_actions)
-  autocmd FileType cs xmap <silent> <buffer> <Leader>ca <Plug>(omnisharp_code_actions)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>ac <Plug>(omnisharp_code_actions)
+  autocmd FileType cs xmap <silent> <buffer> <Leader>ac <Plug>(omnisharp_code_actions)
   " Repeat the last code action performed (does not use a selector)
   autocmd FileType cs nmap <silent> <buffer> <Leader>os. <Plug>(omnisharp_code_action_repeat)
   autocmd FileType cs xmap <silent> <buffer> <Leader>os. <Plug>(omnisharp_code_action_repeat)
