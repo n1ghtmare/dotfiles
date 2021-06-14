@@ -29,5 +29,7 @@ source ~/Dev-Config/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{node_modules,.git}"' 
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{node_modules,.git}"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="--no-color"
+#export FZF_PREVIEW_COMMAND="bat --theme='base16' color=always {}"

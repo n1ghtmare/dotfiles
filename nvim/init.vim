@@ -101,6 +101,7 @@ nnoremap <Leader>b :Buffers<CR>
 nnoremap <C-h> :History<CR>
 nmap <Leader>g :GFiles<CR>
 nmap <Leader>g? :GFiles?<CR>
+" NOTE: Toggle the fzf preview with Ctrl-/
 " Shortcuts for switching between splits
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -170,28 +171,6 @@ let g:ale_fix_on_save = 1
 nnoremap <C-b> :NERDTreeToggle<CR>
 
 
-
-" Fzf Settings
-" ---------------------------------------------
-" Match the colors with the current colorscheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
-
-"command! -bang -nargs=? -complete=dir Files
-"    \ call fzf#vim#files(<q-args>, {'options': ['--preview', 'bat --theme="base16" --color=always {}']}, <bang>0)
 
 " Coc Settings (DEFAULTS)
 " ---------------------------------------------
