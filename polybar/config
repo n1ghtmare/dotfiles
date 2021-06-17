@@ -17,7 +17,7 @@
 ;==========================================================
 
 [colors]
-background = #121212 
+background = #121212
 background-alt = #323232
 accent = #ff0088
 text = #f5f5f5
@@ -48,7 +48,7 @@ width = 84%
 height = 29
 wm-restack = bspwm
 modules-left = bspwm
-modules-center = xwindow 
+modules-center = xwindow
 modules-right = xkeyboard filesystem pulseaudio memory cpu temperature eth date powermenu
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -152,7 +152,7 @@ label-disconnected = %ifname% disconnected
 type = internal/date
 interval = 5
 
-date = 
+date =
 date-alt = " %Y-%m-%d"
 
 time = %H:%M
@@ -244,20 +244,20 @@ menu-0-1-exec = #powermenu.open.2
 menu-0-2 = hibernate
 menu-0-2-exec = #powermenu.open.3
 
-menu-1-0 = cancel
-menu-1-0-exec = #powermenu.open.0
-menu-1-1 = reboot
-menu-1-1-exec = systemctl reboot
+;menu-1-0 = cancel
+;menu-1-0-exec = #powermenu.open.0
+menu-1-0 = reboot
+menu-1-0-exec = systemctl reboot
 
 menu-2-0 = power off
 menu-2-0-exec = systemctl poweroff
-menu-2-1 = cancel
-menu-2-1-exec = #powermenu.open.0
+;menu-2-1 = cancel
+;menu-2-1-exec = #powermenu.open.0
 
 menu-3-0 = hibernate
 menu-3-0-exec = systemctl hibernate
-menu-3-1 = cancel
-menu-3-1-exec = #powermenu.open.0
+;menu-3-1 = cancel
+;menu-3-1-exec = #powermenu.open.0
 
 
 
