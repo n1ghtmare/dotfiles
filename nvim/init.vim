@@ -329,6 +329,8 @@ let g:coc_global_extensions = [ 'coc-tsserver', 'coc-html', 'coc-css', 'coc-esli
 " OmniSharp Settings (DEFAULT)
 " ---------------------------------------------
 let g:OmniSharp_highlighting = 0
+let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_popup_position = 'peek'
 
 " Use fzf
 let g:OmniSharp_selector_ui = 'fzf'
