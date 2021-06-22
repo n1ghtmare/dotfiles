@@ -6,6 +6,10 @@
 super + Return
 	kitty
 
+# file manager
+super + e
+  kitty -e ranger
+
 # program launcher
 alt + @space
 	rofi -modi drun -show
@@ -130,4 +134,4 @@ super + {Left,Down,Up,Right}
 
 # take a screenshot with the PrintScreen Key
 Print
-    flameshot gui
+  flameshot gui
