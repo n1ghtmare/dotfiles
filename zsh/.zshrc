@@ -1,7 +1,7 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.cache/zsh/history
-HISTSIZE=7000
-SAVEHIST=7000
+HISTSIZE=1000000
+SAVEHIST=1000000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
