@@ -168,7 +168,7 @@ let g:ale_fix_on_save = 1
 
 " NERD Tree Settings
 " ---------------------------------------------
-nnoremap <C-\> :NERDTreeToggle<CR>
+nnoremap <Leader>b :NERDTreeToggle<CR>
 
 
 
