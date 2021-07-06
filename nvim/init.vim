@@ -97,7 +97,7 @@ set formatoptions-=cro
 " File/Buffer navigation/search and Git nav
 nnoremap <C-p> :Files<Cr>
 nnoremap <C-e> :Rg<Cr>
-nnoremap <Leader>b :Buffers<CR>
+nnoremap <C-b> :Buffers<CR>
 nnoremap <C-h> :History<CR>
 nmap <Leader>g :GFiles<CR>
 nmap <Leader>g? :GFiles?<CR>
@@ -168,7 +168,7 @@ let g:ale_fix_on_save = 1
 
 " NERD Tree Settings
 " ---------------------------------------------
-nnoremap <C-b> :NERDTreeToggle<CR>
+nnoremap <C-\> :NERDTreeToggle<CR>
 
 
 
