@@ -243,6 +243,8 @@ menu-0-1 = power off
 menu-0-1-exec = #powermenu.open.2
 menu-0-2 = hibernate
 menu-0-2-exec = #powermenu.open.3
+menu-0-3 = suspend
+menu-0-3-exec = #powermenu.open.4
 
 ;menu-1-0 = cancel
 ;menu-1-0-exec = #powermenu.open.0
@@ -259,6 +261,8 @@ menu-3-0-exec = systemctl hibernate
 ;menu-3-1 = cancel
 ;menu-3-1-exec = #powermenu.open.0
 
+menu-4-0 = suspend
+menu-4-0-exec = systemctl suspend
 
 
 [module/mpd]

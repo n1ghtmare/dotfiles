@@ -1,4 +1,4 @@
-" Plugins
+" Plugins {{{
 " ---------------------------------------------
 call plug#begin(stdpath('data') . '/plugged')
 
@@ -32,10 +32,13 @@ Plug 'sheerun/vim-polyglot'
 " Trailing whitespace
 Plug 'ntpeters/vim-better-whitespace'
 
+Plug 'mhinz/vim-startify'
+
 call plug#end()
+" }}}
 
 
-" Theme
+" Theme {{{
 " ---------------------------------------------
 set termguicolors
 syntax enable
@@ -66,9 +69,10 @@ let g:lightline = {
       \}
 
 colorscheme noirblaze
+" }}}
 
 
-" Settings
+" Settings {{{
 " ---------------------------------------------
 " Map Leader key to Space
 nnoremap <SPACE> <Nop>
@@ -97,7 +101,7 @@ set formatoptions-=cro
 " File/Buffer navigation/search and Git nav
 nnoremap <C-p> :Files<Cr>
 nnoremap <C-e> :Rg<Cr>
-nnoremap <C-b> :Buffers<CR>
+nnoremap <Leader>b :Buffers<CR>
 nnoremap <C-h> :History<CR>
 nmap <Leader>g :GFiles<CR>
 nmap <Leader>g? :GFiles?<CR>
@@ -122,15 +126,18 @@ set noerrorbells
 " Keeping history
 set noswapfile
 set nobackup
-set undodir=~/.vim/undodir
 set undofile
+set undodir=~/.cache/nvim/undodir
 set clipboard+=unnamedplus
 " Split on right and below (by default vim splits to the left and top)
 set splitright
 set splitbelow
+" Requires nvim > 0.5.0
+set signcolumn=number
+" }}}
 
 
-" WSL Settings
+" WSL Settings {{{
 " ---------------------------------------------
 " Check if we're running on WSL
 function! Is_WSL() abort
@@ -151,10 +158,10 @@ if Is_WSL()
         augroup END
     end
 end
+" }}}
 
 
-
-" Whitespace Settings
+" Whitespace Settings {{{
 " ---------------------------------------------
 let g:better_whitespace_enabled=1
 "let g:better_whitespace_ctermcolor = '#787878'
@@ -163,16 +170,16 @@ let g:better_whitespace_guicolor = '#FE61B4'
 " Set Ale to fix trailing whitespace and lines
 let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fix_on_save = 1
+" }}}
 
 
-
-" NERD Tree Settings
+" NERD Tree Settings {{{
 " ---------------------------------------------
-nnoremap <Leader>b :NERDTreeToggle<CR>
+nnoremap <C-b> :NERDTreeToggle<CR>
+" }}}
 
 
-
-" Coc Settings (DEFAULTS)
+" Coc Settings {{{
 " ---------------------------------------------
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -187,16 +194,6 @@ set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-" NOTE: Uncomment the line below after upgrading to nvim 0.5.5 (still in alpha at the time of writing this)
-if has("patch-8.1.1564")
-    " Recently vim can merge signcolumn and number column into one
-    set signcolumn=number
-else
-    set signcolumn=yes
-endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -323,10 +320,10 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Coc Extensions to be installed when nvim starts
 let g:coc_global_extensions = [ 'coc-tsserver', 'coc-html', 'coc-css', 'coc-eslint', 'coc-prettier', 'coc-tailwindcss' ]
+" }}}
 
 
-
-" OmniSharp Settings (DEFAULT)
+" OmniSharp Settings {{{
 " ---------------------------------------------
 let g:OmniSharp_highlighting = 0
 let g:OmniSharp_server_stdio = 1
@@ -341,6 +338,7 @@ let g:OmniSharp_selector_findusages = 'fzf'
 " and 'popuphidden' if you don't want to see any documentation whatsoever.
 " Note that neovim does not support `popuphidden` or `popup` yet:
 " https://github.com/neovim/neovim/issues/10996
+" Remove when we get to nvim 0.5.1
 if has('patch-8.1.1880')
   set completeopt=longest,menuone,popuphidden
   " Highlight the completion documentation popup background/foreground the same as
@@ -397,3 +395,22 @@ augroup omnisharp_commands
   autocmd FileType cs nmap <silent> <buffer> <Leader>osst <Plug>(omnisharp_start_server)
   autocmd FileType cs nmap <silent> <buffer> <Leader>ossp <Plug>(omnisharp_stop_server)
 augroup END
+" }}}
+
+" Startify Settings
+let g:startify_custom_header = [
+            \ '    _   _  _____ _____  _   _ ________  ___',
+            \ '    | \ | ||  ___|  _  || | | |_   _|  \/  |',
+            \ '    |  \| || |__ | | | || | | | | | | .  . |',
+            \ '    | . ` ||  __|| | | || | | | | | | |\/| |',
+            \ '    | |\  || |___\ \_/ /\ \_/ /_| |_| |  | |',
+            \ '    \_| \_/\____/ \___/  \___/ \___/\_|  |_/',
+            \ ]
+"let g:startify_custom_header = [
+"\ '   ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
+"\ '   ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
+"\ '   ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
+"\ '   ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
+"\ '   ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
+"\ '   ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
+"\ ]
