@@ -59,7 +59,7 @@ let g:lightline#bufferline#enable_devicons=1
 let g:lightline = {
       \ 'colorscheme': 'noirblaze',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'modified' ] ]
       \ },
       \ 'tabline': {
       \   'left': [ ['buffers'] ],
@@ -70,8 +70,15 @@ let g:lightline = {
       \ },
       \ 'component_type': {
       \   'buffers': 'tabsel'
+      \ },
+      \ 'component_function': {
+      \   'filetype': 'MyFiletype'
       \ }
       \}
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
 
 colorscheme noirblaze
 " }}}
