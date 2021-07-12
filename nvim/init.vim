@@ -9,6 +9,9 @@ Plug 'mengelbrecht/lightline-bufferline'
 " File Explorer
 Plug 'preservim/nerdtree'
 
+" File type icons
+Plug 'ryanoasis/vim-devicons'
+
 " Navigate between tmux panes from vim
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -32,6 +35,7 @@ Plug 'sheerun/vim-polyglot'
 " Trailing whitespace
 Plug 'ntpeters/vim-better-whitespace'
 
+" Start Screen
 Plug 'mhinz/vim-startify'
 
 call plug#end()
@@ -50,6 +54,7 @@ let g:netrw_liststyle = 3
 let g:lightline#bufferline#clickable=1
 let g:lightline#bufferline#shorten_path=1
 let g:lightline#bufferline#min_buffer_count=1
+let g:lightline#bufferline#enable_devicons=1
 
 let g:lightline = {
       \ 'colorscheme': 'noirblaze',
@@ -134,6 +139,8 @@ set splitright
 set splitbelow
 " Requires nvim > 0.5.0
 set signcolumn=number
+" Ensure that folding works on vim and txt filetypes on the folding marker
+autocmd FileType vim,txt setlocal foldmethod=marker
 " }}}
 
 
@@ -397,20 +404,23 @@ augroup omnisharp_commands
 augroup END
 " }}}
 
-" Startify Settings
+
+" Startify Settings {{{
+" ---------------------------------------------
+let g:startify_session_persistence = 1
+
 let g:startify_custom_header = [
-            \ '    _   _  _____ _____  _   _ ________  ___',
-            \ '    | \ | ||  ___|  _  || | | |_   _|  \/  |',
-            \ '    |  \| || |__ | | | || | | | | | | .  . |',
-            \ '    | . ` ||  __|| | | || | | | | | | |\/| |',
-            \ '    | |\  || |___\ \_/ /\ \_/ /_| |_| |  | |',
-            \ '    \_| \_/\____/ \___/  \___/ \___/\_|  |_/',
-            \ ]
-"let g:startify_custom_header = [
-"\ '   ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
-"\ '   ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
-"\ '   ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
-"\ '   ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
-"\ '   ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
-"\ '   ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
-"\ ]
+\ '   ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
+\ '   ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
+\ '   ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
+\ '   ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
+\ '   ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
+\ '   ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
+\ ]
+
+
+" Display icons in startify
+function! StartifyEntryFormat()
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+endfunction
+" }}}
