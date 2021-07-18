@@ -5,22 +5,17 @@ call plug#begin(stdpath('data') . '/plugged')
 " Lightline bar and tabs
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
+Plug 'itchyny/vim-gitbranch'
 
 " File Explorer
 Plug 'preservim/nerdtree'
 
 " File type icons
 Plug 'ryanoasis/vim-devicons'
-
-" Navigate between tmux panes from vim
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Theme
 Plug 'n1ghtmare/noirblaze-vim'
-
-" Searching for files in vim (mapped to Ctrl+p)
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 
 " Typescript/HTML/CSS/JSON auto-completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -37,6 +32,12 @@ Plug 'ntpeters/vim-better-whitespace'
 
 " Start Screen
 Plug 'mhinz/vim-startify'
+
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 call plug#end()
 " }}}
@@ -59,7 +60,7 @@ let g:lightline#bufferline#enable_devicons=1
 let g:lightline = {
       \ 'colorscheme': 'noirblaze',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'modified' ] ]
+      \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'modified' ] ]
       \ },
       \ 'tabline': {
       \   'left': [ ['buffers'] ],
@@ -72,7 +73,8 @@ let g:lightline = {
       \   'buffers': 'tabsel'
       \ },
       \ 'component_function': {
-      \   'filetype': 'MyFiletype'
+      \   'filetype': 'MyFiletype',
+      \   'gitbranch': 'gitbranch#name'
       \ }
       \}
 
@@ -111,12 +113,11 @@ set mouse=a
 " Disable auto insert of comments on new line
 set formatoptions-=cro
 " File/Buffer navigation/search and Git nav
-nnoremap <C-p> :Files<Cr>
-nnoremap <C-e> :Rg<Cr>
-nnoremap <Leader>b :Buffers<CR>
-nnoremap <C-h> :History<CR>
-nmap <Leader>g :GFiles<CR>
-nmap <Leader>g? :GFiles?<CR>
+"nnoremap <C-p> :Files<Cr>
+"nnoremap <C-e> :Rg<Cr>
+"nnoremap <Leader>b :Buffers<CR>
+"nmap <Leader>g :GFiles<CR>
+"nmap <Leader>g? :GFiles?<CR>
 " NOTE: Toggle the fzf preview with Ctrl-/
 " Shortcuts for switching between splits
 nnoremap <C-J> <C-W><C-J>
@@ -189,7 +190,7 @@ let g:ale_fix_on_save = 1
 
 " NERD Tree Settings {{{
 " ---------------------------------------------
-nnoremap <C-b> :NERDTreeToggle<CR>
+nnoremap <leader>` :NERDTreeToggle<CR>
 " }}}
 
 
@@ -431,3 +432,43 @@ function! StartifyEntryFormat()
     return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
 endfunction
 " }}}
+
+
+" Telescope Settings {{{
+" Find files using Telescope command-line sugar.
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <C-e> <cmd>Telescope live_grep<cr>
+nnoremap <C-b> <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>ft <cmd>Telescope git_files<cr>
+
+lua << EOF
+require('telescope').setup{
+    defaults = {
+        color_devicons = false,
+        layout_config = {
+            width = 0.7,
+            horizontal = {
+                preview_width = 0.6
+            }
+        }
+    },
+    pickers = {
+        buffers = {
+            ignore_current_buffer = true,
+            sort_lastused = true
+        }
+    },
+    extensions = {
+        fzf = {
+            fuzzy = true,                    -- false will only do exact matching
+            override_generic_sorter = false, -- override the generic sorter
+            override_file_sorter = true,     -- override the file sorter
+            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+            -- the default case_mode is "smart_case"
+        }
+    }
+}
+require('telescope').load_extension('fzf')
+EOF
+" }}
