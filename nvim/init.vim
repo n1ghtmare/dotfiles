@@ -456,7 +456,16 @@ require('telescope').setup{
     pickers = {
         buffers = {
             ignore_current_buffer = true,
-            sort_lastused = true
+            sort_mru = true,
+            mappings = {
+                i = {
+                    ["<c-d>"] = require("telescope.actions").delete_buffer,
+                    -- or right hand side can also be the name of the action as string
+                },
+                n = {
+                    ["<c-d>"] = require("telescope.actions").delete_buffer,
+                }
+            }
         }
     },
     extensions = {
