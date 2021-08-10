@@ -106,12 +106,14 @@ set cmdheight=1
 filetype plugin indent on
 " Set scroll offfset
 set scrolloff=8
-" Disable auto text line wrapping
-set formatoptions+=t
 set tw=0
 set mouse=a
 " Disable auto insert of comments on new line
-set formatoptions-=cro
+set formatoptions-=c
+set formatoptions-=r
+set formatoptions-=o
+" Disable auto text line wrapping
+set formatoptions+=t
 " File/Buffer navigation/search and Git nav
 "nnoremap <C-p> :Files<Cr>
 "nnoremap <C-e> :Rg<Cr>

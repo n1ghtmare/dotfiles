@@ -1,10 +1,10 @@
 Xcursor.theme: Breeze_Default
 Xcursor.size: 10
 
-! Resources better font rendering (dependant the DPI of your monitor) 
+! Resources better font rendering (dependant the DPI of your monitor)
 Xft.autohint: 0
 Xft.antialias: 1
-Xft.hinting: true
+Xft.hinting: 1
 Xft.hintstyle: hintslight
 Xft.dpi: 106
 Xft.rgba: rgb
