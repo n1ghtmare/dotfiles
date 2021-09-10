@@ -68,13 +68,25 @@ element {
 
 element-icon {
     size: 24px;
+    background-color: @bg;
 }
 
 element-text {
     margin: 0% 0.25% 0% 0.25%;
+    background-color: @bg;
+    text-color: @fg;
+}
+
+element-text selected {
+    background-color: @highlight;
+    text-color: @fg;
 }
 
 element selected {
     background-color: @highlight;
     text-color: @fg;
+}
+
+element-icon selected {
+    background-color: @highlight;
 }
