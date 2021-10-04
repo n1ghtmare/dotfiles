@@ -15,7 +15,7 @@ pgrep picom || picom --experimental-backends --config $HOME/.config/picom/picom.
 
 # Dunst (notifications)
 # ---------------------------------------------
-dunst &
+#dunst &
 
 
 # Launch Polybar
