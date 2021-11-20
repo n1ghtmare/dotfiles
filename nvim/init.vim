@@ -30,6 +30,9 @@ Plug 'sheerun/vim-polyglot'
 " Trailing whitespace
 Plug 'ntpeters/vim-better-whitespace'
 
+" Auto Pairs (for brackets etc.)
+Plug 'windwp/nvim-autopairs'
+
 " Start Screen
 Plug 'mhinz/vim-startify'
 
@@ -38,6 +41,9 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
+" Prisma syntax highlighting
+Plug 'pantharshit00/vim-prisma'
 
 call plug#end()
 " }}}
@@ -482,4 +488,11 @@ require('telescope').setup{
 }
 require('telescope').load_extension('fzf')
 EOF
-" }}
+" }}}
+
+
+" Autoparis Settings {{{
+lua << EOF
+require('nvim-autopairs').setup{}
+EOF
+" }}}

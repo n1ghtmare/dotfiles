@@ -6,6 +6,6 @@
     "typescript",
     "typescriptreact",
     "javascriptreact",
-    "json"
-  ]
+    "json",
+  ],
 }
