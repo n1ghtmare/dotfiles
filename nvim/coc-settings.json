@@ -8,4 +8,5 @@
     "javascriptreact",
     "json",
   ],
+  "tailwindCSS.headwind.runOnSave": false
 }

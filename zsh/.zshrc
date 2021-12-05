@@ -33,3 +33,8 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{node_modules,.git
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS="--no-color"
 #export FZF_PREVIEW_COMMAND="bat --theme='base16' color=always {}"
+
+# Aliases
+alias htop="gotop"
+alias btop="bpytop"
+alias ll="exa -lhg --git --group-directories-first"
