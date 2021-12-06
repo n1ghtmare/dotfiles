@@ -75,11 +75,13 @@ element-text {
     margin: 0% 0.25% 0% 0.25%;
     background-color: @bg;
     text-color: @fg;
+    highlight: bold underline;
 }
 
 element-text selected {
     background-color: @highlight;
     text-color: @fg;
+    highlight: bold underline;
 }
 
 element selected {
