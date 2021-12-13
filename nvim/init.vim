@@ -46,6 +46,15 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " Prisma syntax highlighting
 Plug 'pantharshit00/vim-prisma'
 
+" Search/Replace preview
+Plug 'markonm/traces.vim'
+
+" Surround -> cs"' (change-surround from " to '), ds' (delete-surround ')
+Plug 'tpope/vim-surround'
+
+" Comments -> gc
+Plug 'tpope/vim-commentary'
+
 call plug#end()
 " }}}
 
@@ -115,12 +124,8 @@ filetype plugin indent on
 set scrolloff=8
 set tw=0
 set mouse=a
-" Disable auto insert of comments on new line
-set formatoptions-=c
-set formatoptions-=r
-set formatoptions-=o
-" Disable auto text line wrapping
-set formatoptions+=t
+" Disable auto insert of comments on new line and auto text line wrapping
+set formatoptions-=r formatoptions-=c formatoptions-=o formatoptions+=t
 " File/Buffer navigation/search and Git nav
 "nnoremap <C-p> :Files<Cr>
 "nnoremap <C-e> :Rg<Cr>
@@ -492,4 +497,9 @@ require('telescope').setup{
 }
 require('telescope').load_extension('fzf')
 EOF
+" }}}
+
+
+" Vim Commentary Settings {{{
+autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal commentstring={/*\ %s\ */}
 " }}}
