@@ -31,7 +31,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ntpeters/vim-better-whitespace'
 
 " Auto Pairs (for brackets etc.)
-Plug 'windwp/nvim-autopairs'
+" Plug 'windwp/nvim-autopairs'
+Plug 'jiangmiao/auto-pairs'
 
 " Start Screen
 Plug 'mhinz/vim-startify'
@@ -490,12 +491,5 @@ require('telescope').setup{
     }
 }
 require('telescope').load_extension('fzf')
-EOF
-" }}}
-
-
-" Autoparis Settings {{{
-lua << EOF
-require('nvim-autopairs').setup{}
 EOF
 " }}}
