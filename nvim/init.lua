@@ -22,11 +22,11 @@ opt.shiftwidth = 4                          -- 4 spaces
 opt.expandtab = true                        -- on pressing tab, insert 4 spaces
 opt.number = true                           -- show line numbers
 opt.wrap = false                            -- prevent line wrapping
-opt.ai = true                               -- enable auto indent
+opt.autoindent = true                       -- enable auto indent
 opt.title = true                            -- enable window title (?)
 opt.cursorline = true                       -- highlight the current line
 opt.scrolloff = 8                           -- Scroll offset (keep an offset on top and bottom when navigating up and down)
-opt.tw = 0                                  -- disable max text width when pasting
+opt.textwidth = 0                           -- disable max text width when pasting
 opt.mouse = "a"                             -- enable mouse selection
 opt.relativenumber = true                   -- relative line numbers
 opt.signcolumn = "number"                   -- enable signs in the number column
@@ -42,4 +42,3 @@ opt.completeopt = {"menu", "menuone", "noselect" } -- mostly just for cmp
 vim.cmd("filetype plugin on") -- allow autocommands to execute when a file matching a pattern is opened
 vim.cmd("autocmd FileType * setlocal formatoptions-=cro formatoptions+=t") -- disable auto comment insertion
 vim.cmd("autocmd FileType vim,txt setlocal foldmethod=marker") -- ensure that folding works on vim and txt filetypes on the folding marker
-

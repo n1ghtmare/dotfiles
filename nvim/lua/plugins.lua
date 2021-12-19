@@ -104,5 +104,13 @@ return require("packer").startup(function(use)
 
     -- autopairs
     use "windwp/nvim-autopairs"
+
+    -- support plugin to show shortcuts
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup {}
+        end
+    }
 end)
 

@@ -5,10 +5,12 @@ if not status_ok then
 end
 
 treesitter.setup({
+    ensure_installed = "maintained",
+    sync_install = false,
     highlight = {
-        enable = false, -- for now disabled the whole syntax thing
+        enable = true, -- for now disabled the whole syntax thing
         -- disable for certain languages
-        disable = {"tsx", "typescript"},
+        --disable = {"tsx", "typescript"},
         additional_vim_regex_highlighting = false
     },
     indent = {
