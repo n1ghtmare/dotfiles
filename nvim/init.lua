@@ -10,8 +10,9 @@ require("c.startify")
 require("c.nvim-tree")
 require("c.vim-better-whitespace")
 require("c.lsp")
-require("c.cmp")    
-
+require("c.cmp")
+require("c.treesitter")
+require("c.autopairs")
 
 -- TODO: Move to it's own general settings file?
 local opt = vim.opt

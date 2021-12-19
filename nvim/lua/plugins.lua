@@ -39,7 +39,7 @@ packer.init {
 }
 
 -- Install plugins here
-return require("packer").startup(function()
+return require("packer").startup(function(use)
     -- packer (can manage itself)
     use "wbthomason/packer.nvim"
 
@@ -72,7 +72,7 @@ return require("packer").startup(function()
     use "markonm/traces.vim"
 
     -- see (and auto remove) white space
-    --use "ntpeters/vim-better-whitespace"
+    use "ntpeters/vim-better-whitespace"
 
     -- startup UI
     use "mhinz/vim-startify"
@@ -89,5 +89,20 @@ return require("packer").startup(function()
     use "hrsh7th/nvim-cmp" -- code completion
     use "L3MON4D3/LuaSnip" -- for snippets (required with nvim-cmp)
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+
+    -- Treesitter (syntax highlighting, indentation etc)
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+
+    -- Comments -> gc
+    use "tpope/vim-commentary"
+
+    -- Surround -> cs"' (change-surround from " to '), ds' (delete-surround ')
+    use "tpope/vim-surround"
+
+    -- autopairs
+    use "windwp/nvim-autopairs"
 end)
 
