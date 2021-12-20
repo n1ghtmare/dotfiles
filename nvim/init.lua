@@ -11,8 +11,10 @@ require("c.nvim-tree")
 require("c.vim-better-whitespace")
 require("c.lsp")
 require("c.cmp")
-require("c.treesitter")
+require("c.comment")
 require("c.autopairs")
+require("c.treesitter")
+--require("c.treesitter-playground") -- Playground is useful when modifying the colorscheme in order to see how TS refers to nodes
 
 -- TODO: Move to it's own general settings file?
 local opt = vim.opt
@@ -42,3 +44,4 @@ opt.completeopt = {"menu", "menuone", "noselect" } -- mostly just for cmp
 vim.cmd("filetype plugin on") -- allow autocommands to execute when a file matching a pattern is opened
 vim.cmd("autocmd FileType * setlocal formatoptions-=cro formatoptions+=t") -- disable auto comment insertion
 vim.cmd("autocmd FileType vim,txt setlocal foldmethod=marker") -- ensure that folding works on vim and txt filetypes on the folding marker
+

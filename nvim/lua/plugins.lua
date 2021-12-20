@@ -95,9 +95,10 @@ return require("packer").startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
+    use "nvim-treesitter/playground"
 
     -- Comments -> gc
-    use "tpope/vim-commentary"
+    use "numToStr/Comment.nvim"
 
     -- Surround -> cs"' (change-surround from " to '), ds' (delete-surround ')
     use "tpope/vim-surround"
