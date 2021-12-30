@@ -5,14 +5,15 @@ SAVEHIST=1000000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/ddimitrov/.zshrc'
+zstyle :compinstall filename "/home/ddimitrov/.zshrc"
 
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-export EDITOR='nvim'
-export VISUAL='nvim'
+export EDITOR="nvim"
+export VISUAL="nvim"
+export BROWSER="firefox"
 
 # Starship prompt
 eval "$(starship init zsh)"
