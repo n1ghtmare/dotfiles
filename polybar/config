@@ -126,7 +126,6 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format = <label> <ramp-used>
 format-prefix = " "
 format-prefix-foreground = ${colors.icon}
 format-underline = ${colors.underline}
