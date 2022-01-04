@@ -126,6 +126,7 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
+format = <label> <ramp-used>
 format-prefix = " "
 format-prefix-foreground = ${colors.icon}
 format-underline = ${colors.underline}
@@ -267,7 +268,7 @@ menu-4-0-exec = systemctl suspend
 
 [module/mpd]
 type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+format-online = <label-song> <label-time>  <icon-prev> <icon-stop> <toggle> <icon-next>
 
 icon-prev = 
 icon-stop = 
@@ -277,6 +278,8 @@ icon-next = 
 
 label-song-maxlen = 25
 label-song-ellipsis = true
+label-offline = -
+label-time = %elapsed% / %total%
 
 [module/xbacklight]
 type = internal/xbacklight
