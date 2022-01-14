@@ -5,6 +5,7 @@ if not status_ok then
 end
 
 local formatting = null_ls.builtins.formatting
+local diagnostics = null_ls.builtins.diagnostics
 
 -- npm install --save-dev prettier
 null_ls.setup {
