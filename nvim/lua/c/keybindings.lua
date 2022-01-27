@@ -3,6 +3,10 @@ local m = {}
 
 vim.g.mapleader = " " -- map leader to space
 
+-- Basic
+-- Clear search results by pressing _
+vim.api.nvim_set_keymap("n", "_", ":nohl<CR>", opts);
+
 -- Sane split shortcuts
 vim.api.nvim_set_keymap("n", "<C-j>", "<C-W><C-J>", opts)
 vim.api.nvim_set_keymap("n", "<C-k>", "<C-W><C-K>", opts)
@@ -20,7 +24,6 @@ vim.api.nvim_set_keymap("n", "<C-_>", "<cmd>Telescope current_buffer_fuzzy_find<
 vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)            -- space-fh - search help tags in nvim as well as for all installed plugins
 vim.api.nvim_set_keymap("n", "<leader>ft", "<cmd>Telescope git_files<CR>", opts)            -- space-ft - search for git files only
 vim.api.nvim_set_keymap("n", "<leader>ts", "<cmd>Telescope tagstack<CR>", opts)            -- space-ft - search for git files only
-
 
 -- LSP
 function m.lsp_keybindings_for_buffer(bufnr)

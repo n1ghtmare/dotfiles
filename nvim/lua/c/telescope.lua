@@ -7,10 +7,25 @@ end
 telescope.setup{
     defaults = {
         color_devicons = false,
+        layout_strategy = "vertical",
+        sorting_strategy = "ascending",
         layout_config = {
             width = 0.7,
             horizontal = {
                 preview_width = 0.6
+            },
+            prompt_position = "top",
+            vertical = {
+                mirror = true,
+            },
+        },
+        mappings = {
+            i = {
+                    -- meta-p (== alt-p)
+                    ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
+            },
+            n = {
+                    ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
             }
         }
     },
