@@ -1,5 +1,6 @@
 require("plugins")
 
+require("c.impatient")
 require("c.keybindings")
 require("c.nvim-web-devicons")
 require("c.lualine")

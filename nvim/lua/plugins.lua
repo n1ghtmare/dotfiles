@@ -114,5 +114,8 @@ return require("packer").startup(function(use)
             require("which-key").setup {}
         end
     }
+
+    -- make neovim faster
+    use 'lewis6991/impatient.nvim'
 end)
 
