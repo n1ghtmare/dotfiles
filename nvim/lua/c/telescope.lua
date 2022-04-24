@@ -45,6 +45,10 @@ telescope.setup{
         }
     },
     extensions = {
+        file_browser = {
+            grouped = true,
+            sorting_strategy = "ascending"
+        },
         fzf = {
             fuzzy = true,                    -- false will only do exact matching
             override_generic_sorter = false, -- override the generic sorter

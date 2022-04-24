@@ -15,6 +15,7 @@ vim.api.nvim_set_keymap("n", "<C-h>", "<C-W><C-H>", opts)
 
 -- NvimTree
 vim.api.nvim_set_keymap("n", "<leader>`", ":NvimTreeToggle<CR>", opts)                      -- NvimTree toggle <leader>`
+-- vim.api.nvim_set_keymap("n", "<leader>`", "<cmd>Telescope file_browser<CR>", opts)                      -- NvimTree toggle <leader>`
 
 -- Telescope
 vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>Telescope find_files<CR>", opts)                -- Ctrl-p - find files

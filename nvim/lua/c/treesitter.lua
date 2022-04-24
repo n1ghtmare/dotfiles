@@ -5,7 +5,7 @@ if not status_ok then
 end
 
 treesitter.setup({
-    ensure_installed = "maintained",
+    ensure_installed = "all",
     sync_install = false,
     highlight = {
         enable = true, -- for now disabled the whole syntax thing

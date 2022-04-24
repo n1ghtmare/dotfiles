@@ -15,7 +15,6 @@ nvim_tree.setup {
     ignore_ft_on_setup = {
         "startify"
     },
-    auto_close = true,
     hijack_cursor = false,
     update_focused_file = {
         enable = true,
