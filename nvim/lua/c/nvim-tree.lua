@@ -22,13 +22,18 @@ nvim_tree.setup {
         ignore_list = {}
     },
     git = {
-        enable = false,
-        ignore = true
+        enable = true,
+        ignore = true,
+        timeout = 400
     },
     update_to_buf_dir = {
         enable = false,
         auto_open = false
     },
+    filters = {
+        custom = { ".git" },
+        exclude = { ".gitignore", ".env", ".env.development", ".eslintrc", ".prettierrc"}
+    }
 }
 
 

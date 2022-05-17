@@ -39,3 +39,6 @@ export FZF_DEFAULT_OPTS="--no-color"
 alias htop="gotop"
 alias btop="bpytop"
 alias ll="exa -lhg --git --group-directories-first"
+
+# make nvm work (source)
+source /usr/share/nvm/init-nvm.sh
