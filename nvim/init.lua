@@ -1,6 +1,6 @@
 require("plugins")
 
-require("c.impatient")
+-- require("c.impatient")
 require("c.keybindings")
 require("c.nvim-web-devicons")
 require("c.lualine")
@@ -15,6 +15,8 @@ require("c.comment")
 require("c.autopairs")
 require("c.treesitter")
 require("c.colors")
+require("c.luasnip")
+require("c.todo-comments")
 --require("c.treesitter-playground") -- Playground is useful when modifying the colorscheme in order to see how TS refers to nodes
 
 -- TODO: Move to it's own general settings file?

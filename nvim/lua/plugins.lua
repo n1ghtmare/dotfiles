@@ -68,6 +68,7 @@ return require("packer").startup(function(use)
         run = "make"
     }
     use { "nvim-telescope/telescope-file-browser.nvim" }
+    use {'nvim-telescope/telescope-ui-select.nvim' }
 
     -- search/replace preview
     use "markonm/traces.vim"
@@ -89,7 +90,14 @@ return require("packer").startup(function(use)
     use 'hrsh7th/cmp-cmdline' -- comand line completion
     use "hrsh7th/nvim-cmp" -- code completion
     use "L3MON4D3/LuaSnip" -- for snippets (required with nvim-cmp)
+    use "saadparwaiz1/cmp_luasnip" -- make snippets work with cmp
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+
+    -- code todo comments
+    use {
+        "folke/todo-comments.nvim",
+        requires = { {"nvim-lua/plenary.nvim"} }
+    }
 
     -- Treesitter (syntax highlighting, indentation etc)
     use {
