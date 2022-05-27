@@ -9,6 +9,8 @@ vim.g.startify_custom_header = {
     '   ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
 }
 
+vim.g.startify_bookmarks = {'~/Dev-Config/dotfiles'}
+
 
 function _G.webDevIcons(path)
   local filename = vim.fn.fnamemodify(path, ':t')

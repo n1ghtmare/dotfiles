@@ -6,7 +6,6 @@ end
 
 local m = {}
 
--- TODO: backfill this to template
 m.setup = function()
     local signs = {
         { name = "DiagnosticSignError", text = "" },
@@ -71,9 +70,9 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+local cmp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 
-if not status_ok then
+if not cmp_status_ok then
     return
 end
 

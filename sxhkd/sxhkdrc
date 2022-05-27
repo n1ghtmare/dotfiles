@@ -135,3 +135,6 @@ super + {Left,Down,Up,Right}
 # take a screenshot with the PrintScreen Key
 Print
   flameshot gui
+
+super + F12
+    kitty --directory ~/Dev-Config/dotfiles nvim
