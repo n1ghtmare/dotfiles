@@ -9,16 +9,16 @@ telescope.setup{
         color_devicons = false,
         layout_strategy = "vertical",
         sorting_strategy = "ascending",
-        layout_config = {
-            width = 0.7,
-            horizontal = {
-                preview_width = 0.6
-            },
-            prompt_position = "top",
-            vertical = {
-                mirror = true,
-            },
-        },
+        -- layout_config = {
+        --     width = 0.7,
+        --     horizontal = {
+        --         preview_width = 0.6
+        --     },
+        --     prompt_position = "top",
+        --     vertical = {
+        --         mirror = true,
+        --     },
+        -- },
         mappings = {
             i = {
                     -- meta-p (== alt-p)
@@ -30,7 +30,11 @@ telescope.setup{
         }
     },
     pickers = {
+        find_files = {
+            theme = "ivy"
+        },
         buffers = {
+            -- theme = "ivy",
             ignore_current_buffer = true,
             sort_mru = true,
             mappings = {
@@ -42,12 +46,18 @@ telescope.setup{
                     ["<c-d>"] = require("telescope.actions").delete_buffer,
                 }
             }
+        },
+        live_grep = {
+            theme = "ivy"
         }
     },
     extensions = {
         file_browser = {
+            theme = "ivy",
             grouped = true,
-            sorting_strategy = "ascending"
+            hijack_netrw = true,
+            previewer = false,
+            respect_gitignore = true
         },
         fzf = {
             fuzzy = true,                    -- false will only do exact matching

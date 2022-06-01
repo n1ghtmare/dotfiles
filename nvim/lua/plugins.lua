@@ -68,7 +68,7 @@ return require("packer").startup(function(use)
         run = "make"
     }
     use { "nvim-telescope/telescope-file-browser.nvim" }
-    use {'nvim-telescope/telescope-ui-select.nvim' }
+    use { "nvim-telescope/telescope-ui-select.nvim" }
 
     -- search/replace preview
     use "markonm/traces.vim"

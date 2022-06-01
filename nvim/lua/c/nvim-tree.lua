@@ -4,11 +4,15 @@ if not status_ok then
     return
 end
 
-vim.g.nvim_tree_icons = {
-    default = "",
-}
 
 nvim_tree.setup {
+    renderer = {
+        icons = {
+            glyphs = {
+                default = "",
+            }
+        }
+    },
     disable_netrw = true,
     hijack_netrw = true,
     open_on_setup = false,
