@@ -31,10 +31,12 @@ telescope.setup{
     },
     pickers = {
         find_files = {
-            theme = "ivy"
+            theme = "ivy",
+            previewer = false
         },
         buffers = {
-            -- theme = "ivy",
+            theme = "ivy",
+            previewer = false,
             ignore_current_buffer = true,
             sort_mru = true,
             mappings = {
@@ -48,6 +50,10 @@ telescope.setup{
             }
         },
         live_grep = {
+            theme = "ivy",
+            previewer = false,
+        },
+        diagnostics = {
             theme = "ivy"
         }
     },
@@ -57,7 +63,7 @@ telescope.setup{
             grouped = true,
             hijack_netrw = true,
             previewer = false,
-            respect_gitignore = true
+            respect_gitignore = false
         },
         fzf = {
             fuzzy = true,                    -- false will only do exact matching
