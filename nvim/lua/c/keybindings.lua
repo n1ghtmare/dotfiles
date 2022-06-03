@@ -21,7 +21,7 @@ vim.api.nvim_set_keymap("n", "<leader>`", ":NvimTreeToggle<CR>", opts)          
 vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>Telescope find_files<CR>", opts)                -- Ctrl-p - find files
 vim.api.nvim_set_keymap("n", "<C-e>", "<cmd>Telescope live_grep<CR>", opts)                 -- Ctrl-e - search with grep (contents of files)
 vim.api.nvim_set_keymap("n", "<C-b>", "<cmd>Telescope buffers<CR>", opts)                   -- Ctrl-b - search current buffers
-vim.api.nvim_set_keymap("n", "<C-_>", "<cmd>Telescope current_buffer_fuzzy_find<CR>", opts) -- Ctrl-/ - search the current buffer with fuzzy find
+vim.api.nvim_set_keymap("n", "<leader>bf", "<cmd>Telescope current_buffer_fuzzy_find<CR>", opts) -- Ctrl-/ - search the current buffer with fuzzy find
 vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)            -- space-fh - search help tags in nvim as well as for all installed plugins
 vim.api.nvim_set_keymap("n", "<leader>ft", "<cmd>Telescope git_files<CR>", opts)            -- space-ft - search for git files only
 vim.api.nvim_set_keymap("n", "<leader>ts", "<cmd>Telescope tagstack<CR>", opts)            -- space-ft - search for git files only
@@ -40,6 +40,7 @@ function m.lsp_keybindings_for_buffer(bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>l", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>gr", "<cmd>Telescope lsp_references<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>st", "<cmd>Telescope git_status<CR>", opts)
     -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ac", "<cmd>Telescope lsp_code_actions<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ac", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
