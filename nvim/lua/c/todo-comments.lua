@@ -14,7 +14,7 @@ todo_comments.setup {
     },
     colors = {
         info = { "Comment" },
-        error = { "WarningMsg" }
+        error = { "WarningMsg" },
     },
     highlight = {
         keyword = "bg",
