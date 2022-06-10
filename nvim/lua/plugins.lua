@@ -73,6 +73,9 @@ return require("packer").startup(function(use)
     -- search/replace preview
     use "markonm/traces.vim"
 
+    -- preserve layout when deleting a buffer
+    use "famiu/bufdelete.nvim"
+
     -- see (and auto remove) white space
     use "ntpeters/vim-better-whitespace"
 
