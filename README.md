@@ -6,11 +6,9 @@ If you want to use the setup scripts you need to create a `Dev-Config` folder in
 
 ### Prerequisites
 
-Install the following:
+If you want Tmux, install:
 
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm).
-- [Vim-Plug](https://github.com/junegunn/vim-plug):
-- `nodejs` (for CoC to be able to run)
 
 ### Setup
 
