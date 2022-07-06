@@ -50,3 +50,11 @@ vim.cmd("filetype plugin on") -- allow autocommands to execute when a file match
 vim.cmd("autocmd FileType * setlocal formatoptions-=cro formatoptions+=t") -- disable auto comment insertion
 vim.cmd("autocmd FileType vim,txt setlocal foldmethod=marker") -- ensure that folding works on vim and txt filetypes on the folding marker
 
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+    pattern = "*",
+    callback = function(_)
+        vim.highlight.on_yank({ higroup = "DiffChange", timeout = 150})
+    end,
+})
+
