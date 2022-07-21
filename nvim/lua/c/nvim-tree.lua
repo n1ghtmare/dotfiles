@@ -30,7 +30,7 @@ nvim_tree.setup {
         ignore = true,
         timeout = 400
     },
-    update_to_buf_dir = {
+    hijack_directories = {
         enable = false,
         auto_open = false
     },
