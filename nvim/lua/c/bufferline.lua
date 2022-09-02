@@ -58,7 +58,8 @@ bufferline.setup {
         buffer_selected = {
             fg = {attribute='fg',highlight='#ff0000'},
             bg = {attribute='bg',highlight='#0000ff'},
-            bold = true
+            bold = true,
+            italic = false,
         },
         buffer_visible = {
             fg = { attribute = "fg", highlight = "TabLine" },

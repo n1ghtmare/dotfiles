@@ -33,7 +33,7 @@ fi
 
 # Remap Keys
 # Make Caps Lock an additional Esc and both Shift Keys toggle Caps Lock
-setxkbmap -option caps:escape,shift:both_capslock &
+# setxkbmap -option caps:escape,shift:both_capslock &
 
 # Start the window manager (BSPWM)
 exec bspwm
