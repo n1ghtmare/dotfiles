@@ -136,5 +136,5 @@ super + {Left,Down,Up,Right}
 Print
   flameshot gui
 
-super + F12
+super + F10
     kitty --directory ~/Dev-Config/dotfiles nvim

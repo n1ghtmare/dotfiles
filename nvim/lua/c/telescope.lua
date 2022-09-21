@@ -58,6 +58,18 @@ telescope.setup{
         },
         git_status = {
             theme = "ivy"
+        },
+        help_tags = {
+            theme = "ivy"
+        },
+        git_files = {
+            theme = "ivy"
+        },
+        current_buffer_fuzzy_find = {
+            theme = "ivy"
+        },
+        marks = {
+            theme = "ivy"
         }
     },
     extensions = {

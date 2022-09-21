@@ -127,6 +127,9 @@ return require("packer").startup(function(use)
         end
     }
 
+    -- visualize your undo
+    use "mbbill/undotree"
+
     -- make neovim faster
     use 'lewis6991/impatient.nvim'
 end)

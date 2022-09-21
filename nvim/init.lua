@@ -1,3 +1,5 @@
+-- TODO: Simplify the nvim config instead of having a million files
+-- TODO: Switch from nvim-lsp-installer to mason
 require("plugins")
 
 -- require("c.impatient")

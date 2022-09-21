@@ -25,6 +25,10 @@ vim.api.nvim_set_keymap("n", "<leader>bf", "<cmd>Telescope current_buffer_fuzzy_
 vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)            -- space-fh - search help tags in nvim as well as for all installed plugins
 vim.api.nvim_set_keymap("n", "<leader>ft", "<cmd>Telescope git_files<CR>", opts)            -- space-ft - search for git files only
 vim.api.nvim_set_keymap("n", "<leader>ts", "<cmd>Telescope tagstack<CR>", opts)            -- space-ft - search for git files only
+vim.api.nvim_set_keymap("n", "<leader>mk", "<cmd>Telescope marks<CR>", opts)            -- space-ft - search for git files only
+
+-- undotree
+vim.api.nvim_set_keymap("n", "<leader>ut", "<cmd>UndotreeToggle<CR>", opts)
 
 -- Todo Comments
 vim.api.nvim_set_keymap("n", "<leader>td", "<cmd>TodoTelescope<CR>", opts)
