@@ -4,6 +4,8 @@ if not status_ok then
     return
 end
 
+-- TODO: Re-write this garbage, too many split files
+-- DEPRECATED: https://github.com/williamboman/nvim-lsp-installer/discussions/636
 lsp_installer.on_server_ready(function(server)
     local opts = {
         on_attach = require("c.lsp.handlers").on_attach,
