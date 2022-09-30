@@ -70,7 +70,7 @@ telescope.setup{
         },
         marks = {
             theme = "ivy"
-        }
+        },
     },
     extensions = {
         file_browser = {

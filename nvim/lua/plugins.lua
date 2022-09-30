@@ -23,7 +23,7 @@ vim.cmd [[
     augroup end
 ]]
 
--- Use a protected call so we don't error out on first use
+-- Use a protected call so we don"t error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
     return
@@ -56,7 +56,7 @@ return require("packer").startup(function(use)
     use "akinsho/bufferline.nvim"
 
     -- tree explorer
-    use 'kyazdani42/nvim-tree.lua'
+    use "kyazdani42/nvim-tree.lua"
 
     -- telescope (search for files, buffers, content etc.)
     use {
@@ -90,9 +90,9 @@ return require("packer").startup(function(use)
 
     -- auto-completion
     use "hrsh7th/cmp-nvim-lsp"
-    use 'hrsh7th/cmp-buffer' -- buffer completion
-    use 'hrsh7th/cmp-path' -- path completion
-    use 'hrsh7th/cmp-cmdline' -- comand line completion
+    use "hrsh7th/cmp-buffer" -- buffer completion
+    use "hrsh7th/cmp-path" -- path completion
+    use "hrsh7th/cmp-cmdline" -- comand line completion
     use "hrsh7th/nvim-cmp" -- code completion
     use "L3MON4D3/LuaSnip" -- for snippets (required with nvim-cmp)
     use "saadparwaiz1/cmp_luasnip" -- make snippets work with cmp
@@ -106,8 +106,8 @@ return require("packer").startup(function(use)
 
     -- Treesitter (syntax highlighting, indentation etc)
     use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate"
     }
     use "nvim-treesitter/playground"
     use "nvim-treesitter/nvim-treesitter-context"
@@ -115,7 +115,7 @@ return require("packer").startup(function(use)
     -- Comments -> gc
     use "numToStr/Comment.nvim"
 
-    -- Surround -> cs"' (change-surround from " to '), ds' (delete-surround ')
+    -- Surround -> cs"" (change-surround from " to "), ds" (delete-surround ")
     use "tpope/vim-surround"
 
     -- autopairs
@@ -133,6 +133,6 @@ return require("packer").startup(function(use)
     use "mbbill/undotree"
 
     -- make neovim faster
-    use 'lewis6991/impatient.nvim'
+    use "lewis6991/impatient.nvim"
 end)
 

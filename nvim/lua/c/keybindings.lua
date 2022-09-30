@@ -31,7 +31,7 @@ vim.api.nvim_set_keymap("n", "<leader>mk", "<cmd>Telescope marks<CR>", opts)    
 vim.api.nvim_set_keymap("n", "<leader>ut", "<cmd>UndotreeToggle<CR>", opts)
 
 -- Todo Comments
-vim.api.nvim_set_keymap("n", "<leader>td", "<cmd>TodoTelescope<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>td", "<cmd>TodoQuickFix<CR>", opts)
 
 -- LSP
 function m.lsp_keybindings_for_buffer(bufnr)
