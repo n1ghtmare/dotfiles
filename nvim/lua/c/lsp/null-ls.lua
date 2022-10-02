@@ -31,6 +31,7 @@ null_ls.setup {
             },
             -- formatting.prismaFmt,
         },
+        formatting.rustfmt,
         -- black is a formatter for python (https://pypi.org/project/black):
         -- formatting.black.with { extra_args = { "--fast" } },
     },

@@ -32,6 +32,7 @@ local function setup_lsp_diagnostics()
 
     vim.diagnostic.config(config)
 end
+
 setup_lsp_diagnostics()
 
 -- Better auto completion capabilities (expand the built in ones)
@@ -39,20 +40,28 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 require("mason").setup()
-require("mason-lspconfig").setup{
+require("mason-lspconfig").setup {
     ensure_installed = { "sumneko_lua", "tsserver", "prettierd", "eslint", "tailwindcss" }
 }
 
 
 local lspconfig = require("lspconfig")
 
+local function ignore_lsp_formatting_for_client(client, target_client_name)
+    -- Once we upgrade to neovim 0.8 see my TODO below
+    if client.name == target_client_name then
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+    end
+end
+
 -- Lua
-lspconfig.sumneko_lua.setup{
+lspconfig.sumneko_lua.setup {
     settings = {
         Lua = {
             diagnostics = {
                 -- Get the language server to recognize the "vim" global
-                globals = {"vim"}
+                globals = { "vim" }
             }
         }
     },
@@ -62,39 +71,44 @@ lspconfig.sumneko_lua.setup{
     end
 }
 
--- ESLint (Typescipt and Javascript)
-lspconfig.eslint.setup{}
-
--- TailwindCSS
-lspconfig.tailwindcss.setup{}
-
--- Typescript
-lspconfig.tsserver.setup{
+-- Rust
+lspconfig.rust_analyzer.setup {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
+        ignore_lsp_formatting_for_client(client, "rust_analyzer")
 
-    -- Once we upgrade to neovim 0.8 see my TODO below
-    if client.name == "tsserver" then
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
+        require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
     end
+}
 
-    -- Set autocommands conditional on server_capabilities
-    if client.resolved_capabilities.document_highlight then
-        vim.api.nvim_exec(
-        [[
+-- ESLint (Typescipt and Javascript)
+lspconfig.eslint.setup {}
+
+-- TailwindCSS
+lspconfig.tailwindcss.setup {}
+
+-- Typescript
+lspconfig.tsserver.setup {
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+        ignore_lsp_formatting_for_client(client, "tsserver")
+
+        -- Set autocommands conditional on server_capabilities
+        if client.resolved_capabilities.document_highlight then
+            vim.api.nvim_exec(
+                [[
             augroup lsp_document_highlight
                 autocmd! * <buffer>
                 autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
             augroup END
-        ]],
-        false
-        )
-    end
+        ]]       ,
+                false
+            )
+        end
 
-    -- this way we keep keybindings in one place
-    require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
+        -- this way we keep keybindings in one place
+        require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
     end
 }
 
