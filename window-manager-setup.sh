@@ -17,8 +17,8 @@ printf '\n=> Setting up bspwm\n'
 bspwm_path=$HOME/.config/bspwm
 
 if [[ -d $bspwm_path ]]; then
-	printf '=> An existing bspwm config folder exists - will delete it...\n'
-	rm -rf $bspwm_path
+    printf '=> An existing bspwm config folder exists - will delete it...\n'
+    rm -rf $bspwm_path
 fi
 
 printf '=> Creating bspwm config folder symlink\n'
@@ -35,8 +35,8 @@ printf '\n=> Setting up sxhkd\n'
 sxhkd_path=$HOME/.config/sxhkd
 
 if [[ -d $sxhkd_path ]]; then
-	printf '=> An existing sxhkd config folder exists - will delete it...\n'
-	rm -rf $sxhkd_path
+    printf '=> An existing sxhkd config folder exists - will delete it...\n'
+    rm -rf $sxhkd_path
 fi
 
 printf '=> Creating sxhkd config folder symlink\n'
@@ -50,8 +50,8 @@ printf '\n=> Setting up picom\n'
 picom_path=$HOME/.config/picom
 
 if [[ -d $picom_path ]]; then
-	printf '=> An existing picom config folder exists - will delete it...\n'
-	rm -rf $picom_path
+    printf '=> An existing picom config folder exists - will delete it...\n'
+    rm -rf $picom_path
 fi
 
 printf '=> Creating picom config folder symlink\n'
@@ -65,8 +65,8 @@ printf '\n=> Setting up polybar\n'
 polybar_path=$HOME/.config/polybar
 
 if [[ -d $polybar_path ]]; then
-	printf '=> An existing polybar config folder exists - will delete it...\n'
-	rm -rf $polybar_path
+    printf '=> An existing polybar config folder exists - will delete it...\n'
+    rm -rf $polybar_path
 fi
 
 printf '=> Creating polybar config folder symlink\n'
@@ -80,12 +80,27 @@ printf '\n=> Setting up rofi\n'
 rofi_path=$HOME/.config/rofi
 
 if [[ -d $rofi_path ]]; then
-	printf '=> An existing rofi config folder exists - will delete it...\n'
-	rm -rf $rofi_path
+    printf '=> An existing rofi config folder exists - will delete it...\n'
+    rm -rf $rofi_path
 fi
 
 printf '=> Creating rofi config folder symlink\n'
 ln -sv $dotfiles_path/rofi $rofi_path
+
+
+# ytfzf
+# -------------------------------
+printf '\n=> Setting up ytfzf\n'
+
+ytfzf_path=$HOME/.config/ytfzf
+
+if [[ -d $ytfzf_path ]]; then
+    printf '=> An existing ytfzf config folder exists - will delete it...\n'
+    rm -rf $ytfzf_path
+fi
+
+printf '=> Creating ytfzf config folder symlink\n'
+ln -sv $dotfiles_path/ytfzf $ytfzf_path
 
 
 # dunst
@@ -95,8 +110,8 @@ printf '\n=> Setting up dunst\n'
 dunst_path=$HOME/.config/dunst
 
 if [[ -d $dunst_path ]]; then
-	printf '=> An existing dunst config folder exists - will delete it...\n'
-	rm -rf $dunst_path
+    printf '=> An existing dunst config folder exists - will delete it...\n'
+    rm -rf $dunst_path
 fi
 
 printf '=> Creating dunst config folder symlink\n'

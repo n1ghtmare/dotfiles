@@ -47,8 +47,8 @@ printf '\n=> Setting up kitty\n'
 kitty_path=$HOME/.config/kitty
 
 if [[ -d $kitty_path ]]; then
-	printf '=> An existing kitty config folder exists - will delete it...\n'
-	rm -rf $kitty_path
+    printf '=> An existing kitty config folder exists - will delete it...\n'
+    rm -rf $kitty_path
 fi
 
 printf '=> Creating kitty config folder symlink\n'
@@ -62,17 +62,10 @@ printf '\n=> Setting up bat\n'
 bat_path=$HOME/.config/bat
 
 if [[ -d $bat_path ]]; then
-	printf '=> An existing bat config folder exists - will delete it...\n'
-	rm -rf $bat_path
+    printf '=> An existing bat config folder exists - will delete it...\n'
+    rm -rf $bat_path
 fi
 
 printf '=> Creating bat config folder symlink\n'
 ln -sv $dotfiles_path/bat $bat_path
 
-
-# omnisharp
-# -------------------------------
-printf "\n=> Setting up omnisharp formatting\n"
-rm -rf $HOME/.omnisharp/omnisharp.json
-printf "=> Creating omnisharp config symlink\n"
-ln -sv $dotfiles_path/omnisharp/omnisharp.json $HOME/.omnisharp/omnisharp.json
