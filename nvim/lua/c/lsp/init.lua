@@ -41,7 +41,18 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 require("mason").setup()
 require("mason-lspconfig").setup {
-    ensure_installed = { "sumneko_lua", "tsserver", "prettierd", "eslint", "tailwindcss" }
+    ensure_installed = {
+        "sumneko_lua",
+        "tsserver",
+        "eslint",
+        "tailwindcss"
+    }
+}
+require("mason-null-ls").setup {
+    ensure_installed = {
+        "eslint_d",
+        "prettierd"
+    }
 }
 
 

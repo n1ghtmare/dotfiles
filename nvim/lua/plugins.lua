@@ -84,9 +84,9 @@ return require("packer").startup(function(use)
 
     -- LSP
     use "neovim/nvim-lspconfig"
-    -- use "williamboman/nvim-lsp-installer"
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
+    use "jayp0521/mason-null-ls.nvim" -- ensure installed null_ls dependencies through Mason
 
     -- auto-completion
     use "hrsh7th/cmp-nvim-lsp"
