@@ -22,30 +22,30 @@ require("c.todo-comments")
 -- TODO: Move to it's own general settings file?
 local opt = vim.opt
 
-opt.softtabstop = 4                         -- swap existing tab with 4 spaces
-opt.shiftwidth = 4                          -- 4 spaces
-opt.expandtab = true                        -- on pressing tab, insert 4 spaces
-opt.number = true                           -- show line numbers
-opt.wrap = false                            -- prevent line wrapping
-opt.autoindent = true                       -- enable auto indent
-opt.title = true                            -- enable window title (?)
-opt.cursorline = true                       -- highlight the current line
--- opt.scrolloff = 8                           -- Scroll offset (keep an offset on top and bottom when navigating up and down)
-opt.textwidth = 0                           -- disable max text width when pasting
-opt.mouse = "a"                             -- enable mouse selection
-opt.relativenumber = true                   -- relative line numbers
-opt.signcolumn = "number"                   -- enable signs in the number column
-opt.termguicolors = true                    -- terminal colors (?)
-opt.swapfile = false                        -- disable creating swap files
-opt.backup = false                          -- if a file is being edited by another program (or it was written from somewhere else) prevent access
-opt.undofile = true                         -- enable persistent undo
-opt.smartcase = true                        -- when searching ignore case untill you type a capital case (then the search becomes case sensitive)
-opt.ignorecase = true                       -- works in conjuction with smartcase
-opt.clipboard = "unnamedplus"               -- share clipboard with OS
-opt.splitright = true                       -- force all vertical splits to go to the right of the current buffer
-opt.splitbelow = true                       -- force all horizontal splits to go below the current buffer
-opt.completeopt = {"menu", "menuone", "noselect" } -- mostly just for cmp
--- opt.ch = 0 -- hide the command line on the bottom
+opt.softtabstop = 4 -- swap existing tab with 4 spaces
+opt.shiftwidth = 4 -- 4 spaces
+opt.expandtab = true -- on pressing tab, insert 4 spaces
+opt.number = true -- show line numbers
+opt.wrap = false -- prevent line wrapping
+opt.autoindent = true -- enable auto indent
+opt.title = true -- enable window title (?)
+opt.cursorline = true -- highlight the current line
+-- opt.scrolloff = 8 -- Scroll offset (keep an offset on top and bottom when navigating up and down)
+opt.textwidth = 0 -- disable max text width when pasting
+opt.mouse = "a" -- enable mouse selection
+opt.relativenumber = true -- relative line numbers
+opt.signcolumn = "number" -- enable signs in the number column
+opt.termguicolors = true -- terminal colors (?)
+opt.swapfile = false -- disable creating swap files
+opt.backup = false -- if a file is being edited by another program (or it was written from somewhere else) prevent access
+opt.undofile = true -- enable persistent undo
+opt.smartcase = true -- when searching ignore case untill you type a capital case (then the search becomes case sensitive)
+opt.ignorecase = true -- works in conjuction with smartcase
+opt.clipboard = "unnamedplus" -- share clipboard with OS
+opt.splitright = true -- force all vertical splits to go to the right of the current buffer
+opt.splitbelow = true -- force all horizontal splits to go below the current buffer
+opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
+opt.ch = 0 -- hide the command line on the bottom
 -- opt.ls = 0 -- hide the status line on the bottom
 
 vim.cmd("filetype plugin on") -- allow autocommands to execute when a file matching a pattern is opened
@@ -56,7 +56,6 @@ vim.cmd("autocmd FileType vim,txt setlocal foldmethod=marker") -- ensure that fo
 vim.api.nvim_create_autocmd("TextYankPost", {
     pattern = "*",
     callback = function(_)
-        vim.highlight.on_yank({ higroup = "DiffChange", timeout = 150})
+        vim.highlight.on_yank({ higroup = "DiffChange", timeout = 150 })
     end,
 })
-

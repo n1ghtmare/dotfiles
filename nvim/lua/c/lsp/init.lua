@@ -40,6 +40,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 require("mason").setup()
+-- Ensure LSP servers installed through Mason
 require("mason-lspconfig").setup {
     ensure_installed = {
         "sumneko_lua",
@@ -48,6 +49,9 @@ require("mason-lspconfig").setup {
         "tailwindcss"
     }
 }
+
+-- Ensure null-ls formatters installed through Mason
+require("c.lsp.null-ls")
 require("mason-null-ls").setup {
     ensure_installed = {
         "eslint_d",
@@ -67,10 +71,10 @@ local function lsp_formatting(bufnr, target_client_name)
     })
 end
 
-local function setup_null_ls_formatting(client, bufnr, target_client_name)
-    -- callback used to format on save
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+-- callback used to format on save
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
+local function setup_null_ls_formatting(client, bufnr, target_client_name)
     if client.supports_method("textDocument/formatting") then
         vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
         vim.api.nvim_create_autocmd("BufWritePre", {
@@ -103,8 +107,7 @@ lspconfig.sumneko_lua.setup {
 lspconfig.rust_analyzer.setup {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
-        setup_null_ls_formatting(client, bufnr, "rust_analyzer")
-        -- ignore_lsp_formatting_for_client(client, "rust_analyzer")
+        setup_null_ls_formatting(client, bufnr, "null-ls") -- you can also pass rust_analyzer instead of null-ls (although null-ls itself uses rust_analyzer)
 
         require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
     end
@@ -120,19 +123,18 @@ lspconfig.tailwindcss.setup {}
 lspconfig.tsserver.setup {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
-        setup_null_ls_formatting(client, bufnr, "tsserver")
-        -- ignore_lsp_formatting_for_client(client, "tsserver")
+        setup_null_ls_formatting(client, bufnr, "null-ls")
 
         -- Set autocommands conditional on server_capabilities
         if client.server_capabilities.document_highlight then
             vim.api.nvim_exec(
-                [[
+            [[
             augroup lsp_document_highlight
                 autocmd! * <buffer>
                 autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
             augroup END
-        ]]       ,
+            ]],
                 false
             )
         end
@@ -141,5 +143,3 @@ lspconfig.tsserver.setup {
         require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
     end
 }
-
-require("c.lsp.null-ls")
