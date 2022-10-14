@@ -50,8 +50,8 @@ require("mason-lspconfig").setup {
     }
 }
 
--- Ensure null-ls formatters installed through Mason
 require("c.lsp.null-ls")
+-- Ensure null-ls formatters installed through Mason
 require("mason-null-ls").setup {
     ensure_installed = {
         "eslint_d",
@@ -61,31 +61,6 @@ require("mason-null-ls").setup {
 
 
 local lspconfig = require("lspconfig")
-
-local function lsp_formatting(bufnr, target_client_name)
-    vim.lsp.buf.format({
-        filter = function(client)
-            return client.name == target_client_name
-        end,
-        bufnr = bufnr
-    })
-end
-
--- callback used to format on save
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-local function setup_null_ls_formatting(client, bufnr, target_client_name)
-    if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-                lsp_formatting(bufnr, target_client_name)
-            end
-        })
-    end
-end
 
 -- Lua
 lspconfig.sumneko_lua.setup {
@@ -106,9 +81,7 @@ lspconfig.sumneko_lua.setup {
 -- Rust
 lspconfig.rust_analyzer.setup {
     capabilities = capabilities,
-    on_attach = function(client, bufnr)
-        setup_null_ls_formatting(client, bufnr, "null-ls") -- you can also pass rust_analyzer instead of null-ls (although null-ls itself uses rust_analyzer)
-
+    on_attach = function(_, bufnr)
         require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
     end
 }
@@ -123,18 +96,16 @@ lspconfig.tailwindcss.setup {}
 lspconfig.tsserver.setup {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
-        setup_null_ls_formatting(client, bufnr, "null-ls")
-
         -- Set autocommands conditional on server_capabilities
         if client.server_capabilities.document_highlight then
             vim.api.nvim_exec(
-            [[
+                [[
             augroup lsp_document_highlight
                 autocmd! * <buffer>
                 autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
             augroup END
-            ]],
+            ]]   ,
                 false
             )
         end
