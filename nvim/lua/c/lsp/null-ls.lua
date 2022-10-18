@@ -61,9 +61,9 @@ null_ls.setup {
                 -- "markdown",
                 "graphql",
             },
-            -- formatting.prismaFmt,
         },
         formatting.rustfmt,
+        -- formatting.prismaFmt,
         -- black is a formatter for python (https://pypi.org/project/black):
         -- formatting.black.with { extra_args = { "--fast" } },
     },

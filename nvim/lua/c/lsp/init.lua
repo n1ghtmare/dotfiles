@@ -43,6 +43,7 @@ require("mason").setup()
 -- Ensure LSP servers installed through Mason
 require("mason-lspconfig").setup {
     ensure_installed = {
+        "prismals",
         "sumneko_lua",
         "tsserver",
         "eslint",
@@ -92,6 +93,9 @@ lspconfig.eslint.setup {}
 
 -- TailwindCSS
 lspconfig.tailwindcss.setup {}
+
+-- Prisma
+lspconfig.prismals.setup {}
 
 -- Typescript
 lspconfig.tsserver.setup {
