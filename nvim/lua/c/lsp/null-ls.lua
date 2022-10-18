@@ -30,6 +30,7 @@ local function setup_null_ls_formatting(client, bufnr)
     end
 end
 
+-- local code_actions = null_ls.builtins.code_actions;
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
@@ -40,6 +41,8 @@ null_ls.setup {
     end,
     debug = false,
     sources = {
+        -- diagnostics.cspell,
+        -- code_actions.cspell,
         diagnostics.eslint_d,
         formatting.prettierd.with {
             -- prefer_local = "node_modules/.bin",

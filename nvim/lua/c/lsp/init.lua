@@ -54,6 +54,7 @@ require("c.lsp.null-ls")
 -- Ensure null-ls formatters installed through Mason
 require("mason-null-ls").setup {
     ensure_installed = {
+        -- "cspell",
         "eslint_d",
         "prettierd"
     }
