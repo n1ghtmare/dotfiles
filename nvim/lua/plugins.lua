@@ -132,6 +132,9 @@ return require("packer").startup(function(use)
     -- visualize your undo
     use "mbbill/undotree"
 
+    -- plugin to treat git directories as projects, also switch to correct cwd
+    use "ahmedkhalf/project.nvim"
+
     -- make neovim faster
     use "lewis6991/impatient.nvim"
 end)
