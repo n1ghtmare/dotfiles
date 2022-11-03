@@ -69,3 +69,17 @@ fi
 printf '=> Creating bat config folder symlink\n'
 ln -sv $dotfiles_path/bat $bat_path
 
+# zathura
+# -------------------------------
+printf '\n=> Setting up zathura\n'
+
+zathura_path=$HOME/.config/zathura
+
+if [[ -d $zathura_path ]]; then
+    printf '=> An existing zathura config folder exists - will delete it...\n'
+    rm -rf $zathura_path
+fi
+
+printf '=> Creating zathura config folder symlink\n'
+ln -sv $dotfiles_path/zathura $zathura_path
+

@@ -47,6 +47,7 @@ require("mason-lspconfig").setup {
         "sumneko_lua",
         "tsserver",
         "eslint",
+        "cssls",
         "tailwindcss"
     }
 }
@@ -90,6 +91,14 @@ lspconfig.rust_analyzer.setup {
 
 -- ESLint (Typescipt and Javascript)
 lspconfig.eslint.setup {}
+
+-- CSS
+lspconfig.cssls.setup {
+    capabilities = capabilities,
+    on_attach = function(_, bufnr)
+        require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
+    end
+}
 
 -- TailwindCSS
 lspconfig.tailwindcss.setup {}
