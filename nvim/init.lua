@@ -38,7 +38,7 @@ opt.relativenumber = true -- relative line numbers
 opt.signcolumn = "number" -- enable signs in the number column
 opt.termguicolors = true -- terminal colors (?)
 opt.swapfile = false -- disable creating swap files
-opt.backup = false -- if a file is being edited by another program (or it was written from somewhere else) prevent access
+opt.backup = false -- if a file is being edited by another program (or it was written from somewhere else) prevent access (file path on arch is .local/state/nvim/undo/)
 opt.undofile = true -- enable persistent undo
 opt.smartcase = true -- when searching ignore case untill you type a capital case (then the search becomes case sensitive)
 opt.ignorecase = true -- works in conjuction with smartcase
@@ -47,6 +47,7 @@ opt.splitright = true -- force all vertical splits to go to the right of the cur
 opt.splitbelow = true -- force all horizontal splits to go below the current buffer
 opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
 opt.ch = 0 -- hide the command line on the bottom
+opt.backupcopy = "yes" -- different strategy of how backups are stored and copied (was having issues with file watchers detecting changes to the file before this setting) run :help backupcopy TODO: See if we can remove this - keep a look at https://github.com/tailwindlabs/tailwindcss/issues/7759
 -- opt.ls = 0 -- hide the status line on the bottom
 
 vim.cmd("filetype plugin on") -- allow autocommands to execute when a file matching a pattern is opened
