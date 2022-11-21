@@ -43,3 +43,6 @@ alias ..="cd .."
 
 # make nvm work (source)
 source /usr/share/nvm/init-nvm.sh
+
+# run `nvm use` if the dir has a .nvmrc (more info here: https://github.com/nvm-sh/nvm#zsh)
+source ~/Dev-Config/zsh-plugins/zsh-nvm-use/zsh-use-nvm.zsh

@@ -18,7 +18,9 @@ require("c.colors")
 require("c.luasnip")
 require("c.todo-comments")
 require("c.project")
---require("c.treesitter-playground") -- Playground is useful when modifying the colorscheme in order to see how TS refers to nodes
+require("c.treesitter-playground") -- Playground is useful when modifying the colorscheme in order to see how TS refers to nodes
+
+-- require("colorbuddy").colorscheme("noirbuddy")
 
 -- TODO: Move to it's own general settings file?
 local opt = vim.opt

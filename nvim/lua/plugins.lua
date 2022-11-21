@@ -137,5 +137,9 @@ return require("packer").startup(function(use)
 
     -- make neovim faster
     use "lewis6991/impatient.nvim"
+
+    -- colorbuddy -> for now used for development
+    -- use "tjdevries/colorbuddy.nvim"
+    -- use "~/Dev/nvim-noirbuddy"
 end)
 

@@ -90,7 +90,12 @@ lspconfig.rust_analyzer.setup {
 }
 
 -- ESLint (Typescipt and Javascript)
-lspconfig.eslint.setup {}
+lspconfig.eslint.setup {
+    capabilities = capabilities,
+    on_attach = function(_, bufnr)
+        require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
+    end
+}
 
 -- CSS
 lspconfig.cssls.setup {
@@ -104,7 +109,12 @@ lspconfig.cssls.setup {
 lspconfig.tailwindcss.setup {}
 
 -- Prisma
-lspconfig.prismals.setup {}
+lspconfig.prismals.setup {
+    capabilities = capabilities,
+    on_attach = function(_, bufnr)
+        require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
+    end
+}
 
 -- Typescript
 lspconfig.tsserver.setup {
