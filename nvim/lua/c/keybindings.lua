@@ -36,6 +36,7 @@ set_keymap("n", "<C-p>", "<cmd>Telescope find_files<CR>", opts) -- Ctrl-p - find
 set_keymap("n", "<C-e>", "<cmd>Telescope live_grep<CR>", opts) -- Ctrl-e - search with grep (contents of files)
 set_keymap("n", "<C-b>", "<cmd>Telescope buffers<CR>", opts) -- Ctrl-b - search current buffers
 set_keymap("n", "<leader>bf", "<cmd>Telescope current_buffer_fuzzy_find<CR>", opts) -- Ctrl-/ - search the current buffer with fuzzy find
+set_keymap("n", "<leader>ds", "<cmd>Telescope lsp_document_symbols<CR>", opts) -- Ctrl-/ - search the current buffer with fuzzy find
 set_keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts) -- space-fh - search help tags in nvim as well as for all installed plugins
 set_keymap("n", "<leader>ft", "<cmd>Telescope git_files<CR>", opts) -- space-ft - search for git files only
 set_keymap("n", "<leader>ts", "<cmd>Telescope tagstack<CR>", opts) -- space-ft - search for git files only

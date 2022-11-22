@@ -68,6 +68,9 @@ telescope.setup{
         current_buffer_fuzzy_find = {
             theme = "ivy"
         },
+        lsp_document_symbols = {
+            theme = "ivy"
+        },
         marks = {
             theme = "ivy"
         },
