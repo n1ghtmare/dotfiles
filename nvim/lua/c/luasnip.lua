@@ -28,11 +28,25 @@ vim.keymap.set("i", "<c-l>", function()
     end
 end)
 
+local js_cl_snippet = ls.parser.parse_snippet("cl", "console.log($1);")
+
 -- TODO: Add your own snippets here
 ls.add_snippets(nil, {
+    -- Available in any filetype
     all = {
-        -- Available in any filetype
         ls.parser.parse_snippet("expand", "-- this is what was expanded!")
+    },
+    typescript = {
+        js_cl_snippet
+    },
+    typescriptreact = {
+        js_cl_snippet
+    },
+    javascript = {
+        js_cl_snippet
+    },
+    javasriptreact = {
+        js_cl_snippet
     },
     lua = {
         -- Lua specific snippets go here

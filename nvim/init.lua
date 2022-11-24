@@ -1,6 +1,6 @@
 require("plugins")
 
--- require("c.impatient")
+require("c.impatient")
 require("c.keybindings")
 require("c.nvim-web-devicons")
 require("c.lualine")
@@ -63,3 +63,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.highlight.on_yank({ higroup = "DiffChange", timeout = 150 })
     end,
 })
+
+-- Set a better title
+local title = vim.fn.getcwd():gsub("^.*/", "")
+opt.titlestring = string.format("nvim - %s", title)

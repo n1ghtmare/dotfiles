@@ -133,16 +133,16 @@ return require("packer").startup(function(use)
     use "mbbill/undotree"
 
     -- plugin to treat git directories as projects, also switch to correct cwd
-    use "ahmedkhalf/project.nvim"
+    -- use "ahmedkhalf/project.nvim"
 
     -- make neovim faster
     use "lewis6991/impatient.nvim"
 
     -- git signs
-    -- use "mhinz/vim-signify"
+    use "mhinz/vim-signify"
 
     -- colorbuddy -> for now used for development
-    -- use "tjdevries/colorbuddy.nvim"
-    -- use "~/Dev/nvim-noirbuddy"
+    use {"tjdevries/colorbuddy.nvim", branch="dev"}
+    use "~/Dev/nvim-noirbuddy"
 end)
 
