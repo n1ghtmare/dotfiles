@@ -3,7 +3,6 @@ require("plugins")
 require("c.impatient")
 require("c.keybindings")
 require("c.nvim-web-devicons")
-require("c.lualine")
 -- require("c.bufferline")
 require("c.telescope")
 require("c.startify")
@@ -15,6 +14,7 @@ require("c.comment")
 require("c.autopairs")
 require("c.treesitter")
 require("c.colors")
+require("c.lualine")
 require("c.luasnip")
 require("c.todo-comments")
 require("c.project")
@@ -37,7 +37,8 @@ opt.cursorline = true -- highlight the current line
 opt.textwidth = 0 -- disable max text width when pasting
 opt.mouse = "a" -- enable mouse selection
 opt.relativenumber = true -- relative line numbers
-opt.signcolumn = "number" -- enable signs in the number column
+-- opt.signcolumn = "number" -- enable signs in the number column
+opt.signcolumn = "yes:1" -- keep both the signs and the numbers in separate columns
 opt.termguicolors = true -- terminal colors (?)
 opt.swapfile = false -- disable creating swap files
 opt.backup = false -- if a file is being edited by another program (or it was written from somewhere else) prevent access (file path on arch is .local/state/nvim/undo/)
@@ -60,7 +61,7 @@ vim.cmd("autocmd FileType vim,txt setlocal foldmethod=marker") -- ensure that fo
 vim.api.nvim_create_autocmd("TextYankPost", {
     pattern = "*",
     callback = function(_)
-        vim.highlight.on_yank({ higroup = "DiffChange", timeout = 150 })
+        vim.highlight.on_yank({ higroup = "DiffAdd", timeout = 150 })
     end,
 })
 

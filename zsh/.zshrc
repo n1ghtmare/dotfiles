@@ -29,7 +29,7 @@ autoload -U compinit && compinit
 source ~/Dev-Config/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/Dev-Config/zsh-plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/Dev-Config/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/Dev-Config/zsh-plugins/zsh-z/zsh-z.plugin.zsh
+source ~/Dev-Config/zsh-plugins/z/z.sh
 
 # fzf keybindings
 source /usr/share/fzf/key-bindings.zsh

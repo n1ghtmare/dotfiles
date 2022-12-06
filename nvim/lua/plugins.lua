@@ -61,7 +61,7 @@ return require("packer").startup(function(use)
     -- telescope (search for files, buffers, content etc.)
     use {
         "nvim-telescope/telescope.nvim",
-        requires = { {"nvim-lua/plenary.nvim"} }
+        requires = { { "nvim-lua/plenary.nvim" } }
     }
     use {
         "nvim-telescope/telescope-fzf-native.nvim",
@@ -101,7 +101,7 @@ return require("packer").startup(function(use)
     -- code todo comments
     use {
         "folke/todo-comments.nvim",
-        requires = { {"nvim-lua/plenary.nvim"} }
+        requires = { { "nvim-lua/plenary.nvim" } }
     }
 
     -- Treesitter (syntax highlighting, indentation etc)
@@ -142,7 +142,11 @@ return require("packer").startup(function(use)
     use "mhinz/vim-signify"
 
     -- colorbuddy -> for now used for development
-    use {"tjdevries/colorbuddy.nvim", branch="dev"}
-    use "~/Dev/nvim-noirbuddy"
-end)
+    use {
+        "~/Dev/nvim-noirbuddy",
+        requires = { "tjdevries/colorbuddy.nvim", branch = "dev" }
+    }
 
+    -- make editorconfig work with neovim
+    use "gpanders/editorconfig.nvim"
+end)
