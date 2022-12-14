@@ -83,6 +83,13 @@ lspconfig.sumneko_lua.setup {
 
 -- Rust
 lspconfig.rust_analyzer.setup {
+    settings = {
+        ["rust-analyzer"] = {
+            checkOnSave = {
+                command = "clippy"
+            }
+        }
+    },
     capabilities = capabilities,
     on_attach = function(_, bufnr)
         require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
