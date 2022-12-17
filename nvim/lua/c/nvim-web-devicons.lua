@@ -4,19 +4,27 @@ if not status_ok then
     return
 end
 
+local status_ok_colors, colors = pcall(require, "noirbuddy.colors")
+
+if not status_ok_colors then
+    return
+end
+
+local c = colors.all()
+
 nvim_web_devicons.setup {
+    color_icons = false,
     default = true
 }
 
--- TODO: Move this to the noirblaze-vim colorscheme (where it belongs)
 local current_icons = nvim_web_devicons.get_icons()
 local new_icons = {}
 
 for key, icon in pairs(current_icons) do
-    icon.color = "#737373"
-    icon.cterm_color = 246
+    icon.color = c.gray_6
+    -- icon.cterm_color = 246
     new_icons[key] = icon
 end
 
 nvim_web_devicons.set_icon(new_icons)
-nvim_web_devicons.set_default_icon('', '#ff0088')
+nvim_web_devicons.set_default_icon('', c.primary)
