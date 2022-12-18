@@ -107,10 +107,13 @@ return require("packer").startup(function(use)
     -- Treesitter (syntax highlighting, indentation etc)
     use {
         "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate"
+        run = function()
+            pcall(require('nvim-treesitter.install').update { with_sync = true })
+        end,
     }
-    use "nvim-treesitter/playground"
-    use "nvim-treesitter/nvim-treesitter-context"
+    use { "nvim-treesitter/playground", after = "nvim-treesitter" }
+    use { "nvim-treesitter/nvim-treesitter-context", after = "nvim-treesitter" }
+    use { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" }
 
     -- Comments -> gc
     use "numToStr/Comment.nvim"
