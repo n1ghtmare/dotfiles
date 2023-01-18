@@ -10,7 +10,7 @@ nitrogen --set-zoom-fill --random /home/ddimitrov/Pictures/RiceWallpapers --save
 
 # Picom
 # ---------------------------------------------
-pgrep picom || picom --experimental-backends --config $HOME/.config/picom/picom.conf &
+pgrep picom || picom --config $HOME/.config/picom/picom.conf &
 
 
 # Dunst (notifications)

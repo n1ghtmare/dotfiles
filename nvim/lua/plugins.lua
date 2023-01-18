@@ -146,7 +146,8 @@ return require("packer").startup(function(use)
 
     -- colorbuddy -> for now used for development
     use {
-        "~/Dev/nvim-noirbuddy",
+        -- "~/Dev/nvim-noirbuddy",
+	"jesseleite/nvim-noirbuddy",
         requires = { "tjdevries/colorbuddy.nvim", branch = "dev" }
     }
 

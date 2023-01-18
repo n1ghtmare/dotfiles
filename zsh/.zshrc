@@ -32,8 +32,8 @@ source ~/Dev-Config/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.
 source ~/Dev-Config/zsh-plugins/z/z.sh
 
 # fzf keybindings
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+#source /usr/share/fzf/key-bindings.zsh
+#source /usr/share/fzf/completion.zsh
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{node_modules,.git}"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -46,8 +46,12 @@ alias btop="bpytop"
 alias ll="exa -lhg --git --group-directories-first"
 alias ..="cd .."
 
-# make nvm work (source)
-source /usr/share/nvm/init-nvm.sh
+# make nvm work
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # run `nvm use` if the dir has a .nvmrc (more info here: https://github.com/nvm-sh/nvm#zsh)
-source ~/Dev-Config/zsh-plugins/zsh-nvm-use/zsh-use-nvm.zsh
+source ~/Dev-Config/zsh-plugins/zsh-nvm-use/zsh-nvm-use.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

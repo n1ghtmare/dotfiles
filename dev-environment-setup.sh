@@ -32,6 +32,19 @@ printf "=> Creating tmux config symlink\n"
 ln -sv $dotfiles_path/tmux/.tmux.conf $HOME/.tmux.conf
 
 
+# zsh
+# -------------------------------
+printf "\n=> Setting up zsh\n"
+printf "\n=> Cloning zsh plugins"
+git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/Dev-Config/zsh-plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/Dev-Config/zsh-plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-history-substring-search $HOME/Dev-Config/zsh-plugins/zsh-history-substring-search
+git clone https://github.com/rupa/z $HOME/Dev-Config/zsh-plugins/z
+rm -rf $HOME/.zshrc
+printf "=> Creating zsh config symlink\n"
+ln -sv $dotfiles_path/zsh/.zshrc $HOME/.zshrc
+
+
 # starship prompt
 # -------------------------------
 printf '\n=> Setting up starship prompt\n'
