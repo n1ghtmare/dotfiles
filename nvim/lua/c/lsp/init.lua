@@ -48,7 +48,8 @@ require("mason-lspconfig").setup {
         "tsserver",
         "eslint",
         "cssls",
-        "tailwindcss"
+        "tailwindcss",
+        "rust_analyzer"
     }
 }
 
