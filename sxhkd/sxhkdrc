@@ -128,13 +128,20 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
 
+#
+# utilities
+#
 # take a screenshot with the PrintScreen Key
 Print
     flameshot gui
 
-# calculator
+# calculator -> requires: yay -S rofi-calc
 super + equal
     rofi -modi calc -show
+
+# emoji selector -> requires: sudo pacman -S rofimoji xdotool
+super + F8
+    rofi -modi "emoji:$(which rofimoji) --action copy --clipboarder xclip" -show emoji
 
 # open my dotfiles in neovim
 super + F10
