@@ -20,6 +20,7 @@ eval "$(starship init zsh)"
 
 # auto cd into folder paths
 setopt autocd
+setopt histignorespace
 
 # make sure tab completion works
 autoload -U compinit && compinit
