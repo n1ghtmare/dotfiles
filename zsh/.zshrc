@@ -32,6 +32,7 @@ source ~/Dev-Config/zsh-plugins/zsh-history-substring-search/zsh-history-substri
 source ~/Dev-Config/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/Dev-Config/zsh-plugins/z/z.sh
 
+ZSH_HIGHLIGHT_STYLES[arg0]="fg=red"
 # fzf keybindings
 #source /usr/share/fzf/key-bindings.zsh
 #source /usr/share/fzf/completion.zsh
@@ -54,5 +55,11 @@ export NVM_DIR="$HOME/.nvm"
 
 # run `nvm use` if the dir has a .nvmrc (more info here: https://github.com/nvm-sh/nvm#zsh)
 source ~/Dev-Config/zsh-plugins/zsh-nvm-use/zsh-nvm-use.sh
+
+# make gopath work
+export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
+
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

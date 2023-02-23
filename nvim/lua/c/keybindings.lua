@@ -28,8 +28,8 @@ set_keymap("n", "<C-l>", "<C-W><C-L>", opts)
 set_keymap("n", "<C-h>", "<C-W><C-H>", opts)
 
 -- NvimTree
--- set_keymap("n", "<leader>`", ":NvimTreeToggle<CR>", opts) -- NvimTree toggle <leader>`
-set_keymap("n", "<leader>`", "<cmd>Telescope file_browser<CR>", opts)                      -- NvimTree toggle <leader>`
+set_keymap("n", "<leader>`", ":NvimTreeToggle<CR>", opts) -- NvimTree toggle <leader>`
+-- set_keymap("n", "<leader>`", "<cmd>Telescope file_browser<CR>", opts)                      -- NvimTree toggle <leader>`
 
 -- Telescope
 set_keymap("n", "<C-p>", "<cmd>Telescope find_files<CR>", opts) -- Ctrl-p - find files
