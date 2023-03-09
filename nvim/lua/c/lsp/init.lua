@@ -44,7 +44,7 @@ require("mason").setup()
 require("mason-lspconfig").setup {
     ensure_installed = {
         "prismals",
-        "sumneko_lua",
+        "lua_ls",
         "tsserver",
         "eslint",
         "cssls",
@@ -67,7 +67,7 @@ require("mason-null-ls").setup {
 local lspconfig = require("lspconfig")
 
 -- Lua
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
     settings = {
         Lua = {
             diagnostics = {
@@ -128,6 +128,8 @@ lspconfig.prismals.setup {
 lspconfig.tsserver.setup {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
         -- Set autocommands conditional on server_capabilities
         if client.server_capabilities.document_highlight then
             vim.api.nvim_exec(

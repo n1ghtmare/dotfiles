@@ -15,10 +15,10 @@ nvim_tree.setup {
     },
     disable_netrw = true,
     hijack_netrw = true,
-    open_on_setup = false,
-    ignore_ft_on_setup = {
-        "startify"
-    },
+    -- open_on_setup = false,
+    -- ignore_ft_on_setup = {
+    --     "startify"
+    -- },
     hijack_cursor = false,
     update_focused_file = {
         enable = true,

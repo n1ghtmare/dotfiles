@@ -76,6 +76,9 @@ telescope.setup {
         lsp_document_symbols = {
             theme = "ivy"
         },
+        lsp_references = {
+            theme = "ivy"
+        },
         marks = {
             theme = "ivy"
         },
