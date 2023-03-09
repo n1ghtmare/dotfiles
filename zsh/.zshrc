@@ -62,4 +62,13 @@ export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+# wrapper for z to open neovim directly -> example: n dotfiles
+n() {
+    if [ -n "$1" ]; then
+        z $1
+    fi
+
+    $EDITOR
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
