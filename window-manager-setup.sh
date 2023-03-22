@@ -127,3 +127,12 @@ printf '=> Creating an Xresources symlink\n'
 ln -sv $dotfiles_path/xinit/.Xresources $HOME
 printf '=> Creating an xinitrc symlink\n'
 ln -sv $dotfiles_path/xinit/.xinitrc $HOME
+
+
+# xinit
+# -------------------------------
+printf '\n=> Setting up libinput-gestures\n'
+rm -f $HOME/.config/libinput-gestures.conf
+printf '=> Creating libinput-gestures conf symlink\n'
+ln -sv $dotfiles_path/libinput-gestures/libinput-gestures.conf $HOME/.config
+

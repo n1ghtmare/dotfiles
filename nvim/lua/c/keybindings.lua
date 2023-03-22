@@ -45,6 +45,14 @@ set_keymap("n", "<leader>mk", "<cmd>Telescope marks<CR>", opts) -- space-ft - se
 -- undotree
 set_keymap("n", "<leader>ut", "<cmd>UndotreeToggle<CR>", opts)
 
+-- Better vertical movements
+set_keymap("n", "<C-d>", "<C-d>zz", opts)
+set_keymap("n", "<C-u>", "<C-u>zz", opts)
+
+-- Better search jumps
+set_keymap("n", "n", "nzzzv", opts)
+set_keymap("n", "N", "Nzzzv", opts)
+
 -- Todo Comments
 set_keymap("n", "<leader>td", "<cmd>TodoQuickFix<CR>", opts)
 

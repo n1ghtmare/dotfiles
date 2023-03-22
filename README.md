@@ -34,6 +34,21 @@ For the window manager run `window-manager-setup.sh`:
 $ ./window-manager-setup.sh
 ```
 
+### Misc
+
+For touchpad gestures working install `libinput-gestures` (currently in the AUR), *also* and create a config file `/etc/X11/xorg.conf.d/30-touchpad.conf` with the following configuration:
+
+```
+Section "InputClass"
+    Identifier "touchpad"
+    Driver "libinput"
+    MatchIsTouchpad "on"
+    Option "NaturalScrolling" "true"
+    Option "Tapping" "on"
+    Option "DisableWhileTyping" "on"
+EndSection
+```
+
 Here are some screenshots of the setup:
 
 ![output](https://user-images.githubusercontent.com/3255810/118803603-3c456a80-b8ac-11eb-978a-3145e7893a8f.png)
