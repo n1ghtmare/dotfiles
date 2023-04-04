@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf 'Setting up window manager configs:\n'
+printf 'Setting up window manager configs (for Linux!):\n'
 printf 'This script will delete existing config folders and create symlinks with the ones in this repo!\n'
 
 read -r -p "Are you sure you want to contine? [y/N] " response
