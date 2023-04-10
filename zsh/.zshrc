@@ -13,7 +13,7 @@ compinit
 
 export EDITOR="nvim"
 export VISUAL="nvim"
-export BROWSER="firefox"
+# export BROWSER="firefox"
 
 # Starship prompt
 eval "$(starship init zsh)"

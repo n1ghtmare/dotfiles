@@ -1,5 +1,7 @@
 # could be bsp, stack or float
 yabai -m config layout bsp
+# yabai -m config window_border on
+# yabai -m config active_window_border_coloro 0xFF8800FF
 
 # new windows will go to the right or bottom
 yabai -m config window_placement second_child
@@ -21,4 +23,12 @@ yabai -m mouse_drop_action swap
 # disable specific apps from running in yabai
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Microsoft Teams$" title="^Microsoft Teams Notification$" manage=off
+
+# ignore MS Teams notification window
+yabai -m signal --add \
+    event=space_changed \
+    app='^Microsoft Teams$' \
+    title='^Microsoft Teams Notification$' \
+    action='yabai -m window --focus mouse > /dev/null 2>&1'
 

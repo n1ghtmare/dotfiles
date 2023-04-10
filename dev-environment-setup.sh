@@ -57,6 +57,9 @@ ln -sv $dotfiles_path/starship/starship.toml $HOME/.config
 # -------------------------------
 printf '\n=> Setting up kitty\n'
 
+# To check for macos
+# if [["$OSTYPE" == "darwin"*]]; then ... else ... fi
+
 kitty_path=$HOME/.config/kitty
 
 if [[ -d $kitty_path ]]; then
@@ -65,8 +68,13 @@ if [[ -d $kitty_path ]]; then
 fi
 
 printf '=> Creating kitty config folder symlink\n'
-ln -sv $dotfiles_path/kitty $kitty_path
-
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    printf '=> Detected macOS (will use the macos kitty config)\n'
+    ln -sv $dotfiles_path/kitty/macos $kitty_path
+else
+    printf '=> Assuming Arch Linux (will use default kitty config)\n'
+    ln -sv $dotfiles_path/kitty/arch $kitty_path
+fi
 
 # bat
 # -------------------------------
@@ -84,15 +92,15 @@ ln -sv $dotfiles_path/bat $bat_path
 
 # zathura
 # -------------------------------
-printf '\n=> Setting up zathura\n'
-
-zathura_path=$HOME/.config/zathura
-
-if [[ -d $zathura_path ]]; then
-    printf '=> An existing zathura config folder exists - will delete it...\n'
-    rm -rf $zathura_path
-fi
-
-printf '=> Creating zathura config folder symlink\n'
-ln -sv $dotfiles_path/zathura $zathura_path
+#printf '\n=> Setting up zathura\n'
+#
+#zathura_path=$HOME/.config/zathura
+#
+#if [[ -d $zathura_path ]]; then
+#    printf '=> An existing zathura config folder exists - will delete it...\n'
+#    rm -rf $zathura_path
+#fi
+#
+#printf '=> Creating zathura config folder symlink\n'
+#ln -sv $dotfiles_path/zathura $zathura_path
 
