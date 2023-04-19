@@ -49,7 +49,8 @@ require("mason-lspconfig").setup {
         "eslint",
         "cssls",
         "tailwindcss",
-        "rust_analyzer"
+        "rust_analyzer",
+        "volar"
     }
 }
 
@@ -120,6 +121,17 @@ lspconfig.tailwindcss.setup {}
 lspconfig.prismals.setup {
     capabilities = capabilities,
     on_attach = function(_, bufnr)
+        require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
+    end
+}
+
+-- Vue.js
+lspconfig.volar.setup {
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+
         require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
     end
 }
