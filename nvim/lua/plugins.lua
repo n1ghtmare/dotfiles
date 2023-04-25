@@ -144,6 +144,9 @@ return require("packer").startup(function(use)
     -- git signs
     use "mhinz/vim-signify"
 
+    -- git integrations
+    use "tpope/vim-fugitive"
+
     -- colorbuddy -> for now used for development
     use {
         -- "~/Dev/nvim-noirbuddy",
