@@ -20,7 +20,7 @@ cmd + shift - x : yabai -m space --mirror x-axis
 cmd - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # toggle window fullscreen
-cmd - f : yabai -m window --toggle zoom-fullscreen
+cmd + shift - f : yabai -m window --toggle zoom-fullscreen
 
 # swap windows
 cmd + shift - h : yabai -m window --swap west

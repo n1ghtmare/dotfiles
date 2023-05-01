@@ -132,6 +132,9 @@ return require("packer").startup(function(use)
         end
     }
 
+    -- detect tabstop and shiftwidth automatically
+    use "tpope/vim-sleuth"
+
     -- visualize your undo
     use "mbbill/undotree"
 
