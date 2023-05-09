@@ -43,9 +43,6 @@ return require("packer").startup(function(use)
     -- packer (can manage itself)
     use "wbthomason/packer.nvim"
 
-    -- theme
-    use "n1ghtmare/noirblaze-vim"
-
     -- icons (used with lualine, bufferline, nvim-tree, telescope, vim-startify
     use "kyazdani42/nvim-web-devicons"
 
