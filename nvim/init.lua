@@ -17,6 +17,7 @@ require("c.lualine")
 require("c.luasnip")
 require("c.todo-comments")
 require("c.project")
+require("c.fidget")
 require("c.treesitter-playground") -- Playground is useful when modifying the colorscheme in order to see how TS refers to nodes
 
 -- require("colorbuddy").colorscheme("noirbuddy")

@@ -84,6 +84,10 @@ return require("packer").startup(function(use)
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
     use "jayp0521/mason-null-ls.nvim" -- ensure installed null_ls dependencies through Mason
+    use 'simrat39/rust-tools.nvim' -- rust specific tools
+
+    -- useful status updates
+    use "j-hui/fidget.nvim"
 
     -- auto-completion
     use "hrsh7th/cmp-nvim-lsp"

@@ -2,9 +2,9 @@
 local function setup_lsp_diagnostics()
     local signs = {
         { name = "DiagnosticSignError", text = "" },
-        { name = "DiagnosticSignWarn", text = "" },
-        { name = "DiagnosticSignHint", text = "" },
-        { name = "DiagnosticSignInfo", text = "" },
+        { name = "DiagnosticSignWarn",  text = "" },
+        { name = "DiagnosticSignHint",  text = "" },
+        { name = "DiagnosticSignInfo",  text = "" },
     }
 
     for _, sign in ipairs(signs) do
@@ -84,19 +84,32 @@ lspconfig.lua_ls.setup {
 }
 
 -- Rust
-lspconfig.rust_analyzer.setup {
-    settings = {
-        ["rust-analyzer"] = {
-            checkOnSave = {
-                command = "clippy"
-            }
+local rt = require("rust-tools")
+rt.setup({
+    tools = {
+        inlay_hints = {
+            only_current_line = true
         }
     },
-    capabilities = capabilities,
-    on_attach = function(_, bufnr)
-        require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
-    end
-}
+    server = {
+        on_attach = function(_, bufnr)
+            require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
+        end
+    }
+})
+-- lspconfig.rust_analyzer.setup {
+--     settings = {
+--         ["rust-analyzer"] = {
+--             checkOnSave = {
+--                 command = "clippy"
+--             }
+--         }
+--     },
+--     capabilities = capabilities,
+--     on_attach = function(_, bufnr)
+--         require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
+--     end
+-- }
 
 -- ESLint (Typescipt and Javascript)
 lspconfig.eslint.setup {
@@ -151,7 +164,7 @@ lspconfig.tsserver.setup {
                 autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
             augroup END
-            ]]   ,
+            ]],
                 false
             )
         end

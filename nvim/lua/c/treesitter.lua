@@ -6,6 +6,39 @@ end
 
 -- TODO: See how we can move the keybindings into the keybindings.lua file?
 treesitter.setup({
+    -- Languages to be installed with TS -> if more are needed, this is where you install them
+    -- For full list of languages: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
+    -- ensure_installed = {
+    --     "lua",
+    --     "rust",
+    --     "tsx",
+    --     "typescript",
+    --     "vim",
+    --     "c",
+    --     "yaml",
+    --     "markdown",
+    --     "comment",
+    --     "bash",
+    --     "c_sharp",
+    --     "css",
+    --     "diff",
+    --     "git_config",
+    --     "git_rebase",
+    --     "gitattributes",
+    --     "gitcommit",
+    --     "gitignore",
+    --     "go",
+    --     "html",
+    --     "http",
+    --     "jsdoc",
+    --     "json",
+    --     "toml",
+    --     "regex",
+    --     "prisma",
+    --     "sql",
+    --     "sxhkdrc",
+    --     "javascript",
+    -- },
     ensure_installed = "all",
     sync_install = false,
     highlight = { enable = true },
@@ -20,7 +53,8 @@ treesitter.setup({
         }
     },
     textobjects = {
-        select = { -- When in visual mode and doing a selection
+        select = {
+            -- When in visual mode and doing a selection
             enable = true,
             lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
             keymaps = {
