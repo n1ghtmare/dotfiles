@@ -41,7 +41,7 @@ null_ls.setup {
     sources = {
         -- diagnostics.cspell,
         -- code_actions.cspell,
-        diagnostics.eslint_d,
+        diagnostics.eslint_d, -- :!which eslint_d (to get where eslint_d is installed - mason/bin dir location)
         formatting.prettierd.with {
             -- prefer_local = "node_modules/.bin",
             filetypes = {
