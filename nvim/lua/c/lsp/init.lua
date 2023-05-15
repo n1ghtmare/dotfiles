@@ -94,8 +94,15 @@ rt.setup({
     server = {
         on_attach = function(_, bufnr)
             require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
-        end
-    }
+        end,
+        settings = {
+            ["rust-analyzer"] = {
+                checkOnSave = {
+                    command = "clippy"
+                }
+            }
+        },
+    },
 })
 -- lspconfig.rust_analyzer.setup {
 --     settings = {
