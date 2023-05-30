@@ -6,6 +6,9 @@ local buf_set_keymap = vim.api.nvim_buf_set_keymap
 
 vim.g.mapleader = " " -- map leader to space
 
+-- Paste without losing yanked content
+set_keymap("x", "<leader>p", [["_dP]], opts)
+
 -- Basic
 -- Clear search results by pressing _
 set_keymap("n", "_", ":nohl<CR>", opts);
