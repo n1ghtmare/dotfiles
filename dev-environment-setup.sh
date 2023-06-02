@@ -90,6 +90,20 @@ fi
 printf '=> Creating bat config folder symlink\n'
 ln -sv $dotfiles_path/bat $bat_path
 
+# gitui
+# -------------------------------
+printf '\n=> Setting up gitui\n'
+
+gutui_path=$HOME/.config/gitui
+
+if [[ -d $gutui_path ]]; then
+    printf '=> An existing gitui config folder exists - will delete it...\n'
+    rm -rf $gutui_path
+fi
+
+printf '=> Creating gitui config folder symlink\n'
+ln -sv $dotfiles_path/gitui $gutui_path
+
 # zathura
 # -------------------------------
 #printf '\n=> Setting up zathura\n'
