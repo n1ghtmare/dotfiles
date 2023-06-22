@@ -19,7 +19,7 @@ export VISUAL="nvim"
 eval "$(starship init zsh)"
 
 # auto cd into folder paths
-setopt autocd
+# setopt autocd
 setopt histignorespace
 
 # make sure tab completion works
@@ -72,3 +72,6 @@ n() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Created by `pipx` on 2023-06-21 11:45:45
+export PATH="$PATH:/home/ddimitrov/.local/bin"
