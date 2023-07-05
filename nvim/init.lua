@@ -52,6 +52,7 @@ opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
 opt.ch = 0 -- hide the command line on the bottom
 opt.backupcopy = "yes" -- different strategy of how backups are stored and copied (was having issues with file watchers detecting changes to the file before this setting) run :help backupcopy TODO: See if we can remove this - keep a look at https://github.com/tailwindlabs/tailwindcss/issues/7759
 -- opt.ls = 0 -- hide the status line on the bottom
+opt.shortmess = "nocI" -- fixes a bug that when ch = 0, then searching for a file and opening is displaying a "Press ENTER to continue" message
 
 vim.cmd("filetype plugin on") -- allow autocommands to execute when a file matching a pattern is opened
 vim.cmd("autocmd FileType * setlocal formatoptions-=cro formatoptions-=t") -- disable auto comment insertion

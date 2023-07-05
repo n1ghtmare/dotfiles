@@ -87,7 +87,7 @@ return require("packer").startup(function(use)
     use 'simrat39/rust-tools.nvim' -- rust specific tools
 
     -- useful status updates
-    use "j-hui/fidget.nvim"
+    use {"j-hui/fidget.nvim", tag = "legacy"}
 
     -- auto-completion
     use "hrsh7th/cmp-nvim-lsp"
