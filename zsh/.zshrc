@@ -75,3 +75,8 @@ n() {
 
 # Created by `pipx` on 2023-06-21 11:45:45
 export PATH="$PATH:/home/ddimitrov/.local/bin"
+
+# make pyenv work
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
