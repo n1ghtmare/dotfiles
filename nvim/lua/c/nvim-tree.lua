@@ -36,7 +36,7 @@ nvim_tree.setup {
         auto_open = false
     },
     filters = {
-        custom = { ".git" },
+        custom = { "\\.git" },
         exclude = { ".gitignore", ".github", ".env", ".env.development", ".eslintrc", ".prettierrc" }
     },
     -- Make nvim-tree work nice with project.nvim  sync_root_with_cwd = true,
