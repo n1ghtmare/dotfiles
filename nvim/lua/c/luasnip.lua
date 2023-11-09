@@ -22,13 +22,14 @@ vim.keymap.set({"i", "s"}, "<c-j>", function()
 end, {silent = true})
 
 -- MAP: ctrl+l will select within a list of snippet options (cycle through the list)
-vim.keymap.set("i", "<c-l>", function()
-    if ls.choice_active() then
-        ls.change_choice(1)
-    end
-end)
+-- vim.keymap.set("i", "<c-l>", function()
+--     if ls.choice_active() then
+--         ls.change_choice(1)
+--     end
+-- end)
 
 local js_cl_snippet = ls.parser.parse_snippet("cl", "console.log($1);")
+
 
 -- TODO: Add your own snippets here
 ls.add_snippets(nil, {

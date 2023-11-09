@@ -84,19 +84,19 @@ return require("packer").startup(function(use)
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
     use "jayp0521/mason-null-ls.nvim" -- ensure installed null_ls dependencies through Mason
-    use 'simrat39/rust-tools.nvim' -- rust specific tools
+    use 'simrat39/rust-tools.nvim'    -- rust specific tools
 
     -- useful status updates
-    use {"j-hui/fidget.nvim", tag = "legacy"}
+    use { "j-hui/fidget.nvim", tag = "legacy" }
 
     -- auto-completion
     use "hrsh7th/cmp-nvim-lsp"
-    use "hrsh7th/cmp-buffer" -- buffer completion
-    use "hrsh7th/cmp-path" -- path completion
-    use "hrsh7th/cmp-cmdline" -- comand line completion
-    use "hrsh7th/nvim-cmp" -- code completion
-    use "L3MON4D3/LuaSnip" -- for snippets (required with nvim-cmp)
-    use "saadparwaiz1/cmp_luasnip" -- make snippets work with cmp
+    use "hrsh7th/cmp-buffer"              -- buffer completion
+    use "hrsh7th/cmp-path"                -- path completion
+    use "hrsh7th/cmp-cmdline"             -- comand line completion
+    use "hrsh7th/nvim-cmp"                -- code completion
+    use "L3MON4D3/LuaSnip"                -- for snippets (required with nvim-cmp)
+    use "saadparwaiz1/cmp_luasnip"        -- make snippets work with cmp
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
     -- code todo comments
@@ -153,11 +153,14 @@ return require("packer").startup(function(use)
 
     -- colorbuddy -> for now used for development
     use {
-        "~/Dev/nvim-noirbuddy",
-	-- "jesseleite/nvim-noirbuddy",
+        -- "~/Dev/nvim-noirbuddy",
+        "jesseleite/nvim-noirbuddy",
         requires = { "tjdevries/colorbuddy.nvim", branch = "dev" }
     }
 
     -- make editorconfig work with neovim
     use "gpanders/editorconfig.nvim"
+
+    -- Github copilot
+    use "github/copilot.vim"
 end)

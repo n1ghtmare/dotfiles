@@ -34,6 +34,9 @@ set_keymap("n", "<C-h>", "<C-W><C-H>", opts)
 set_keymap("n", "<leader>`", ":NvimTreeToggle<CR>", opts) -- NvimTree toggle <leader>`
 -- set_keymap("n", "<leader>`", "<cmd>Telescope file_browser<CR>", opts)                      -- NvimTree toggle <leader>`
 
+-- Copilot Ctrl-l to accept the suggestion
+set_keymap('i', '<C-l>', 'copilot#Accept("<CR>")', {expr = true, silent = true, script = true, noremap = true})
+
 -- Telescope
 set_keymap("n", "<C-p>", "<cmd>Telescope find_files<CR>", opts) -- Ctrl-p - find files
 set_keymap("n", "<C-e>", "<cmd>Telescope live_grep<CR>", opts) -- Ctrl-e - search with grep (contents of files)

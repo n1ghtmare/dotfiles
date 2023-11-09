@@ -18,8 +18,9 @@ require("c.luasnip")
 require("c.todo-comments")
 require("c.project")
 require("c.fidget")
-require("c.treesitter-playground") -- Playground is useful when modifying the colorscheme in order to see how TS refers to nodes
+require("c.copilot")
 
+-- require("c.treesitter-playground") -- Playground is useful when modifying the colorscheme in order to see how TS refers to nodes
 -- require("colorbuddy").colorscheme("noirbuddy")
 
 -- TODO: Move to it's own general settings file?
@@ -50,6 +51,8 @@ opt.splitright = true                               -- force all vertical splits
 opt.splitbelow = true                               -- force all horizontal splits to go below the current buffer
 opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
 -- opt.cmdheight = 0                                          -- hide the command line on the bottom
+-- opt.ch = 0 -- hide the command line on the bottom
+opt.backupcopy = "yes" -- different strategy of how backups are stored and copied (was having issues with file watchers detecting changes to the file before this setting) run :help backupcopy TODO: See if we can remove this - keep a look at https://github.com/tailwindlabs/tailwindcss/issues/7759
 -- opt.ls = 0 -- hide the status line on the bottom
 -- opt.shortmess = "nocI" -- fixes a bug that when ch = 0, then searching for a file and opening is displaying a "Press ENTER to continue" message
 
