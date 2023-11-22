@@ -49,12 +49,6 @@ return require("packer").startup(function(use)
     -- status line (bottom)
     use "nvim-lualine/lualine.nvim"
 
-    -- bufferline (top)
-    use "akinsho/bufferline.nvim"
-
-    -- tree explorer
-    use "kyazdani42/nvim-tree.lua"
-
     -- telescope (search for files, buffers, content etc.)
     use {
         "nvim-telescope/telescope.nvim",
@@ -64,20 +58,11 @@ return require("packer").startup(function(use)
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "make"
     }
-    use { "nvim-telescope/telescope-file-browser.nvim" }
+    -- use { "nvim-telescope/telescope-file-browser.nvim" }
     use { "nvim-telescope/telescope-ui-select.nvim" }
 
     -- search/replace preview
     use "markonm/traces.vim"
-
-    -- preserve layout when deleting a buffer
-    use "famiu/bufdelete.nvim"
-
-    -- see (and auto remove) white space
-    use "ntpeters/vim-better-whitespace"
-
-    -- startup UI
-    use "mhinz/vim-startify"
 
     -- LSP
     use "neovim/nvim-lspconfig"
@@ -116,45 +101,25 @@ return require("packer").startup(function(use)
     use { "nvim-treesitter/nvim-treesitter-context", after = "nvim-treesitter" }
     use { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" }
 
-    -- Comments -> gc
-    use "numToStr/Comment.nvim"
-
-    -- Surround -> cs"" (change-surround from " to "), ds" (delete-surround ")
-    use "tpope/vim-surround"
-
-    -- autopairs
-    use "windwp/nvim-autopairs"
-
     -- support plugin to show shortcuts
-    use {
-        "folke/which-key.nvim",
-        config = function()
-            require("which-key").setup {}
-        end
-    }
-
-    -- detect tabstop and shiftwidth automatically
-    use "tpope/vim-sleuth"
+    use "folke/which-key.nvim"
 
     -- visualize your undo
     use "mbbill/undotree"
 
-    -- plugin to treat git directories as projects, also switch to correct cwd
-    -- use "ahmedkhalf/project.nvim"
-
-    -- make neovim faster
-    use "lewis6991/impatient.nvim"
-
     -- git signs
     use "mhinz/vim-signify"
+
+    -- detect tabstop and shiftwidth automatically
+    use "tpope/vim-sleuth"
 
     -- git integrations
     use "tpope/vim-fugitive"
 
     -- colorbuddy -> for now used for development
     use {
-        -- "~/Dev/nvim-noirbuddy",
-        "jesseleite/nvim-noirbuddy",
+        "~/Dev/nvim-noirbuddy",
+        -- "jesseleite/nvim-noirbuddy",
         requires = { "tjdevries/colorbuddy.nvim", branch = "dev" }
     }
 
@@ -163,4 +128,17 @@ return require("packer").startup(function(use)
 
     -- Github copilot
     use "github/copilot.vim"
+
+    -- Comments -> gc
+    use "numToStr/Comment.nvim"
+
+    -- autopairs -> auto close brackets, quotes etc.
+    use "windwp/nvim-autopairs"
+
+    -- ecosystem for various small plugins currently using it for
+    -- file browser (mini.files) 
+    -- surround (mini.surround)
+    -- start (mini.starter) (similar to vim-startify)
+    -- trailing spaces trimmer (mini.trailspace)
+    use { "echasnovski/mini.nvim", branch = "stable" }
 end)

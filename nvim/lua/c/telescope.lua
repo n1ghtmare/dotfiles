@@ -84,13 +84,6 @@ telescope.setup {
         },
     },
     extensions = {
-        file_browser = {
-            theme = "ivy",
-            grouped = true,
-            hijack_netrw = true,
-            previewer = false,
-            respect_gitignore = false
-        },
         fzf = {
             fuzzy = true, -- false will only do exact matching
             override_generic_sorter = false, -- override the generic sorter
@@ -106,6 +99,6 @@ telescope.setup {
     }
 }
 telescope.load_extension("fzf")
-telescope.load_extension("file_browser")
+--telescope.load_extension("file_browser")
 telescope.load_extension("ui-select")
 --telescope.load_extension("projects")

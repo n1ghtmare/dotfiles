@@ -81,5 +81,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# make asdf work
+# For arch: sudo pacman -S asdf-vm
 . /opt/asdf-vm/asdf.sh
 
+# make direnv work - automatically load/unload your .envrc variables 
+# For reference: https://direnv.net/
+# On arch: sudo pacman -S direnv
+eval "$(direnv hook zsh)"
