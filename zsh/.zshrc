@@ -45,7 +45,7 @@ export FZF_DEFAULT_OPTS="--no-color"
 # Aliases
 alias htop="gotop"
 alias btop="bpytop"
-alias ll="exa -lhg --git --group-directories-first"
+alias ll="eza -lhg --git --group-directories-first"
 alias ..="cd .."
 
 # make nvm work
