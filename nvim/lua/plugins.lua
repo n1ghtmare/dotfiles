@@ -141,4 +141,7 @@ return require("packer").startup(function(use)
     -- start (mini.starter) (similar to vim-startify)
     -- trailing spaces trimmer (mini.trailspace)
     use { "echasnovski/mini.nvim", branch = "stable" }
+
+    -- issues with code
+    use { "folke/trouble.nvim", requires = "nvim-tree/nvim-web-devicons" }
 end)

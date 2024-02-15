@@ -75,7 +75,7 @@ set_keymap("n", "n", "nzzzv", {})
 set_keymap("n", "N", "Nzzzv", {})
 
 -- Todo Comments
-set_keymap("n", "<leader>td", "<cmd>TodoQuickFix<CR>", {})
+set_keymap("n", "<leader>td", "<cmd>TodoTrouble<CR>", {})
 
 -- LSP
 function m.lsp_keybindings_for_buffer(bufnr)
@@ -95,7 +95,7 @@ function m.lsp_keybindings_for_buffer(bufnr)
     buf_set_keymap(bufnr, "n", "<leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>", {})
     buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", {})
     buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>Telescope diagnostics<CR>", {})
+    buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>TroubleToggle workspace_diagnostics<CR>", {})
     buf_set_keymap(bufnr, "n", "<leader>ff", "<cmd>lua vim.lsp.buf.format { async = true }<CR>", {})
     -- buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", {})
     --vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]

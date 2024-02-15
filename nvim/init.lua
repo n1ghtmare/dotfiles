@@ -17,6 +17,7 @@ require("c.copilot")
 require("c.autopairs")
 require("c.comment")
 require("c.which-key")
+require("c.trouble")
 
 -- require("c.treesitter-playground") -- Playground is useful when modifying the colorscheme in order to see how TS refers to nodes
 -- require("colorbuddy").colorscheme("noirbuddy")
