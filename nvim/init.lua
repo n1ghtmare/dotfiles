@@ -1,23 +1,23 @@
-require("plugins")
 
-require("c.keybindings")
-require("c.colors")
-require("c.telescope")
-require("c.lsp")
-require("c.cmp")
-require("c.treesitter")
-require("c.nvim-web-devicons")
-require("c.lualine")
-require("c.luasnip")
-require("c.todo-comments")
-require("c.project")
-require("c.fidget")
-require("c.mini")
-require("c.copilot")
-require("c.autopairs")
-require("c.comment")
-require("c.which-key")
-require("c.trouble")
+-- require("plugins")
+-- require("c.keybindings")
+-- require("c.colors")
+-- require("c.telescope")
+-- require("c.lsp")
+-- require("c.cmp")
+-- require("c.treesitter")
+-- require("c.nvim-web-devicons")
+-- require("c.lualine")
+-- require("c.luasnip")
+-- require("c.todo-comments")
+-- require("c.project")
+-- require("c.fidget")
+-- require("c.mini")
+-- require("c.copilot")
+-- require("c.autopairs")
+-- require("c.comment")
+-- require("c.which-key")
+-- require("c.trouble")
 
 -- require("c.treesitter-playground") -- Playground is useful when modifying the colorscheme in order to see how TS refers to nodes
 -- require("colorbuddy").colorscheme("noirbuddy")
@@ -58,6 +58,8 @@ opt.backupcopy = "yes" -- different strategy of how backups are stored and copie
 -- different strategy of how backups are stored and copied (was having issues with file watchers detecting changes to the file before this setting) run :help backupcopy TODO: See if we can remove this - keep a look at https://github.com/tailwindlabs/tailwindcss/issues/7759
 opt.backupcopy = "yes"
 
+vim.g.mapleader = " " -- map leader to space
+
 vim.cmd("filetype plugin on")                                              -- allow autocommands to execute when a file matching a pattern is opened
 vim.cmd("autocmd FileType * setlocal formatoptions-=cro formatoptions-=t") -- disable auto comment insertion
 vim.cmd("autocmd FileType vim,txt setlocal foldmethod=marker")             -- ensure that folding works on vim and txt filetypes on the folding marker
@@ -79,3 +81,23 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Set a better title
 local title = vim.fn.getcwd():gsub("^.*/", "")
 opt.titlestring = string.format("nvim - %s", title)
+
+-- Setup lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- TODO: Add plugins from plugins directory
+require("lazy").setup("plugins")
+
+require("keybindings")
+require("lsp")
