@@ -54,7 +54,7 @@ require("mason-lspconfig").setup {
     }
 }
 
-require("c.lsp.null-ls")
+require("lsp.null-ls")
 -- Ensure null-ls formatters installed through Mason
 require("mason-null-ls").setup {
     ensure_installed = {
@@ -79,7 +79,7 @@ lspconfig.lua_ls.setup {
     },
     capabilities = capabilities,
     on_attach = function(_, bufnr)
-        require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
+        require("keybindings").lsp_keybindings_for_buffer(bufnr)
     end
 }
 
@@ -93,7 +93,7 @@ rt.setup({
     },
     server = {
         on_attach = function(_, bufnr)
-            require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
+            require("keybindings").lsp_keybindings_for_buffer(bufnr)
         end,
         settings = {
             ["rust-analyzer"] = {
@@ -114,7 +114,7 @@ rt.setup({
 --     },
 --     capabilities = capabilities,
 --     on_attach = function(_, bufnr)
---         require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
+--         require("keybindings").lsp_keybindings_for_buffer(bufnr)
 --     end
 -- }
 
@@ -122,7 +122,7 @@ rt.setup({
 lspconfig.eslint.setup {
     capabilities = capabilities,
     on_attach = function(_, bufnr)
-        require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
+        require("keybindings").lsp_keybindings_for_buffer(bufnr)
     end
 }
 
@@ -130,7 +130,7 @@ lspconfig.eslint.setup {
 lspconfig.cssls.setup {
     capabilities = capabilities,
     on_attach = function(_, bufnr)
-        require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
+        require("keybindings").lsp_keybindings_for_buffer(bufnr)
     end
 }
 
@@ -141,7 +141,7 @@ lspconfig.tailwindcss.setup {}
 lspconfig.prismals.setup {
     capabilities = capabilities,
     on_attach = function(_, bufnr)
-        require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
+        require("keybindings").lsp_keybindings_for_buffer(bufnr)
     end
 }
 
@@ -152,7 +152,7 @@ lspconfig.volar.setup {
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
 
-        require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
+        require("keybindings").lsp_keybindings_for_buffer(bufnr)
     end
 }
 
@@ -177,6 +177,6 @@ lspconfig.tsserver.setup {
         end
 
         -- this way we keep keybindings in one place
-        require("c.keybindings").lsp_keybindings_for_buffer(bufnr)
+        require("keybindings").lsp_keybindings_for_buffer(bufnr)
     end
 }

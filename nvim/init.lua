@@ -1,28 +1,3 @@
-
--- require("plugins")
--- require("c.keybindings")
--- require("c.colors")
--- require("c.telescope")
--- require("c.lsp")
--- require("c.cmp")
--- require("c.treesitter")
--- require("c.nvim-web-devicons")
--- require("c.lualine")
--- require("c.luasnip")
--- require("c.todo-comments")
--- require("c.project")
--- require("c.fidget")
--- require("c.mini")
--- require("c.copilot")
--- require("c.autopairs")
--- require("c.comment")
--- require("c.which-key")
--- require("c.trouble")
-
--- require("c.treesitter-playground") -- Playground is useful when modifying the colorscheme in order to see how TS refers to nodes
--- require("colorbuddy").colorscheme("noirbuddy")
-
--- TODO: Move to it's own general settings file?
 local opt = vim.opt
 
 opt.softtabstop = 4                                 -- swap existing tab with 4 spaces
@@ -96,8 +71,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- TODO: Add plugins from plugins directory
+-- Load plugins via Lazy
 require("lazy").setup("plugins")
 
-require("keybindings")
+-- Load LSP settings
 require("lsp")
+
+-- Load keybindings
+require("keybindings")
