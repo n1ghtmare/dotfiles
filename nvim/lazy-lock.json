@@ -20,7 +20,7 @@
   "nvim-cmp": { "branch": "main", "commit": "04e0ca376d6abdbfc8b52180f8ea236cbfddf782" },
   "nvim-lspconfig": { "branch": "master", "commit": "ec7d51a619049c7c597f469f81ea199db6794651" },
   "nvim-noirbuddy": { "branch": "master", "commit": "131b032debf1d9aebd096f41bb3fb7b9e1545b7c" },
-  "nvim-treesitter": { "branch": "master", "commit": "6e2b56cbe75ddf18e6efecee44bc3936d70b0b3e" },
+  "nvim-treesitter": { "branch": "master", "commit": "18aa5ae3fd7245137bc41b5348102fe254405509" },
   "nvim-treesitter-context": { "branch": "master", "commit": "b8d1ffe58a88e0356da56b167373e89c4579ce15" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "7f00d94543f1fd37cab2afa2e9a6cd54e1c6b9ef" },
   "nvim-web-devicons": { "branch": "master", "commit": "0bb67ef952ea3eb7b1bac9c011281471d99a27bc" },
@@ -35,7 +35,7 @@
   "traces.vim": { "branch": "master", "commit": "9663fcf84de5776bee71b6c816c25ccb6ea11d1a" },
   "trouble.nvim": { "branch": "main", "commit": "f1168feada93c0154ede4d1fe9183bf69bac54ea" },
   "undotree": { "branch": "master", "commit": "9dbbf3b7d19dda0d22ceca461818e4739ad8154d" },
-  "vim-fugitive": { "branch": "master", "commit": "4bc9d989930e37989b038540cc49e63728d3f220" },
+  "vim-fugitive": { "branch": "master", "commit": "2e88f14a585c014691904ba8fe39e6ea851c9422" },
   "vim-signify": { "branch": "master", "commit": "7d538b77a5a8806e344b057f8846f6d0c035efa9" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }

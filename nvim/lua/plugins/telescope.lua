@@ -2,19 +2,11 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
         { "nvim-lua/plenary.nvim" }, -- Required by telescope
+        { "nvim-telescope/telescope-ui-select.nvim" },
         {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "make", -- This plugin requires compilation
-            config = function()
-                require('telescope').load_extension('fzf')
-            end
         },
-        {
-            "nvim-telescope/telescope-ui-select.nvim",
-            config = function()
-                require('telescope').load_extension('ui-select')
-            end
-        }
     },
     -- TODO: See if we can write this config without the below (in lazy.nvim, we should be able to skip it??)
     config = function()
@@ -108,9 +100,14 @@ return {
                 ["ui-select"] = {
                     require("telescope.themes").get_ivy {
                         -- options here
+                        layout_strategy = "bottom_pane"
                     }
                 }
             }
         }
+
+
+        require('telescope').load_extension('ui-select')
+        require('telescope').load_extension('fzf')
     end,
 }
