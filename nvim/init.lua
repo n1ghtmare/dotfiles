@@ -45,6 +45,9 @@ vim.cmd("autocmd FileType vim,txt setlocal foldmethod=marker")             -- en
 -- vim.cmd("autocmd RecordingEnter * set cmdheight=1")
 -- vim.cmd("autocmd RecordingLeave * set cmdheight=0")
 
+-- Highlight 121st character on lines that exceed 120
+vim.fn.matchadd('ColorColumn', '\\%121v')
+
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
     pattern = "*",
