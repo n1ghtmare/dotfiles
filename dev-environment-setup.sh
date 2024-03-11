@@ -40,6 +40,9 @@ git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/Dev-Config/zsh-
 git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/Dev-Config/zsh-plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-history-substring-search $HOME/Dev-Config/zsh-plugins/zsh-history-substring-search
 git clone https://github.com/rupa/z $HOME/Dev-Config/zsh-plugins/z
+printf "\n =>Creating zsh history file\n"
+mkdir -p $HOME/.cache/zsh && touch $HOME/.cache/zsh/history
+printf "Done!\n"
 rm -rf $HOME/.zshrc
 printf "=> Creating zsh config symlink\n"
 ln -sv $dotfiles_path/zsh/.zshrc $HOME/.zshrc
