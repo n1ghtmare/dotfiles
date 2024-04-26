@@ -5,8 +5,10 @@ return {
     dependencies = {
         "neovim/nvim-lspconfig",
         "williamboman/mason-lspconfig.nvim",
-        "jayp0521/mason-null-ls.nvim", -- ensure installed null_ls dependencies through Mason
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        -- "zapling/mason-conform.nvim",
+        -- "jayp0521/mason-null-ls.nvim", -- ensure installed null_ls dependencies through Mason
         "simrat39/rust-tools.nvim",
     },
-    lazy = true
+    lazy = true,
 }

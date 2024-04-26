@@ -40,56 +40,54 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 require("mason").setup()
--- Ensure LSP servers installed through Mason
-require("mason-lspconfig").setup {
+-- Make mason and lspconfig work together nicely
+require("mason-lspconfig").setup()
+
+-- Ensure LSP servers and formatters are installed through Mason
+require("mason-tool-installer").setup({
     ensure_installed = {
-        "prismals",
+        -- LSP Servers
+        -- "prismals",
         "lua_ls",
         "tsserver",
         "eslint",
         "cssls",
         "tailwindcss",
         -- "rust_analyzer",
-        "volar"
-    }
-}
+        "volar", -- Vue
 
-require("lsp.null-ls")
--- Ensure null-ls formatters installed through Mason
-require("mason-null-ls").setup {
-    ensure_installed = {
-        -- "cspell",
+        -- Formatters
         "eslint_d",
-        "prettierd"
-    }
-}
-
+        "prettierd",
+        "stylua",
+    },
+})
 
 local lspconfig = require("lspconfig")
 
 -- Lua
-lspconfig.lua_ls.setup {
+lspconfig.lua_ls.setup({
     settings = {
         Lua = {
             diagnostics = {
                 -- Get the language server to recognize the "vim" global
-                globals = { "vim" }
-            }
-        }
+                globals = { "vim" },
+            },
+        },
     },
     capabilities = capabilities,
     on_attach = function(_, bufnr)
         require("keybindings").lsp_keybindings_for_buffer(bufnr)
-    end
-}
+    end,
+})
 
 -- Rust
 local rt = require("rust-tools")
 rt.setup({
     tools = {
         inlay_hints = {
-            only_current_line = true
-        }
+            only_current_line = true,
+        },
     },
     server = {
         on_attach = function(_, bufnr)
@@ -98,12 +96,12 @@ rt.setup({
         settings = {
             ["rust-analyzer"] = {
                 checkOnSave = {
-                    command = "clippy"
+                    command = "clippy",
                 },
                 cargo = {
                     allFeatures = true,
-                }
-            }
+                },
+            },
         },
     },
 })
@@ -122,45 +120,45 @@ rt.setup({
 -- }
 
 -- ESLint (Typescipt and Javascript)
-lspconfig.eslint.setup {
+lspconfig.eslint.setup({
     capabilities = capabilities,
     on_attach = function(_, bufnr)
         require("keybindings").lsp_keybindings_for_buffer(bufnr)
-    end
-}
+    end,
+})
 
 -- CSS
-lspconfig.cssls.setup {
+lspconfig.cssls.setup({
     capabilities = capabilities,
     on_attach = function(_, bufnr)
         require("keybindings").lsp_keybindings_for_buffer(bufnr)
-    end
-}
+    end,
+})
 
 -- TailwindCSS
-lspconfig.tailwindcss.setup {}
+lspconfig.tailwindcss.setup({})
 
 -- Prisma
-lspconfig.prismals.setup {
+lspconfig.prismals.setup({
     capabilities = capabilities,
     on_attach = function(_, bufnr)
         require("keybindings").lsp_keybindings_for_buffer(bufnr)
-    end
-}
+    end,
+})
 
 -- Vue.js
-lspconfig.volar.setup {
+lspconfig.volar.setup({
     capabilities = capabilities,
     on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
 
         require("keybindings").lsp_keybindings_for_buffer(bufnr)
-    end
-}
+    end,
+})
 
 -- Typescript
-lspconfig.tsserver.setup {
+lspconfig.tsserver.setup({
     capabilities = capabilities,
     on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
@@ -181,5 +179,5 @@ lspconfig.tsserver.setup {
 
         -- this way we keep keybindings in one place
         require("keybindings").lsp_keybindings_for_buffer(bufnr)
-    end
-}
+    end,
+})
