@@ -2,6 +2,8 @@
 HISTFILE=~/.cache/zsh/history
 HISTSIZE=1000000
 SAVEHIST=1000000
+# Ignore duplicate commands in history
+setopt histignoredups
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall

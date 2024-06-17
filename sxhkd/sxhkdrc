@@ -146,6 +146,9 @@ super + equal
 super + F8
     rofi -modi "emoji:$(which rofimoji) --action copy --clipboarder xclip" -show emoji
 
+super + F7
+    ytfzf -D
+
 # open my dotfiles in neovim
 super + F10
     kitty --directory ~/Dev-Config/dotfiles nvim
