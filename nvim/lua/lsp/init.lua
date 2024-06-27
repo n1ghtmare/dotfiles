@@ -54,7 +54,8 @@ require("mason-tool-installer").setup({
         "cssls",
         "tailwindcss",
         -- "rust_analyzer",
-        "volar", -- Vue
+        "volar",                -- Vue
+        "bash-language-server", -- Bash
 
         -- Formatters
         "eslint_d",
@@ -148,6 +149,16 @@ lspconfig.prismals.setup({
 
 -- Vue.js
 lspconfig.volar.setup({
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+
+        require("keybindings").lsp_keybindings_for_buffer(bufnr)
+    end,
+})
+
+lspconfig.bashls.setup({
     capabilities = capabilities,
     on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
