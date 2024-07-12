@@ -5,6 +5,13 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
+# Disable screen saver
+xset s off
+# Disable DPMS (Energy Star) features
+xset -dpms
+# Disable screen blanking
+xset s noblank
+
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
