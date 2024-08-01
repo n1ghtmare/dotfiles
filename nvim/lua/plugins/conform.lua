@@ -18,5 +18,10 @@ return {
             timeout_ms = 500,
             lsp_fallback = true,
         },
+        formatters = {
+            stylua = {
+                args = { "--indent-type", "Spaces", "--indent-width", "4", "-" },
+            },
+        },
     },
 }
