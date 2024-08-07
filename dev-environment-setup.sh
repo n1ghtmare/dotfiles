@@ -79,6 +79,15 @@ else
     ln -sv $dotfiles_path/kitty/arch $kitty_path
 fi
 
+
+# wezterm
+# -------------------------------
+printf '\n=> Setting up wezterm\n'
+wezterm_path=$HOME/.wezterm.lua
+printf '=> Creating wezterm config symlink\n'
+ln -sv $dotfiles_path/wezterm/.wezterm.lua $wezterm_path
+
+
 # bat
 # -------------------------------
 printf '\n=> Setting up bat\n'
