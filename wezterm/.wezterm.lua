@@ -3,10 +3,11 @@ local config = {}
 
 config.font = wezterm.font("Berkeley Mono")
 config.font_size = 11.0
--- config.use_fancy_tab_bar = false
+config.use_fancy_tab_bar = false
 -- config.show_tabs_in_tab_bar = false
 -- config.show_new_tab_button_in_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
+-- config.tab_bar_at_bottom = true
 -- config.color_scheme = "Catppuccin Mocha"
 
 config.default_cursor_style = "BlinkingBlock"
@@ -94,6 +95,38 @@ config.colors = {
     quick_select_label_fg = { Color = "#ffffff" },
     quick_select_match_bg = { AnsiColor = "Navy" },
     quick_select_match_fg = { Color = "#ffffff" },
+
+    tab_bar = {
+        background = "#323232", -- Background color of the tab bar
+
+        active_tab = {
+            bg_color = "#121212", -- Background color of the active tab
+            fg_color = "#d5d5d5", -- Foreground color (text) of the active tab
+            italic = false,
+        },
+
+        inactive_tab = {
+            bg_color = "#323232", -- Background color of inactive tabs
+            fg_color = "#d5d5d5", -- Foreground color (text) of inactive tabs
+            -- italic = true,
+        },
+
+        inactive_tab_hover = {
+            bg_color = "#323232", -- Background color when hovering over an inactive tab
+            fg_color = "#ff0088",
+            -- italic = true,
+        },
+
+        new_tab = {
+            bg_color = "#323232",
+            fg_color = "#d5d5d5",
+        },
+
+        new_tab_hover = {
+            bg_color = "#323232",
+            fg_color = "#ff0088",
+        },
+    },
 }
 
 return config
