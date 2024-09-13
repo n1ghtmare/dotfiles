@@ -49,12 +49,12 @@ require("mason-tool-installer").setup({
         -- LSP Servers
         -- "prismals",
         "lua_ls",
-        "tsserver",
+        "ts_ls",
         "eslint",
         "cssls",
         "tailwindcss",
         -- "rust_analyzer",
-        "volar",                -- Vue
+        "volar", -- Vue
         "bash-language-server", -- Bash
 
         -- Formatters
@@ -169,7 +169,7 @@ lspconfig.bashls.setup({
 })
 
 -- Typescript
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
     capabilities = capabilities,
     on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
