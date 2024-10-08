@@ -2,7 +2,7 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
         "jesseleite/nvim-noirbuddy",
-        "nvim-tree/nvim-web-devicons"
+        "nvim-tree/nvim-web-devicons",
     },
     config = function()
         -- Option 1:
@@ -13,7 +13,7 @@ return {
         local sections = noirbuddy_lualine.sections
         local inactive_sections = noirbuddy_lualine.inactive_sections
 
-        require("lualine").setup {
+        require("lualine").setup({
             options = {
                 icons_enabled = true,
                 theme = theme,
@@ -25,7 +25,7 @@ return {
             },
             sections = sections,
             inactive_sections = inactive_sections,
-        }
+        })
 
         -- Option 2:
         --[[ local status_ok_colors, colors = pcall(require, "noirbuddy.colors")
@@ -79,5 +79,5 @@ return {
                 lualine_z = {}
             }
         } ]]
-    end
+    end,
 }

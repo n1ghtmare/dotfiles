@@ -8,6 +8,12 @@ return {
         require("mini.comment").setup()
         require("mini.starter").setup({
             header = function()
+                local Group = require("colorbuddy").Group
+                local colors = require("colorbuddy").colors
+
+                Group.new("MiniStarterHeader", colors.primary)
+                Group.new("MiniStarterFooter", colors.secondary)
+
                 local val = [[
     ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓    ▄▄▄▄   ▄▄▄█████▓ █     █░
      ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒   ▓█████▄ ▓  ██▒ ▓▒▓█░ █ ░█░
