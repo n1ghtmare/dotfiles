@@ -129,5 +129,13 @@ return {
                 native_menu = false,
             },
         })
+
+        -- Make nvim-cmp work with DBUI (database UI)
+        cmp.setup.filetype({ "sql" }, {
+            sources = {
+                { name = "vim-dadbod-completion" },
+                { name = "buffer" },
+            },
+        })
     end,
 }

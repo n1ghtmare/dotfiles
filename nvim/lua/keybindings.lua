@@ -21,7 +21,7 @@ end
 set_keymap("x", "<leader>p", [["_dP]], {})
 
 -- Basic
-set_keymap("n", "_", ":nohl<CR>", { desc = "Clear search results" });
+set_keymap("n", "_", ":nohl<CR>", { desc = "Clear search results" })
 
 -- Paste to a black hole register so that you can paste multiple times over a visual selection
 -- set_keymap("x", "<leader>p", "\"_dP", opts)
@@ -41,27 +41,40 @@ set_keymap("n", "<C-l>", "<C-W><C-L>", {})
 set_keymap("n", "<C-h>", "<C-W><C-H>", {})
 
 -- MiniFiles (file browser in a floating window)
-set_keymap("n", "<leader>`", ":lua MiniFiles.open()<CR>", { desc = "Open MiniFiles file browser" }) -- MiniFiles toggle <leader>`
+-- set_keymap("n", "<leader>`", ":lua MiniFiles.open()<CR>", { desc = "Open MiniFiles file browser" }) -- MiniFiles toggle <leader>`
+set_keymap("n", "<leader>`", "<cmd>Oil<CR>", { desc = "Open Oil file browser" }) -- MiniFiles toggle <leader>`
 
 -- Whitespace trim
 set_keymap("n", "<leader>wt", ":lua MiniTrailspace.trim()<CR>", {})
 
 -- Copilot Ctrl-l to accept the suggestion
-set_keymap('i', '<C-l>', 'copilot#Accept("<CR>")', { expr = true, script = true })
+set_keymap("i", "<C-l>", 'copilot#Accept("<CR>")', { expr = true, script = true })
 
 -- Telescope
 set_keymap("n", "<C-p>", "<cmd>Telescope find_files<CR>", { desc = "Find files (telescope) [Ctrl-p]" })
-set_keymap("n", "<C-e>", "<cmd>Telescope live_grep<CR>",
-    { desc = "Search with grep (telescope) (contents of files) [Ctrl-e]" })                                                      -- Ctrl-e - search with grep (contents of files)
-set_keymap("n", "<C-b>", "<cmd>Telescope buffers<CR>", { desc = "Find [b]uffers (telescope) [Ctrl-b]" })                         -- Ctrl-b - search current buffers
-set_keymap("n", "<leader>bf", "<cmd>Telescope current_buffer_fuzzy_find<CR>",
-    { desc = "Search current [b]u[f]fer (telescope)" })                                                                          -- Ctrl-/ - search the current buffer with fuzzy find
-set_keymap("n", "<leader>ds", "<cmd>Telescope lsp_document_symbols<CR>",
-    { desc = "Search [d]ocument [s]ymbols (telescope)" })                                                                        -- Ctrl-/ - search the current buffer with fuzzy find
-set_keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "[F]ind [h]elp tag (telescope)"})                                                                -- space-fh - search help tags in nvim as well as for all installed plugins
-set_keymap("n", "<leader>ft", "<cmd>Telescope git_files<CR>", {})                                                                -- space-ft - search for git files only
-set_keymap("n", "<leader>ts", "<cmd>Telescope tagstack<CR>", {})                                                                 -- space-ft - search for git files only
-set_keymap("n", "<leader>mk", "<cmd>Telescope marks<CR>", {})                                                                    -- space-ft - search for git files only
+set_keymap(
+    "n",
+    "<C-e>",
+    "<cmd>Telescope live_grep<CR>",
+    { desc = "Search with grep (telescope) (contents of files) [Ctrl-e]" }
+) -- Ctrl-e - search with grep (contents of files)
+set_keymap("n", "<C-b>", "<cmd>Telescope buffers<CR>", { desc = "Find [b]uffers (telescope) [Ctrl-b]" }) -- Ctrl-b - search current buffers
+set_keymap(
+    "n",
+    "<leader>bf",
+    "<cmd>Telescope current_buffer_fuzzy_find<CR>",
+    { desc = "Search current [b]u[f]fer (telescope)" }
+) -- Ctrl-/ - search the current buffer with fuzzy find
+set_keymap(
+    "n",
+    "<leader>ds",
+    "<cmd>Telescope lsp_document_symbols<CR>",
+    { desc = "Search [d]ocument [s]ymbols (telescope)" }
+) -- Ctrl-/ - search the current buffer with fuzzy find
+set_keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "[F]ind [h]elp tag (telescope)" }) -- space-fh - search help tags in nvim as well as for all installed plugins
+set_keymap("n", "<leader>ft", "<cmd>Telescope git_files<CR>", {}) -- space-ft - search for git files only
+set_keymap("n", "<leader>ts", "<cmd>Telescope tagstack<CR>", {}) -- space-ft - search for git files only
+set_keymap("n", "<leader>mk", "<cmd>Telescope marks<CR>", {}) -- space-ft - search for git files only
 
 -- undotree
 set_keymap("n", "<leader>ut", "<cmd>UndotreeToggle<CR>", {})
@@ -101,4 +114,4 @@ function m.lsp_keybindings_for_buffer(bufnr)
     --vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
-return m;
+return m
