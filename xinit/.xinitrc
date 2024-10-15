@@ -45,8 +45,8 @@ fi
 # Persist xrandr settings to use 144Hz 4k
 xrandr --output DP-2 --mode 3840x2160 --rate 144
 
-# Have both US and Bulgarian layouts (switch by pressing right shift and right ctrl)
-setxkbmap -layout us,bg -variant ,phonetic -option grp:rctrl_rshift_toggle
+# Have both US and Bulgarian layouts (switch by pressing right shift and right alt)
+setxkbmap -layout us,bg -variant ,phonetic -option grp:ralt_rshift_toggle
 
 # Start the window manager (BSPWM)
 exec bspwm
