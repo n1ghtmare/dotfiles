@@ -9,12 +9,12 @@ configuration {
 
 // Config Variables
 * {
-    bg: #121212;
-    bg-alt: #323232;
+    bg: #070e11;
+    bg-alt: #121b1d;
     highlight: #7a7a7a;
     fg: #f1f1f1;
-    fg-alt: #121212;
-    hot-pink: #ff0088;
+    fg-alt: #070e11;
+    hot-pink: #00d992;
 }
 
 window {

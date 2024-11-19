@@ -14,7 +14,7 @@ bspc monitor -d I II III IV V
 bspc config border_width    1
 bspc config window_gap      14
 bspc config top_padding     0
-bspc config focused_border_color    '#ff0088'
+bspc config focused_border_color    '#00d992'
 bspc config normal_border_color     '#121212'
 
 # Use this only of 144Hz screens

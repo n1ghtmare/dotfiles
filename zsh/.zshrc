@@ -85,7 +85,11 @@ eval "$(pyenv init -)"
 
 # make asdf work
 # For arch: sudo pacman -S asdf-vm
-. /opt/asdf-vm/asdf.sh
+# . /opt/asdf-vm/asdf.sh
+
+# For now delta only works with this env variable (it doesn't detect the theme
+# from the bat config)
+export BAT_THEME="base16"
 
 # make direnv work - automatically load/unload your .envrc variables 
 # For reference: https://direnv.net/
