@@ -7,8 +7,8 @@ super + Return
     kitty
 
 # file manager
-super + e
-    kitty -e ranger
+# super + e
+#     kitty -e ranger
 
 # program launcher
 super + @space
