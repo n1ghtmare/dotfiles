@@ -41,8 +41,8 @@ set_keymap("n", "<C-l>", "<C-W><C-L>", {})
 set_keymap("n", "<C-h>", "<C-W><C-H>", {})
 
 -- MiniFiles (file browser in a floating window)
--- set_keymap("n", "<leader>`", ":lua MiniFiles.open()<CR>", { desc = "Open MiniFiles file browser" }) -- MiniFiles toggle <leader>`
-set_keymap("n", "<leader>`", "<cmd>Oil<CR>", { desc = "Open Oil file browser" }) -- MiniFiles toggle <leader>`
+set_keymap("n", "<leader>`", ":lua MiniFiles.open()<CR>", { desc = "Open MiniFiles file browser" }) -- MiniFiles toggle <leader>`
+-- set_keymap("n", "<leader>`", "<cmd>Oil<CR>", { desc = "Open Oil file browser" }) -- MiniFiles toggle <leader>`
 
 -- Whitespace trim
 set_keymap("n", "<leader>wt", ":lua MiniTrailspace.trim()<CR>", {})
