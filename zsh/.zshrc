@@ -49,6 +49,7 @@ alias htop="gotop"
 alias btop="bpytop"
 alias ll="eza -lhg --git --group-directories-first"
 alias ..="cd .."
+alias grep="grep --color=auto"
 
 # make nvm work
 export NVM_DIR="$HOME/.nvm"

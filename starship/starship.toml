@@ -2,3 +2,6 @@
 success_symbol = "[I](bold) [❯](bold red)"
 error_symbol = "[I](bold) [❯](bold red)"
 vicmd_symbol = "[N](bold) [❮](bold green)"
+
+[gcloud]
+disabled = true
