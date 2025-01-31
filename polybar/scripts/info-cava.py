@@ -38,7 +38,7 @@ parser.add_argument('-c', '--channels', choices=['stereo', 'left', 'right', 'ave
 
 opts = parser.parse_args()
 conf_channels = ''
-if opts.channels != 'stereo':
+if opts.channels and opts.channels != 'stereo':
     conf_channels = (
         'channels=mono\n'
        f'mono_option={opts.channels}'
