@@ -37,7 +37,8 @@ setup_lsp_diagnostics()
 
 -- Better auto completion capabilities (expand the built in ones)
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+-- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 require("mason").setup()
 -- Make mason and lspconfig work together nicely

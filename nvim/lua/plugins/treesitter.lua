@@ -136,5 +136,8 @@ return {
                 },
             },
         })
+
+        -- Treat handlebars as html (since there is no treesitter support for handlebars)
+        vim.treesitter.language.register("html", "handlebars", "hbs")
     end,
 }
