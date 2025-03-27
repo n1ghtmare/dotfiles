@@ -169,6 +169,16 @@ lspconfig.bashls.setup({
     end,
 })
 
+lspconfig.terraformls.setup({
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+
+        require("keybindings").lsp_keybindings_for_buffer(bufnr)
+    end,
+})
+
 -- Typescript
 local mason_registry = require("mason-registry")
 local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
