@@ -1,0 +1,74 @@
+[
+  {
+    // Install otf-font-awesome ttf-font-logos(AUR)
+    "margin-left": 17,
+    "margin-right": 17,
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    // "height": 5, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 10, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["niri/workspaces", "wlr/taskbar", "cava"],
+    "modules-center": ["niri/window"],
+    "modules-right": [
+      "network",
+      "niri/language",
+      "cpu",
+      "memory",
+      "disk",
+      "clock",
+      "pulseaudio",
+      "tray",
+    ],
+    "clock": {
+      "format": "{:%Y-%m-%d %H:%M (%a)}",
+    },
+    "tray": {
+      "spacing": 10,
+    },
+    "cpu": {
+      "interval": 1,
+      "format": " {usage}%",
+      "max-length": 10,
+    },
+    "disk": {
+      "format": " {}%",
+    },
+    "memory": {
+      "interval": 10,
+      "format": " {}%",
+      "format-alt": " {used:0.1f}G",
+      "max-length": 10,
+    },
+    "network": {
+      "format-ethernet": " {ifname} {bandwidthTotalBytes}",
+      "interval": 1,
+    },
+    "pulseaudio": {
+      "format": "  {volume}%",
+      "on-click": "pavucontrol",
+    },
+    "niri/language": {
+      "format": "  {shortDescription}-{short} {variant}",
+    },
+    "cava": {
+      //        "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+      // "framerate": 144,
+      "autosens": 1,
+      "bars": 14,
+      "lower_cutoff_freq": 50,
+      "higher_cutoff_freq": 10000,
+      "method": "pipewire",
+      "source": "auto",
+      "stereo": true,
+      "reverse": false,
+      "bar_delimiter": 0,
+      "monstercat": false,
+      "waves": false,
+      "noise_reduction": 0.77,
+      "input_delay": 2,
+      "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    },
+  },
+]
