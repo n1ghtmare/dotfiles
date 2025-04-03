@@ -9,6 +9,8 @@ super + Return
 # file manager
 # super + e
 #     kitty -e ranger
+super + e
+    thunar
 
 # program launcher
 super + @space
