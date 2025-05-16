@@ -7,16 +7,18 @@ local function setup_lsp_diagnostics()
         { name = "DiagnosticSignInfo", text = "" },
     }
 
-    for _, sign in ipairs(signs) do
-        vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-    end
-
     local config = {
         -- disable virtual text
         virtual_text = false,
         -- show signs
         signs = {
             active = signs,
+            text = {
+                [vim.diagnostic.severity.ERROR] = "",
+                [vim.diagnostic.severity.WARN] = "",
+                [vim.diagnostic.severity.INFO] = "",
+                [vim.diagnostic.severity.HINT] = "",
+            },
         },
         update_in_insert = true,
         underline = true,
@@ -38,24 +40,23 @@ setup_lsp_diagnostics()
 -- Better auto completion capabilities (expand the built in ones)
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
--- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 require("mason").setup()
--- Make mason and lspconfig work together nicely
-require("mason-lspconfig").setup()
 
--- Ensure LSP servers and formatters are installed through Mason
+-- Ensure LSP servers and formatters are installed through Mason upon Neovim
+-- startup, if not already installed.
 require("mason-tool-installer").setup({
     ensure_installed = {
         -- LSP Servers
+        "gopls",
         -- "prismals",
-        "lua_ls",
-        "ts_ls",
-        "eslint",
-        "cssls",
-        "tailwindcss",
+        "lua-language-server",
+        "typescript-language-server",
+        -- "eslint_d",
+        "css-lsp",
+        "tailwindcss-language-server",
         -- "rust_analyzer",
-        "volar", -- Vue
+        "vue-language-server", -- Vue
         "bash-language-server", -- Bash
 
         -- Formatters
@@ -71,6 +72,10 @@ local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({
     settings = {
         Lua = {
+            runtime = {
+                -- LuaJIT in the case of neovim
+                version = "LuaJIT",
+            },
             diagnostics = {
                 -- Get the language server to recognize the "vim" global
                 globals = { "vim" },
@@ -140,6 +145,14 @@ lspconfig.cssls.setup({
 -- TailwindCSS
 lspconfig.tailwindcss.setup({})
 
+-- Golang
+lspconfig.gopls.setup({
+    capabilities = capabilities,
+    on_attach = function(_, bufnr)
+        require("keybindings").lsp_keybindings_for_buffer(bufnr)
+    end,
+})
+
 -- Prisma
 lspconfig.prismals.setup({
     capabilities = capabilities,
@@ -170,9 +183,10 @@ lspconfig.bashls.setup({
 })
 
 -- Typescript
-local mason_registry = require("mason-registry")
-local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+local vue_language_server_path = vim.fn.expand("$MASON/packages")
+    .. "/vue-language-server"
     .. "/node_modules/@vue/language-server"
+
 lspconfig.ts_ls.setup({
     init_options = {
         plugins = {

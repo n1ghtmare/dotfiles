@@ -1,5 +1,6 @@
 local opt = vim.opt
 
+opt.tabstop = 4 -- 1 tab == 4 spaces
 opt.softtabstop = 4 -- swap existing tab with 4 spaces
 opt.shiftwidth = 4 -- 4 spaces
 opt.expandtab = true -- on pressing tab, insert 4 spaces
