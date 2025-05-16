@@ -32,12 +32,12 @@ autoload -U compinit && compinit
 source ~/Dev-Config/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/Dev-Config/zsh-plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/Dev-Config/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/Dev-Config/zsh-plugins/z/z.sh
+# source ~/Dev-Config/zsh-plugins/z/z.sh
 
 ZSH_HIGHLIGHT_STYLES[arg0]="fg=red"
 # fzf keybindings
-#source /usr/share/fzf/key-bindings.zsh
-#source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{node_modules,.git}"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -50,6 +50,7 @@ alias btop="bpytop"
 alias ll="eza -lhg --git --group-directories-first"
 alias ..="cd .."
 alias grep="grep --color=auto"
+# alias docker="podman"
 
 # make nvm work
 export NVM_DIR="$HOME/.nvm"
@@ -96,3 +97,43 @@ export BAT_THEME="base16"
 # For reference: https://direnv.net/
 # On arch: sudo pacman -S direnv
 eval "$(direnv hook zsh)"
+
+
+# The next line updates PATH for the Google Cloud SDK.
+# if [ -f '/home/ddimitrov/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/ddimitrov/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+#
+# # The next line enables shell command completion for gcloud.
+# if [ -f '/home/ddimitrov/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/ddimitrov/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/ddimitrov/.local/google-cloud-sdk/path.zsh.inc' ]; then . '/home/ddimitrov/.local/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/ddimitrov/.local/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/ddimitrov/.local/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Integrate with tiny-dc so that we can cd into the directory that tiny-dc outputs
+dc() {
+    local result=$(command tiny-dc "$@")
+    [ -n "$result" ] && cd -- "$result"
+}
+
+z() {
+    local result=$(command tiny-dc z "$@")
+    [ -n "$result" ] && cd -- "$result"
+}
+
+# on cd run tiny-fe push
+cd() {
+    builtin cd "$@" && tiny-dc push "$PWD"
+}
+
+
+# alias kubectl="minikube kubectl --"
+
+# pnpm
+export PNPM_HOME="/home/ddimitrov/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

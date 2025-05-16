@@ -43,10 +43,13 @@ fi
 # setxkbmap -option caps:escape,shift:both_capslock &
 
 # Persist xrandr settings to use 144Hz 4k
-xrandr --output DP-2 --mode 3840x2160 --rate 144
+xrandr --output DP-4 --mode 3840x2160 --rate 144
 
 # Have both US and Bulgarian layouts (switch by pressing right shift and right alt)
 setxkbmap -layout us,bg -variant ,phonetic -option grp:ralt_rshift_toggle
+
+# Start xfce4-clipman -> sudo pacman -S xfce4-clipman-plugin
+xfce4-clipman &
 
 # Start the window manager (BSPWM)
 exec bspwm
