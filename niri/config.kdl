@@ -258,9 +258,10 @@ spawn-at-startup "waybar"
 spawn-at-startup "swaybg" "-c" "323232"
 spawn-at-startup "mako"
 
-// // Make non wayland apps work with niri (MS Teams for example, note that screensharing is not going to work though)
+// This makes x apps work with niri.
+// // Make non wayland apps work with niri (MS Teams for example, note that
+// // screensharing is not going to work though)
 // spawn-at-startup "xwayland-satellite"
-//
 // environment {
 //     DISPLAY ":0"
 // }
