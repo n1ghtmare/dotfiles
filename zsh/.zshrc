@@ -17,6 +17,9 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 # export BROWSER="firefox"
 
+# Debugging wayland NVIDIA issues
+export GBM_BACKEND=nvidia-drm
+
 # Starship prompt
 eval "$(starship init zsh)"
 
@@ -137,3 +140,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Configure thefuck
+eval "$(thefuck --alias fk)"
