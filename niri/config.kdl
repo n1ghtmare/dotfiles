@@ -254,9 +254,14 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
+// Top/System bar.
 spawn-at-startup "waybar"
+// Background image
 spawn-at-startup "swaybg" "-c" "323232"
+// Notification daemon.
 spawn-at-startup "mako"
+// Clipboard history daemon.
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 
 // This makes x apps work with niri.
 // // Make non wayland apps work with niri (MS Teams for example, note that
@@ -354,6 +359,9 @@ binds {
     Mod+Return { spawn "kitty"; }
     Mod+Space { spawn "fuzzel"; }
     Super+Alt+L { spawn "swaylock" "-c" "323232" "-l" "-k"; }
+
+    // Needs cliphist installed + imagemagick
+    Super+Ctrl+V { spawn "cliphist-fuzzel-img"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
