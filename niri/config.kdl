@@ -256,8 +256,8 @@ layout {
 // spawn-at-startup "alacritty" "-e" "fish"
 // Top/System bar.
 spawn-at-startup "waybar"
-// Background image
-spawn-at-startup "swaybg" "-c" "323232"
+// Background image (random image from ~/Pictures/RiceWallpapers/).
+spawn-at-startup "bash" "-c" "swaybg -m fill -i $(find ~/Pictures/RiceWallpapers/ -type f | shuf -n 1)"
 // Notification daemon.
 spawn-at-startup "mako"
 // Clipboard history daemon.
@@ -356,9 +356,15 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return { spawn "kitty"; }
-    Mod+Space { spawn "fuzzel"; }
+    Mod+Return  { spawn "kitty"; }
+    Mod+Space   { spawn "fuzzel"; }
     Super+Alt+L { spawn "swaylock" "-c" "323232" "-l" "-k"; }
+    Mod+B       { spawn "firefox"; }
+
+    // Change the desktop background to a random image from the `~/Pictures/RiceWallpapers/` directory.
+    // This command will kill swaybg and start it again with a new random image.
+    Mod+Alt+R { spawn "bash" "-c" "pkill swaybg; swaybg -m fill -i $(find ~/Pictures/RiceWallpapers/ -type f | shuf -n 1)"; }
+
 
     // Needs cliphist installed + imagemagick
     Super+Ctrl+V { spawn "cliphist-fuzzel-img"; }
