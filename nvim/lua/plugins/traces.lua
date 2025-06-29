@@ -1,3 +1,0 @@
-return {
-    "markonm/traces.vim"
-}
