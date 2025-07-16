@@ -72,7 +72,7 @@ cursor {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "DP-11" {
+output "DP-3" {
     // Uncomment this line to disable this output.
     // off
 
