@@ -3,16 +3,16 @@ local m = {}
 local buf_set_keymap = vim.api.nvim_buf_set_keymap
 
 local merge_tables = function(t1, t2)
-    for k, v in pairs(t2) do
-        t1[k] = v
-    end
-    return t1
+	for k, v in pairs(t2) do
+		t1[k] = v
+	end
+	return t1
 end
 
 local set_keymap = function(mode, key, event, opts)
-    local default_opts = { noremap = true, silent = true }
-    local result = merge_tables(default_opts, opts)
-    vim.api.nvim_set_keymap(mode, key, event, result)
+	local default_opts = { noremap = true, silent = true }
+	local result = merge_tables(default_opts, opts)
+	vim.api.nvim_set_keymap(mode, key, event, result)
 end
 
 -- vim.g.mapleader = " " -- map leader to space
@@ -53,23 +53,23 @@ set_keymap("i", "<C-l>", 'copilot#Accept("<CR>")', { expr = true, script = true 
 -- Telescope
 set_keymap("n", "<C-p>", "<cmd>Telescope find_files<CR>", { desc = "Find files (telescope) [Ctrl-p]" })
 set_keymap(
-    "n",
-    "<C-e>",
-    "<cmd>Telescope live_grep<CR>",
-    { desc = "Search with grep (telescope) (contents of files) [Ctrl-e]" }
+	"n",
+	"<C-e>",
+	"<cmd>Telescope live_grep<CR>",
+	{ desc = "Search with grep (telescope) (contents of files) [Ctrl-e]" }
 ) -- Ctrl-e - search with grep (contents of files)
 set_keymap("n", "<C-b>", "<cmd>Telescope buffers<CR>", { desc = "Find [b]uffers (telescope) [Ctrl-b]" }) -- Ctrl-b - search current buffers
 set_keymap(
-    "n",
-    "<leader>bf",
-    "<cmd>Telescope current_buffer_fuzzy_find<CR>",
-    { desc = "Search current [b]u[f]fer (telescope)" }
+	"n",
+	"<leader>bf",
+	"<cmd>Telescope current_buffer_fuzzy_find<CR>",
+	{ desc = "Search current [b]u[f]fer (telescope)" }
 ) -- Ctrl-/ - search the current buffer with fuzzy find
 set_keymap(
-    "n",
-    "<leader>ds",
-    "<cmd>Telescope lsp_document_symbols<CR>",
-    { desc = "Search [d]ocument [s]ymbols (telescope)" }
+	"n",
+	"<leader>ds",
+	"<cmd>Telescope lsp_document_symbols<CR>",
+	{ desc = "Search [d]ocument [s]ymbols (telescope)" }
 ) -- Ctrl-/ - search the current buffer with fuzzy find
 set_keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "[F]ind [h]elp tag (telescope)" }) -- space-fh - search help tags in nvim as well as for all installed plugins
 set_keymap("n", "<leader>ft", "<cmd>Telescope git_files<CR>", {}) -- space-ft - search for git files only
@@ -90,28 +90,38 @@ set_keymap("n", "N", "Nzzzv", {})
 -- Todo Comments
 set_keymap("n", "<leader>td", "<cmd>TodoQuickFix<CR>", {})
 
+function toggle_lsp_inlay_hints(bufnr)
+	local is_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+	vim.lsp.inlay_hint.enable(not is_enabled, { bufnr = bufnr })
+end
+
 -- LSP
 function m.lsp_keybindings_for_buffer(bufnr)
-    buf_set_keymap(bufnr, "n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>gd", "<cmd>Telescope lsp_definitions<CR>", {})
-    -- buf_set_keymap(bufnr, "n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>k", "<cmd>lua vim.lsp.buf.hover()<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>gi", "<cmd>Telescope lsp_implementations<CR>", {})
-    -- buf_set_keymap(bufnr, "n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>l", "<cmd>lua vim.lsp.buf.signature_help()<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>gr", "<cmd>Telescope lsp_references<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>st", "<cmd>Telescope git_status<CR>", {})
-    -- buf_set_keymap(bufnr, "n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", {})
-    -- buf_set_keymap(bufnr, "n", "<leader>ac", "<cmd>Telescope lsp_code_actions<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>ac", "<cmd>lua vim.lsp.buf.code_action()<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>", {})
-    buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", {})
-    buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>Telescope diagnostics<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>ff", "<cmd>lua vim.lsp.buf.format { async = true }<CR>", {})
-    -- buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", {})
-    --vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+	buf_set_keymap(bufnr, "n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", {})
+	buf_set_keymap(bufnr, "n", "<leader>gd", "<cmd>Telescope lsp_definitions<CR>", {})
+	-- buf_set_keymap(bufnr, "n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", {})
+	buf_set_keymap(bufnr, "n", "<leader>k", "<cmd>lua vim.lsp.buf.hover()<CR>", {})
+	buf_set_keymap(bufnr, "n", "<leader>gi", "<cmd>Telescope lsp_implementations<CR>", {})
+	-- buf_set_keymap(bufnr, "n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", {})
+	buf_set_keymap(bufnr, "n", "<leader>l", "<cmd>lua vim.lsp.buf.signature_help()<CR>", {})
+	buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", {})
+	buf_set_keymap(bufnr, "n", "<leader>gr", "<cmd>Telescope lsp_references<CR>", {})
+	buf_set_keymap(bufnr, "n", "<leader>st", "<cmd>Telescope git_status<CR>", {})
+	-- buf_set_keymap(bufnr, "n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", {})
+	-- buf_set_keymap(bufnr, "n", "<leader>ac", "<cmd>Telescope lsp_code_actions<CR>", {})
+	buf_set_keymap(bufnr, "n", "<leader>ac", "<cmd>lua vim.lsp.buf.code_action()<CR>", {})
+	buf_set_keymap(bufnr, "n", "<leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>", {})
+	buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", {})
+	buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", {})
+	buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>Telescope diagnostics<CR>", {})
+	buf_set_keymap(bufnr, "n", "<leader>ff", "<cmd>lua vim.lsp.buf.format { async = true }<CR>", {})
+	-- buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", {})
+	--vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+
+	-- Toggle Inlay Hints
+	buf_set_keymap(bufnr, "n", "<leader>ih", "<cmd>lua toggle_lsp_inlay_hints(" .. bufnr .. ")<CR>", {
+		desc = "Toggle LSP Inlay Hints",
+	})
 end
 
 return m
