@@ -85,7 +85,8 @@ output "DP-3" {
     mode "3840x2160@143.988007"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 1.1
+    // scale 1.1
+    scale 1
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -100,7 +101,7 @@ output "DP-3" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=2160 y=0
+    // position x=2160 y=0
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -211,13 +212,13 @@ layout {
         // radius. It has to assume that windows have square corners, leading to
         // shadow artifacts inside the CSD rounded corners. This setting fixes
         // those artifacts.
-        // 
+        //
         // However, instead you may want to set prefer-no-csd and/or
         // geometry-corner-radius. Then, niri will know the corner radius and
         // draw the shadow correctly, without having to draw it behind the
         // window. These will also remove client-side shadows if the window
         // draws any.
-        // 
+        //
         // draw-behind-window true
 
         // You can change how shadows look. The values below are in logical
@@ -361,16 +362,22 @@ binds {
     Super+Alt+L { spawn "swaylock" "-c" "323232" "-l" "-k"; }
     Mod+B       { spawn "firefox"; }
 
-    // Change the desktop background to a random image from the `~/Pictures/RiceWallpapers/` directory.
-    // This command will kill swaybg and start it again with a new random image.
+    // Change the desktop background to a random image from the
+    // `~/Pictures/RiceWallpapers/` directory.
+    // This command will kill swaybg and start it again with a new random
+    // image.
     Mod+Alt+R { spawn "bash" "-c" "pkill swaybg; swaybg -m fill -i $(find ~/Pictures/RiceWallpapers/ -type f | shuf -n 1)"; }
 
-
-    // Needs cliphist installed + imagemagick
-    Super+Ctrl+V { spawn "cliphist-fuzzel-img"; }
+    // Needs cliphist installed + imagemagick (`sudo pacman -S cliphist imagemagick`).
+    // Copy: https://github.com/sentriz/cliphist/blob/master/contrib/cliphist-fuzzel-img
+    // Into `./local/bin/cliphist-fuzzel-img`
+    Mod+Alt+V { spawn "cliphist-fuzzel-img"; }
 
     // Open Thunar file manager.
     Mod+E { spawn "thunar"; }
+
+    // Emoji picker - bemoji (with fuzzel) (yay -S bemoji)
+    Super+Alt+S { spawn "bash" "-c" "BEMOJI_PICKER_CMD=\"fuzzel -d\" bemoji"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.

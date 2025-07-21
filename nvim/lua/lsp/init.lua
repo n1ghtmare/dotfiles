@@ -37,6 +37,16 @@ end
 
 setup_lsp_diagnostics()
 
+-- Have a border around the lsp hover window
+local hover = vim.lsp.buf.hover
+vim.lsp.buf.hover = function()
+    ---@diagnostic disable-next-line: redundant-parameter
+    return hover({
+        max_width = 110,
+        border = "single",
+    })
+end
+
 -- Better auto completion capabilities (expand the built in ones)
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)

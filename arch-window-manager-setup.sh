@@ -161,11 +161,3 @@ ln -sv $dotfiles_path/xinit/.xinitrc $HOME
 printf 'done\n'
 
 
-# libinput gestures (allow for gestures on touchpad)
-# -------------------------------
-printf '\n=> Setting up libinput-gestures\n'
-rm -f $HOME/.config/libinput-gestures.conf
-printf '=> Creating libinput-gestures conf symlink...'
-ln -sv $dotfiles_path/libinput-gestures/libinput-gestures.conf $HOME/.config
-printf 'done\n'
-
