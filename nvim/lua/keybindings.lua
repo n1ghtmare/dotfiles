@@ -15,18 +15,6 @@ local set_keymap = function(mode, key, event, opts)
     vim.api.nvim_set_keymap(mode, key, event, result)
 end
 
--- MiniPick Buffers with the ability to wipe out the selected buffer by
--- pressing <C-d> (Ctrl + d)
-function PickBufferSpecial()
-    local wipeout_cur = function()
-        ---@diagnostic disable-next-line: undefined-global
-        vim.api.nvim_buf_delete(MiniPick.get_picker_matches().current.bufnr, {})
-    end
-    local buffer_mappings = { wipeout = { char = "<C-d>", func = wipeout_cur } }
-    ---@diagnostic disable-next-line: undefined-global
-    MiniPick.builtin.buffers(local_opts, { mappings = buffer_mappings })
-end
-
 -- vim.g.mapleader = " " -- map leader to space
 
 -- Paste without losing yanked content
@@ -62,7 +50,7 @@ set_keymap("i", "<C-l>", "copilot#Accept(\"<CR>\")", { expr = true, script = tru
 set_keymap("n", "<C-p>", "<cmd>Pick files<CR>", { desc = "Find files [Ctrl-p]" })
 set_keymap("n", "<C-e>", "<cmd>Pick grep_live<CR>", { desc = "Search with grep (contents of files) [Ctrl-e]" })
 -- set_keymap("n", "<C-b>", "<cmd>Pick buffers<CR>", { desc = "Find [b]uffers [Ctrl-b]" })
-set_keymap("n", "<C-b>", ":lua PickBufferSpecial()<CR>", { desc = "Find [b]uffers [Ctrl-b]" })
+set_keymap("n", "<C-b>", "<cmd>Pick my_buffers<CR>", { desc = "Find [b]uffers [Ctrl-b]" })
 set_keymap("n", "<leader>ds", "<cmd>Pick lsp scope='document_symbol'<CR>", { desc = "Search [d]ocument [s]ymbols" })
 set_keymap("n", "<leader>hp", "<cmd>Pick help<CR>", { desc = "Search [h]el[p]" })
 set_keymap("n", "<leader>mk", "<cmd>Pick marks<CR>", { desc = "Search [m]ar[k]s" })
