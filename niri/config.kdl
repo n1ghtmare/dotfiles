@@ -260,7 +260,7 @@ spawn-at-startup "waybar"
 // Background image (random image from ~/Pictures/RiceWallpapers/).
 spawn-at-startup "bash" "-c" "swaybg -m fill -i $(find ~/Pictures/RiceWallpapers/ -type f | shuf -n 1)"
 // Notification daemon.
-spawn-at-startup "mako"
+spawn-at-startup "mako" "--background-color" "#070e11" "--border-color" "#ff0088" "--padding" "10"
 // Clipboard history daemon.
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 
@@ -283,7 +283,7 @@ prefer-no-csd
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/Screenshot-from_%Y-%m-%d_%H-%M-%S.png"
 
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null

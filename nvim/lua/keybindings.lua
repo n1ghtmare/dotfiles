@@ -46,8 +46,11 @@ set_keymap("n", "<leader>wt", ":lua MiniTrailspace.trim()<CR>", {})
 -- Copilot Ctrl-l to accept the suggestion
 set_keymap("i", "<C-l>", "copilot#Accept(\"<CR>\")", { expr = true, script = true })
 
+-- FFF file picker
+set_keymap("n", "<C-p>", "<cmd>FFFFind<CR>", { desc = "Find files [Ctrl-p]" })
+
 -- Mini Pick
-set_keymap("n", "<C-p>", "<cmd>Pick files<CR>", { desc = "Find files [Ctrl-p]" })
+-- set_keymap("n", "<C-p>", "<cmd>Pick files<CR>", { desc = "Find files [Ctrl-p]" })
 set_keymap("n", "<C-e>", "<cmd>Pick grep_live<CR>", { desc = "Search with grep (contents of files) [Ctrl-e]" })
 -- set_keymap("n", "<C-b>", "<cmd>Pick buffers<CR>", { desc = "Find [b]uffers [Ctrl-b]" })
 set_keymap("n", "<C-b>", "<cmd>Pick my_buffers<CR>", { desc = "Find [b]uffers [Ctrl-b]" })
