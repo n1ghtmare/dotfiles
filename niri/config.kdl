@@ -320,6 +320,13 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
+
+}
+
+// Open qalculate-gtk as floating by default.
+window-rule {
+    match app-id=r#"^qalculate-gtk"#
+    open-floating true
 }
 
 // Example: block out two password managers from screen capture.

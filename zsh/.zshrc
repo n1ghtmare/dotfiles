@@ -140,3 +140,6 @@ esac
 
 # Configure thefuck
 eval "$(thefuck --alias fk)"
+
+# Enable completion for jujutsu version control system
+source <(jj util completion zsh)
