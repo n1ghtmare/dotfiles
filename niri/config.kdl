@@ -256,13 +256,16 @@ layout {
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
 // Top/System bar.
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
 // Background image (random image from ~/Pictures/RiceWallpapers/).
-spawn-at-startup "bash" "-c" "swaybg -m fill -i $(find ~/Pictures/RiceWallpapers/ -type f | shuf -n 1)"
+// spawn-at-startup "bash" "-c" "swaybg -m fill -i $(find ~/Pictures/RiceWallpapers/ -type f | shuf -n 1)"
 // Notification daemon.
-spawn-at-startup "mako" "--background-color" "#070e11" "--border-color" "#ff0088" "--padding" "10"
+// spawn-at-startup "mako" "--background-color" "#070e11" "--border-color" "#ff0088" "--padding" "10"
 // Clipboard history daemon.
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+
+// Spawn the noctalia-shell IPC server for qs.
+spawn-at-startup "qs" "-c" "noctalia-shell"
 
 // This makes x apps work with niri.
 // // Make non wayland apps work with niri (MS Teams for example, note that
@@ -305,13 +308,13 @@ animations {
 
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
-window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
-}
+// window-rule {
+//     // This regular expression is intentionally made as specific as possible,
+//     // since this is the default config, and we want no false positives.
+//     // You can get away with just app-id="wezterm" if you want.
+//     match app-id=r#"^org\.wezfurlong\.wezterm$"#
+//     default-column-width {}
+// }
 
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
@@ -365,7 +368,8 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return  { spawn "kitty"; }
-    Mod+Space   { spawn "fuzzel"; }
+    // Mod+Space   { spawn "fuzzel"; }
+    Mod+Space   { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     Super+Alt+L { spawn "swaylock" "-c" "323232" "-l" "-k"; }
     Mod+B       { spawn "firefox"; }
 
@@ -373,7 +377,7 @@ binds {
     // `~/Pictures/RiceWallpapers/` directory.
     // This command will kill swaybg and start it again with a new random
     // image.
-    Mod+Alt+R { spawn "bash" "-c" "pkill swaybg; swaybg -m fill -i $(find ~/Pictures/RiceWallpapers/ -type f | shuf -n 1)"; }
+    // Mod+Alt+R { spawn "bash" "-c" "pkill swaybg; swaybg -m fill -i $(find ~/Pictures/RiceWallpapers/ -type f | shuf -n 1)"; }
 
     // Needs cliphist installed + imagemagick (`sudo pacman -S cliphist imagemagick`).
     // Copy: https://github.com/sentriz/cliphist/blob/master/contrib/cliphist-fuzzel-img
