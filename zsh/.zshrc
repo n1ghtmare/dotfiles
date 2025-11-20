@@ -34,6 +34,7 @@ source ~/Dev-Config/zsh-plugins/zsh-history-substring-search/zsh-history-substri
 source ~/Dev-Config/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source ~/Dev-Config/zsh-plugins/z/z.sh
 
+
 ZSH_HIGHLIGHT_STYLES[arg0]="fg=red"
 # fzf keybindings
 source /usr/share/fzf/key-bindings.zsh
@@ -142,4 +143,12 @@ esac
 eval "$(thefuck --alias fk)"
 
 # Enable completion for jujutsu version control system
+autoload -U compinit
+compinit
 source <(jj util completion zsh)
+
+# Setup carapace for argument completion
+# Link: https://carapace-sh.github.io/carapace-bin/carapace-bin.html
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)

@@ -1,6 +1,5 @@
 {
   "appLauncher": {
-    "backgroundOpacity": 1,
     "customLaunchPrefix": "",
     "customLaunchPrefixEnabled": false,
     "enableClipboardHistory": true,
@@ -14,6 +13,7 @@
     "cavaFrameRate": 60,
     "mprisBlacklist": [],
     "preferredPlayer": "",
+    "visualizerQuality": "high",
     "visualizerType": "wave",
     "volumeOverdrive": false,
     "volumeStep": 5
@@ -21,12 +21,14 @@
   "bar": {
     "backgroundOpacity": 1,
     "density": "default",
-    "floating": false,
-    "marginHorizontal": 0.25,
-    "marginVertical": 0.25,
+    "exclusive": true,
+    "floating": true,
+    "marginHorizontal": 0.79,
+    "marginVertical": 0,
     "monitors": [],
+    "outerCorners": false,
     "position": "top",
-    "showCapsule": true,
+    "showCapsule": false,
     "widgets": {
       "center": [
         {
@@ -47,7 +49,14 @@
           "labelMode": "index"
         },
         {
+          "colorName": "primary",
+          "hideWhenIdle": false,
+          "id": "AudioVisualizer",
+          "width": 200
+        },
+        {
           "hideMode": "hidden",
+          "hideWhenIdle": false,
           "id": "MediaMini",
           "maxWidth": 145,
           "scrollingMode": "hover",
@@ -55,18 +64,15 @@
           "showVisualizer": false,
           "useFixedWidth": false,
           "visualizerType": "linear"
-        },
-        {
-          "hideWhenIdle": false,
-          "id": "AudioVisualizer",
-          "width": 200
         }
       ],
       "right": [
         {
           "blacklist": [],
           "colorizeIcons": false,
-          "id": "Tray"
+          "drawerEnabled": false,
+          "id": "Tray",
+          "pinned": []
         },
         {
           "hideWhenZero": true,
@@ -84,7 +90,8 @@
           "showDiskUsage": true,
           "showMemoryAsPercent": true,
           "showMemoryUsage": true,
-          "showNetworkStats": true
+          "showNetworkStats": true,
+          "usePrimaryColor": false
         },
         {
           "customFont": "",
@@ -95,6 +102,7 @@
           "usePrimaryColor": false
         },
         {
+          "colorizeDistroLogo": false,
           "customIconPath": "",
           "icon": "",
           "id": "ControlCenter",
@@ -108,10 +116,11 @@
   },
   "brightness": {
     "brightnessStep": 5,
+    "enableDdcSupport": false,
     "enforceMinimum": true
   },
   "colorSchemes": {
-    "darkMode": false,
+    "darkMode": true,
     "generateTemplatesForPredefined": true,
     "manualSunrise": "06:30",
     "manualSunset": "18:30",
@@ -188,15 +197,20 @@
   },
   "general": {
     "animationDisabled": false,
-    "animationSpeed": 1,
+    "animationSpeed": 1.9100000000000001,
     "avatarImage": "/home/ddimitrov/Pictures/avatar.jpg",
     "compactLockScreen": false,
+    "dimmerOpacity": 0.51,
+    "enableShadows": false,
     "forceBlackScreenCorners": false,
     "language": "en",
     "lockOnSuspend": true,
     "radiusRatio": 0,
     "scaleRatio": 1,
     "screenRadiusRatio": 1,
+    "shadowDirection": "bottom_right",
+    "shadowOffsetX": 2,
+    "shadowOffsetY": 3,
     "showScreenCorners": false
   },
   "hooks": {
@@ -230,7 +244,8 @@
   "notifications": {
     "backgroundOpacity": 1,
     "criticalUrgencyDuration": 15,
-    "doNotDisturb": false,
+    "enableKeyboardLayoutToast": true,
+    "enabled": true,
     "location": "top_right",
     "lowUrgencyDuration": 3,
     "monitors": [],
@@ -240,6 +255,7 @@
   },
   "osd": {
     "autoHideMs": 2000,
+    "backgroundOpacity": 1,
     "enabled": true,
     "location": "top_right",
     "monitors": [],
@@ -256,17 +272,57 @@
     "videoCodec": "h264",
     "videoSource": "portal"
   },
-  "settingsVersion": 16,
+  "sessionMenu": {
+    "countdownDuration": 10000,
+    "enableCountdown": true,
+    "position": "center",
+    "powerOptions": [
+      {
+        "action": "lock",
+        "enabled": true
+      },
+      {
+        "action": "suspend",
+        "enabled": true
+      },
+      {
+        "action": "hibernate",
+        "enabled": true
+      },
+      {
+        "action": "reboot",
+        "enabled": true
+      },
+      {
+        "action": "logout",
+        "enabled": true
+      },
+      {
+        "action": "shutdown",
+        "enabled": true
+      }
+    ],
+    "showHeader": true
+  },
+  "settingsVersion": 23,
   "setupCompleted": true,
+  "systemMonitor": {
+    "cpuCriticalThreshold": 90,
+    "cpuWarningThreshold": 80,
+    "criticalColor": "",
+    "diskCriticalThreshold": 90,
+    "diskWarningThreshold": 80,
+    "memCriticalThreshold": 90,
+    "memWarningThreshold": 80,
+    "tempCriticalThreshold": 90,
+    "tempWarningThreshold": 80,
+    "useCustomColors": false,
+    "warningColor": ""
+  },
   "templates": {
+    "alacritty": false,
     "code": false,
     "discord": false,
-    "discord_armcord": false,
-    "discord_dorion": false,
-    "discord_equibop": false,
-    "discord_lightcord": false,
-    "discord_vesktop": false,
-    "discord_webcord": false,
     "enableUserTemplates": false,
     "foot": false,
     "fuzzel": false,
@@ -276,16 +332,19 @@
     "kitty": false,
     "pywalfox": false,
     "qt": false,
+    "spicetify": false,
     "vicinae": false,
-    "walker": false
+    "walker": false,
+    "wezterm": false
   },
   "ui": {
     "fontDefault": "Berkeley Mono",
     "fontDefaultScale": 1,
     "fontFixed": "Berkeley Mono",
     "fontFixedScale": 1,
+    "panelBackgroundOpacity": 1,
     "panelsAttachedToBar": true,
-    "panelsOverlayLayer": true,
+    "settingsPanelAttachToBar": false,
     "tooltipsEnabled": true
   },
   "wallpaper": {
@@ -295,19 +354,31 @@
     "enabled": true,
     "fillColor": "#000000",
     "fillMode": "crop",
+    "hideWallpaperFilenames": false,
     "monitors": [
       {
         "directory": "/home/ddimitrov/Pictures/RiceWallpapers",
         "name": "DP-3",
-        "wallpaper": "/home/ddimitrov/Pictures/RiceWallpapers/wallhaven-6drq7l.jpg"
+        "wallpaper": "/home/ddimitrov/Pictures/RiceWallpapers/wallhaven-952qod.png"
       }
     ],
+    "overviewEnabled": false,
+    "panelPosition": "follow_bar",
     "randomEnabled": true,
     "randomIntervalSec": 300,
     "recursiveSearch": false,
     "setWallpaperOnAllMonitors": true,
     "transitionDuration": 1500,
     "transitionEdgeSmoothness": 0.05,
-    "transitionType": "random"
+    "transitionType": "random",
+    "useWallhaven": false,
+    "wallhavenCategories": "111",
+    "wallhavenOrder": "desc",
+    "wallhavenPurity": "100",
+    "wallhavenQuery": "",
+    "wallhavenResolutionHeight": "",
+    "wallhavenResolutionMode": "atleast",
+    "wallhavenResolutionWidth": "",
+    "wallhavenSorting": "date_added"
   }
 }
