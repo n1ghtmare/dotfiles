@@ -1,0 +1,10 @@
+"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+
+[user]
+name = "Dimitar Dimitrov"
+email = "dimitrov2k@gmail.com"
+
+[ui]
+default-command = "log"
+# difftastic as the default diff tool
+diff-formatter = ["difft", "--color=always", "$left", "$right"]

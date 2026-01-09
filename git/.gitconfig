@@ -1,0 +1,54 @@
+[user]
+    email = dimitrov2k@gmail.com
+    name = Dimitar Dimitrov
+    signingkey = /home/ddimitrov/.ssh/id_ed25519.pub
+
+; [core]
+;     pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+; [delta]
+;     navigate = true    # use n and N to move between diff sections
+;     side-by-side = true
+;     light = false
+;     theme = base16
+
+    # delta detects terminal colors automatically; set one of these to disable auto-detection
+    # dark = true
+    # light = true
+
+; [merge]
+;     conflictstyle = diff3
+
+[merge "mergiraf"]
+    name = mergiraf
+    driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+
+# if you haven't got a global gitattributes file yet
+[core]
+    attributesfile = ~/.gitattributes
+
+[diff]
+    ; colorMoved = default
+    external = difft
+[gpg]
+	format = ssh
+
+[alias]
+    # Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
+    dlog = -c diff.external=difft log --ext-diff
+    dshow = -c diff.external=difft show --ext-diff
+    ddiff = -c diff.external=difft diff
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

@@ -116,17 +116,23 @@ fi
 printf '=> Creating gitui config folder symlink\n'
 ln -sv $dotfiles_path/gitui $gutui_path
 
-# zathura
+# jj
 # -------------------------------
-#printf '\n=> Setting up zathura\n'
-#
-#zathura_path=$HOME/.config/zathura
-#
-#if [[ -d $zathura_path ]]; then
-#    printf '=> An existing zathura config folder exists - will delete it...\n'
-#    rm -rf $zathura_path
-#fi
-#
-#printf '=> Creating zathura config folder symlink\n'
-#ln -sv $dotfiles_path/zathura $zathura_path
+printf "\n=> Setting up jj\n"
+jj_path=$HOME/.config/jj
+
+if [[ -d $jj_path ]]; then
+    printf "=> An existing jj config folder exists - will delete it...\n"
+    rm -rf $jj_path
+fi
+
+printf "=> Creating jj config folder symlink\n"
+ln -sv $dotfiles_path/jj $jj_path
+
+# git
+# -------------------------------
+printf "\n=> Setting up git\n"
+rm -f $HOME/.gitconfig
+printf "=> Creating git config symlink\n"
+ln -sv $dotfiles_path/git/.gitconfig $HOME/.gitconfig
 
