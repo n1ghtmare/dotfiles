@@ -24,14 +24,6 @@ printf "=> Creating nvim config folder symlink\n"
 ln -sv $dotfiles_path/nvim $nvim_path
 
 
-# tmux
-# -------------------------------
-printf "\n=> Setting up tmux\n"
-rm -rf $HOME/.tmux.conf
-printf "=> Creating tmux config symlink\n"
-ln -sv $dotfiles_path/tmux/.tmux.conf $HOME/.tmux.conf
-
-
 # zsh
 # -------------------------------
 printf "\n=> Setting up zsh\n"
@@ -78,43 +70,6 @@ else
     printf '=> Assuming Arch Linux (will use default kitty config)\n'
     ln -sv $dotfiles_path/kitty/arch $kitty_path
 fi
-
-
-# wezterm
-# -------------------------------
-printf '\n=> Setting up wezterm\n'
-wezterm_path=$HOME/.wezterm.lua
-printf '=> Creating wezterm config symlink\n'
-ln -sv $dotfiles_path/wezterm/.wezterm.lua $wezterm_path
-
-
-# bat
-# -------------------------------
-printf '\n=> Setting up bat\n'
-
-bat_path=$HOME/.config/bat
-
-if [[ -d $bat_path ]]; then
-    printf '=> An existing bat config folder exists - will delete it...\n'
-    rm -rf $bat_path
-fi
-
-printf '=> Creating bat config folder symlink\n'
-ln -sv $dotfiles_path/bat $bat_path
-
-# gitui
-# -------------------------------
-printf '\n=> Setting up gitui\n'
-
-gutui_path=$HOME/.config/gitui
-
-if [[ -d $gutui_path ]]; then
-    printf '=> An existing gitui config folder exists - will delete it...\n'
-    rm -rf $gutui_path
-fi
-
-printf '=> Creating gitui config folder symlink\n'
-ln -sv $dotfiles_path/gitui $gutui_path
 
 # jj
 # -------------------------------
