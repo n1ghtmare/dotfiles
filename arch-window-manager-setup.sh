@@ -25,16 +25,23 @@ ln -sv $dotfiles_path/niri $niri_path
 printf 'done\n'
 
 
-# fuzzel (wayland launcher)
+# noctalia (shell)
 # -------------------------------
-printf '\n=> Setting up fuzzel (wayland launcher)\n'
-fuzzel_path=$HOME/.config/fuzzel
-if [[ -d $fuzzel_path ]]; then
-    printf '=> An existing fuzzel config folder exists - will delete it...\n'
-    rm -rf $fuzzel_path
-fi
-printf '=> Creating fuzzel config folder symlink...'
-ln -sv $dotfiles_path/fuzzel $fuzzel_path
+# Only the custom palette is tracked. Everything else (bar layout, dock,
+# widgets, ...) is configured per-machine in the Settings UI and lives in the
+# untracked ~/.config/noctalia/config.toml -- deliberately not synced.
+#
+# Note this cannot be a whole-folder symlink: noctalia writes its own files
+# (colors.json, plugins.json, plugins/, ...) into the config folder. And it does
+# not follow a directory symlink for palettes/, so the .json is linked directly.
+printf '\n=> Setting up noctalia (shell)\n'
+noctalia_path=$HOME/.config/noctalia
+
+mkdir -p $noctalia_path/palettes
+printf '=> Linking noctalia palette...'
+ln -sfnv $dotfiles_path/noctalia/palettes/Noirbuddy-Oxide.json $noctalia_path/palettes/Noirbuddy-Oxide.json
 printf 'done\n'
 
-# TODO: Add settings for Noctalia here
+printf '=> Activating palette...\n'
+noctalia msg color-scheme-set custom Noirbuddy-Oxide || \
+    printf '=> noctalia not running yet - activate later with:\n     noctalia msg color-scheme-set custom Noirbuddy-Oxide\n'

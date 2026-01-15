@@ -17,7 +17,7 @@ input {
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
             layout "us,bg"
             variant ",phonetic"
-            options "grp:ralt_rshift_toggle"
+            options "grp:ralt_rshift_toggle,caps:escape"
         }
         repeat-delay 375
         repeat-rate 55
@@ -104,6 +104,14 @@ output "DP-3" {
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
     // position x=2160 y=0
+}
+
+// Laptop's built-in display. Output blocks only apply to a connected output of
+// that name, so both machines' blocks can live here.
+output "eDP-1" {
+    mode "2160x1350@89.96"
+    scale 1.3
+    transform "normal"
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -264,8 +272,8 @@ layout {
 // Notification daemon.
 // spawn-at-startup "mako" "--background-color" "#070e11" "--border-color" "#ff0088" "--padding" "10"
 
-// Spawn the noctalia-shell IPC server for qs.
-spawn-at-startup "qs" "-c" "noctalia-shell"
+// Spawn noctalia
+spawn-at-startup "noctalia"
 
 // This makes x apps work with niri.
 // // Make non wayland apps work with niri (MS Teams for example, note that
@@ -459,9 +467,8 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return  { spawn "kitty"; }
-    // Mod+Space   { spawn "fuzzel"; }
-    Mod+Space   { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-    Super+Alt+L { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    Mod+Space   { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Super+Alt+L { spawn "noctalia" "msg" "session" "lock"; }
     Mod+B       { spawn "firefox"; }
 
     // Change the desktop background to a random image from the
@@ -471,7 +478,7 @@ binds {
     // Mod+Alt+R { spawn "bash" "-c" "pkill swaybg; swaybg -m fill -i $(find ~/Pictures/RiceWallpapers/ -type f | shuf -n 1)"; }
 
     // Open the clipboard history menu.
-    Mod+Alt+V { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
+    Mod+Alt+V { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
 
     // Open Thunar file manager.
     Mod+E { spawn "thunar"; }
