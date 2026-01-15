@@ -69,11 +69,21 @@ set_keymap("n", "N", "Nzzzv", {})
 -- Todo Comments
 set_keymap("n", "<leader>td", "<cmd>TodoQuickFix<CR>", {})
 
+-- Copy file path to clipboard
+set_keymap("n", "<leader>cfp", ":lua copy_current_file_path()<CR>", { desc = "Copy current file path to clipboard" })
+
 -- A global function to toggle LSP inlay hints for the provided buffer number
 -- This is used with the keybinding below
 function LspInlayHintsToggle(bufnr)
     local is_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
     vim.lsp.inlay_hint.enable(not is_enabled, { bufnr = bufnr })
+end
+
+-- Copy the current file path to the clipboard
+function copy_current_file_path()
+    local file_path = vim.api.nvim_buf_get_name(0)
+    vim.fn.setreg("+", file_path)
+    print("Copied file path: " .. file_path)
 end
 
 -- LSP
