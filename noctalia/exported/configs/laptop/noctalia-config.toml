@@ -1,0 +1,193 @@
+[bar.default]
+capsule_radius = 0
+center = [ "active_window" ]
+concave_edge_corners = false
+end = [
+    "tray",
+    "notifications",
+    "bluetooth",
+    "network",
+    "battery",
+    "volume",
+    "spacer_3",
+    "group:g1",
+    "spacer_2",
+    "date",
+    "control-center"
+]
+font_family = "Berkeley Mono"
+font_weight = 500
+margin_edge = 0
+margin_ends = 14
+margin_opposite_edge = 0
+padding = 11
+radius = 0
+radius_bottom_left = 0
+radius_bottom_right = 0
+radius_top_left = 0
+radius_top_right = 0
+scale = 1.0
+shadow = false
+start = [ "workspaces", "audio_visualizer", "media" ]
+widget_spacing = 13
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "temp", "cpu", "ram", "network_rx", "network_tx", "sysmon" ]
+    opacity = 1.0
+    padding = 6.0
+    radius = 0.0
+
+[battery.device."/org/freedesktop/UPower/devices/keyboard_dev_FE_A6_5C_BB_5C_8C"]
+warning_threshold = 10
+
+[desktop_widgets]
+enabled = false
+
+[dock]
+active_monitor_only = true
+enabled = true
+icon_size = 38
+item_spacing = 13
+radius = 0
+reserve_space = false
+show_dots = true
+smart_auto_hide = true
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 1108.0
+    cy = 1266.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+
+[shell]
+avatar_path = "/home/ddimitrov/Pictures/avatar.jpg"
+button_borders = false
+corner_radius_scale = 0.0
+font_family = "Berkeley Mono"
+
+    [shell.launcher]
+    provider_prefix = ">"
+
+    [shell.panel]
+    launcher_placement = "floating"
+
+[theme]
+custom_palette = "Noirbuddy-Oxide"
+mode = "dark"
+source = "custom"
+
+[wallpaper]
+directory = "/home/ddimitrov/Pictures/RiceWallpapers"
+
+    [wallpaper.automation]
+    enabled = true
+    interval_seconds = 120
+
+    [wallpaper.default]
+    path = "/home/ddimitrov/Pictures/RiceWallpapers/wallhaven-481p92.jpg"
+
+    [wallpaper.last]
+    path = "/home/ddimitrov/Pictures/RiceWallpapers/wallhaven-481p92.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/ddimitrov/Pictures/RiceWallpapers/wallhaven-481p92.jpg"
+
+[widget.active_window]
+icon_size = 18
+max_length = 501
+scale = 0.94999999999999996
+title_scroll = "on_hover"
+
+[widget.audio_visualizer]
+bands = 32
+show_when_idle = true
+width = 192
+
+[widget.battery]
+show_label = false
+
+[widget.control-center]
+color = "primary"
+custom_image = ""
+custom_image_colorize = true
+scale = 1.1000000000000001
+
+[widget.cpu]
+show_value = false
+
+[widget.date]
+format = "{:%H:%M %a, %b %d}"
+scale = 0.90000000000000002
+type = "clock"
+
+[widget.media]
+hide_album_art = true
+hide_when_no_media = true
+max_length = 347
+scale = 0.94999999999999996
+title_scroll = "always"
+
+[widget.network]
+show_label = false
+
+[widget.network_rx]
+enabled = true
+show_value = false
+
+[widget.network_tx]
+enabled = true
+show_value = false
+
+[widget.ram]
+show_value = false
+
+[widget.spacer_2]
+type = "spacer"
+
+[widget.spacer_3]
+type = "spacer"
+
+[widget.sysmon]
+show_value = false
+stat = "disk_used_pct"
+
+[widget.temp]
+show_value = false
+
+[widget.tray]
+drawer = true
+
+[widget.volume]
+show_label = false
+
+[widget.workspaces]
+font_weight = 700
+inactive_pill_size = 0.95000000000000007
