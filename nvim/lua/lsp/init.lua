@@ -124,6 +124,7 @@ vim.lsp.config["rust_analyzer"] = {
 local vue_language_server_path = vim.fn.expand("$MASON/packages/vue-language-server/node_modules/@vue/language-server")
 
 vim.lsp.config["ts_ls"] = {
+    root_markers = { "package.json", "tsconfig.json", "jsconfig.json" },
     init_options = {
         plugins = {
             {
@@ -140,6 +141,18 @@ vim.lsp.config["ts_ls"] = {
         "typescriptreact",
         "vue",
     },
+    single_file_support = false,
+}
+
+vim.lsp.config["denols"] = {
+    root_markers = { "deno.json", "deno.jsonc" },
+    root_dir = function(bufnr, on_dir)
+        local fname = vim.api.nvim_buf_get_name(bufnr)
+        local result = vim.fs.root(fname, { "deno.json", "deno.jsonc" })
+        if result then
+            on_dir(result)
+        end
+    end,
 }
 
 -- 4. Enable Servers
@@ -157,6 +170,7 @@ local servers = {
     "lua_ls",
     "rust_analyzer",
     "ts_ls",
+    "denols",
 }
 
 for _, server in ipairs(servers) do
