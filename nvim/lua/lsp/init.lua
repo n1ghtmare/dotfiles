@@ -35,12 +35,6 @@ end
 
 setup_lsp_diagnostics()
 
--- Have a border around the lsp hover window
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.buf.hover, {
-    max_width = 110,
-    border = "single",
-})
-
 -- Setup Mason (Ensure binaries are installed)
 require("mason").setup()
 require("mason-tool-installer").setup({

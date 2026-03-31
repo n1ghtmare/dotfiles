@@ -90,7 +90,13 @@ end
 function m.lsp_keybindings_for_buffer(bufnr)
     buf_set_keymap(bufnr, "n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", {})
     buf_set_keymap(bufnr, "n", "<leader>gd", "<cmd>Pick lsp scope='definition'<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>k", "<cmd>lua vim.lsp.buf.hover()<CR>", {})
+    buf_set_keymap(
+        bufnr,
+        "n",
+        "<leader>k",
+        "<cmd>lua vim.lsp.buf.hover({ max_width = 110, border = 'single' })<CR>",
+        {}
+    )
 
     buf_set_keymap(bufnr, "n", "<leader>gi", "<cmd>Pick lsp scope='implementation'<CR>", {})
     buf_set_keymap(bufnr, "n", "<leader>l", "<cmd>lua vim.lsp.buf.signature_help()<CR>", {})
