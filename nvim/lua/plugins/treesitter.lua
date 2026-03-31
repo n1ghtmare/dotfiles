@@ -1,3 +1,4 @@
+-- You need to install `pacman -S tree-sitter-cli` for this to work
 return {
     -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
