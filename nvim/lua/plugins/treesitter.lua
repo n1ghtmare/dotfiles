@@ -7,7 +7,6 @@ return {
         { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
         "nvim-treesitter/nvim-treesitter-context",
     },
-    build = ":TSUpdate",
     config = function()
         require("treesitter-context").setup({ enable = true })
 
@@ -90,13 +89,6 @@ return {
             require("nvim-treesitter").install(to_install)
         end
 
-        -- Incremental selection: Neovim 0.12 has built-in `an` (expand) and `in` (shrink)
-        -- in visual mode. Remap to your old <C-space> / <C-backspace> keybinds.
-        -- NOTE: <C-s> scope_incremental has no built-in equivalent and is lost.
-        vim.keymap.set("n", "<C-space>", "van", { remap = true, desc = "Init treesitter selection" })
-        vim.keymap.set("x", "<C-space>", "an", { remap = true, desc = "Increment treesitter selection" })
-        vim.keymap.set("x", "<C-backspace>", "in", { remap = true, desc = "Decrement treesitter selection" })
-
         -- Textobjects config
         require("nvim-treesitter-textobjects").setup({
             select = {
@@ -107,65 +99,8 @@ return {
             },
         })
 
-        local select_textobject = require("nvim-treesitter-textobjects.select").select_textobject
-        local swap = require("nvim-treesitter-textobjects.swap")
-        local move = require("nvim-treesitter-textobjects.move")
-
-        -- Select keymaps (visual + operator-pending)
-        vim.keymap.set({ "x", "o" }, "aa", function()
-            select_textobject("@parameter.outer", "textobjects")
-        end)
-        vim.keymap.set({ "x", "o" }, "ia", function()
-            select_textobject("@parameter.inner", "textobjects")
-        end)
-        vim.keymap.set({ "x", "o" }, "af", function()
-            select_textobject("@function.outer", "textobjects")
-        end)
-        vim.keymap.set({ "x", "o" }, "if", function()
-            select_textobject("@function.inner", "textobjects")
-        end)
-        vim.keymap.set({ "x", "o" }, "ac", function()
-            select_textobject("@class.outer", "textobjects")
-        end)
-        vim.keymap.set({ "x", "o" }, "ic", function()
-            select_textobject("@class.inner", "textobjects")
-        end)
-
-        -- Move keymaps (normal + visual + operator-pending)
-        vim.keymap.set({ "n", "x", "o" }, "]m", function()
-            move.goto_next_start("@function.outer", "textobjects")
-        end)
-        vim.keymap.set({ "n", "x", "o" }, "]]", function()
-            move.goto_next_start("@class.outer", "textobjects")
-        end)
-        vim.keymap.set({ "n", "x", "o" }, "]M", function()
-            move.goto_next_end("@function.outer", "textobjects")
-        end)
-        vim.keymap.set({ "n", "x", "o" }, "][", function()
-            move.goto_next_end("@class.outer", "textobjects")
-        end)
-        vim.keymap.set({ "n", "x", "o" }, "[m", function()
-            move.goto_previous_start("@function.outer", "textobjects")
-        end)
-        vim.keymap.set({ "n", "x", "o" }, "[[", function()
-            move.goto_previous_start("@class.outer", "textobjects")
-        end)
-        vim.keymap.set({ "n", "x", "o" }, "[M", function()
-            move.goto_previous_end("@function.outer", "textobjects")
-        end)
-        vim.keymap.set({ "n", "x", "o" }, "[]", function()
-            move.goto_previous_end("@class.outer", "textobjects")
-        end)
-
-        -- Swap keymaps (normal)
-        vim.keymap.set("n", "<leader>a", function()
-            swap.swap_next("@parameter.inner")
-        end)
-        vim.keymap.set("n", "<leader>A", function()
-            swap.swap_previous("@parameter.inner")
-        end)
-
         -- Treat handlebars as html
         vim.treesitter.language.register("html", "handlebars", "hbs")
     end,
+    build = ":TSUpdate",
 }

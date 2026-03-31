@@ -70,8 +70,91 @@ set_keymap("n", "N", "Nzzzv", {})
 set_keymap("n", "<leader>td", "<cmd>TodoQuickFix<CR>", {})
 
 -- Copy file path to clipboard
-set_keymap("n", "<leader>cfp", ":lua copy_current_file_path()<CR>", { desc = "Copy current file path to clipboard" })
+set_keymap("n", "<leader>cfp", ":lua CopyCurrentFilePath()<CR>", { desc = "Copy current file path to clipboard" })
 
+-- Treesitter incremental selection
+vim.keymap.set("n", "<C-space>", "van", { remap = true, desc = "Init treesitter selection" })
+vim.keymap.set("x", "<C-space>", "an", { remap = true, desc = "Increment treesitter selection" })
+vim.keymap.set("x", "<C-backspace>", "in", { remap = true, desc = "Decrement treesitter selection" })
+
+-- Treesitter textobjects
+local select_textobject = require("nvim-treesitter-textobjects.select").select_textobject
+local swap = require("nvim-treesitter-textobjects.swap")
+local move = require("nvim-treesitter-textobjects.move")
+
+-- Select keymaps (visual + operator-pending)
+--
+-- In normal mode, `caa` (change around argument) or `vaa` (to visually
+-- select around argument)
+vim.keymap.set({ "x", "o" }, "aa", function()
+    select_textobject("@parameter.outer", "textobjects")
+end)
+-- In normal mode, `cia` (change inside argument) or `via` (to visually
+-- select inside argument)
+vim.keymap.set({ "x", "o" }, "ia", function()
+    select_textobject("@parameter.inner", "textobjects")
+end)
+-- In normal mode, `caf` (change around function) or `vaf` (to visually
+-- select around function)
+vim.keymap.set({ "x", "o" }, "af", function()
+    select_textobject("@function.outer", "textobjects")
+end)
+-- In normal mode, `cif` (change inside function) or `via` (to visually
+-- select inside function)
+vim.keymap.set({ "x", "o" }, "if", function()
+    select_textobject("@function.inner", "textobjects")
+end)
+-- In normal mode, `cac` (change around class) or `vac` (to visually
+-- select around class)
+vim.keymap.set({ "x", "o" }, "ac", function()
+    select_textobject("@class.outer", "textobjects")
+end)
+-- In normal mode, `cic` (change inside class) or `vic` (to visually
+-- select inside class)
+vim.keymap.set({ "x", "o" }, "ic", function()
+    select_textobject("@class.inner", "textobjects")
+end)
+
+-- Move keymaps (normal + visual + operator-pending)
+--
+-- Jump to the next start of a function with `]m`, next class with
+-- `]]`, end of function with `]M`, and end of class with `][`.
+--
+-- Similarly, you can go to the previous start of a function with `[m`,
+-- previous class with `[[`, and previous end of a function or class
+-- with `[M` and `[]`, respectively.
+vim.keymap.set({ "n", "x", "o" }, "]m", function()
+    move.goto_next_start("@function.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]]", function()
+    move.goto_next_start("@class.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]M", function()
+    move.goto_next_end("@function.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "][", function()
+    move.goto_next_end("@class.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[m", function()
+    move.goto_previous_start("@function.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[[", function()
+    move.goto_previous_start("@class.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[M", function()
+    move.goto_previous_end("@function.outer", "textobjects")
+end)
+vim.keymap.set({ "n", "x", "o" }, "[]", function()
+    move.goto_previous_end("@class.outer", "textobjects")
+end)
+
+-- Swap keymaps (normal)
+vim.keymap.set("n", "<leader>a", function()
+    swap.swap_next("@parameter.inner")
+end)
+vim.keymap.set("n", "<leader>A", function()
+    swap.swap_previous("@parameter.inner")
+end)
 -- A global function to toggle LSP inlay hints for the provided buffer number
 -- This is used with the keybinding below
 function LspInlayHintsToggle(bufnr)
@@ -80,7 +163,7 @@ function LspInlayHintsToggle(bufnr)
 end
 
 -- Copy the current file path to the clipboard
-function copy_current_file_path()
+function CopyCurrentFilePath()
     local file_path = vim.api.nvim_buf_get_name(0)
     vim.fn.setreg("+", file_path)
     print("Copied file path: " .. file_path)
