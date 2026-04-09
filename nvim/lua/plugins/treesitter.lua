@@ -51,6 +51,7 @@ return {
             "jsdoc",
             "json",
             "json5",
+            "kdl",
             "lua",
             "luadoc",
             "make",

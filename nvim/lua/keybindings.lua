@@ -73,9 +73,9 @@ set_keymap("n", "<leader>td", "<cmd>TodoQuickFix<CR>", {})
 set_keymap("n", "<leader>cfp", ":lua CopyCurrentFilePath()<CR>", { desc = "Copy current file path to clipboard" })
 
 -- Treesitter incremental selection
-vim.keymap.set("n", "<C-space>", "van", { remap = true, desc = "Init treesitter selection" })
-vim.keymap.set("x", "<C-space>", "an", { remap = true, desc = "Increment treesitter selection" })
-vim.keymap.set("x", "<C-backspace>", "in", { remap = true, desc = "Decrement treesitter selection" })
+vim.keymap.set("n", "<A-o>", "van", { remap = true, desc = "Init treesitter selection" })
+vim.keymap.set("x", "<A-o>", "an", { remap = true, desc = "Increment treesitter selection" })
+vim.keymap.set("x", "<A-i>", "in", { remap = true, desc = "Decrement treesitter selection" })
 
 -- Treesitter textobjects
 local select_textobject = require("nvim-treesitter-textobjects.select").select_textobject
