@@ -37,6 +37,48 @@ local function custom_mini_pick_buffers(MiniPick)
     end
 end
 
+-- Custom MiniPick Files picker powered by fff.nvim's rust backend.
+-- Uses fff's frecency ranking, rendered through mini.pick's UI.
+-- Run via `MiniPick.registry.fffiles()`.
+local function custom_mini_pick_fffiles(MiniPick)
+    local function find(query)
+        -- fff.search handles backend init + the 7-arg fuzzy_search_files call
+        -- with config-based defaults. Returns a list of file items.
+        local ok, fff = pcall(require, "fff")
+        if not ok then
+            return {}
+        end
+
+        local results = fff.search(query or "", 100)
+
+        local items = {}
+        for _, r in ipairs(results) do
+            table.insert(items, {
+                text = r.relative_path or r.path,
+                path = r.path,
+            })
+        end
+        return items
+    end
+
+    local show = function(buf_id, items_to_show, query)
+        MiniPick.default_show(buf_id, items_to_show, query, { show_icons = true })
+    end
+
+    MiniPick.registry.fffiles = function()
+        MiniPick.start({
+            source = {
+                name = "FFFiles",
+                items = find,
+                match = function(_, _, query)
+                    MiniPick.set_picker_items(find(table.concat(query)), { do_match = false })
+                end,
+                show = show,
+            },
+        })
+    end
+end
+
 return {
     "echasnovski/mini.nvim",
     branch = "stable",
@@ -49,6 +91,7 @@ return {
         require("mini.extra").setup()
         require("mini.indentscope").setup()
         require("mini.pairs").setup()
+        -- require("mini.icons").setup()
 
         --[[
         To select items and put them in quickfix with :MiniPick:
@@ -73,5 +116,6 @@ return {
         vim.ui.select = MiniPick.ui_select
 
         custom_mini_pick_buffers(MiniPick)
+        custom_mini_pick_fffiles(MiniPick)
     end,
 }
