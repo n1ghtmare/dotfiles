@@ -91,7 +91,7 @@ return {
         require("mini.extra").setup()
         require("mini.indentscope").setup()
         require("mini.pairs").setup()
-        -- require("mini.icons").setup()
+        require("mini.icons").setup()
 
         --[[
         To select items and put them in quickfix with :MiniPick:
