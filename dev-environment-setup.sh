@@ -91,3 +91,13 @@ rm -f $HOME/.gitconfig
 printf "=> Creating git config symlink\n"
 ln -sv $dotfiles_path/git/.gitconfig $HOME/.gitconfig
 
+# fontconfig
+# -------------------------------
+printf "\n=> Setting up fontconfig\n"
+fontconfig_path=$HOME/.config/fontconfig
+if [[ -d $fontconfig_path ]]; then
+    printf "=> An existing fontconfig folder exists - will delete it...\n"
+    rm -rf $fontconfig_path
+fi
+printf "=> Creating fontconfig folder symlink\n"
+ln -sv $dotfiles_path/fontconfig $fontconfig_path
