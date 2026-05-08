@@ -261,8 +261,6 @@ layout {
 // spawn-at-startup "bash" "-c" "swaybg -m fill -i $(find ~/Pictures/RiceWallpapers/ -type f | shuf -n 1)"
 // Notification daemon.
 // spawn-at-startup "mako" "--background-color" "#070e11" "--border-color" "#ff0088" "--padding" "10"
-// Clipboard history daemon.
-spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 
 // Spawn the noctalia-shell IPC server for qs.
 spawn-at-startup "qs" "-c" "noctalia-shell"
@@ -470,10 +468,8 @@ binds {
     // image.
     // Mod+Alt+R { spawn "bash" "-c" "pkill swaybg; swaybg -m fill -i $(find ~/Pictures/RiceWallpapers/ -type f | shuf -n 1)"; }
 
-    // Needs cliphist installed + imagemagick (`sudo pacman -S cliphist imagemagick`).
-    // Copy: https://github.com/sentriz/cliphist/blob/master/contrib/cliphist-fuzzel-img
-    // Into `./local/bin/cliphist-fuzzel-img`
-    Mod+Alt+V { spawn "cliphist-fuzzel-img"; }
+    // Open the clipboard history menu.
+    Mod+Alt+V { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
 
     // Open Thunar file manager.
     Mod+E { spawn "thunar"; }
