@@ -19,6 +19,8 @@ input {
             variant ",phonetic"
             options "grp:ralt_rshift_toggle"
         }
+        repeat-delay 375
+        repeat-rate 55
     }
 
     // Next sections include libinput settings.
