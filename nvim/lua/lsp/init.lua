@@ -39,6 +39,8 @@ setup_lsp_diagnostics()
 require("mason").setup()
 require("mason-tool-installer").setup({
     ensure_installed = {
+        "clangd",
+        "clang-format",
         "gopls",
         "lua-language-server",
         "typescript-language-server",
@@ -157,6 +159,7 @@ local servers = {
     "prismals",
     "eslint",
     "cssls",
+    "clangd",
     "tailwindcss",
     "vue_ls",
     "bashls",

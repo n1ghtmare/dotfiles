@@ -4,6 +4,7 @@ return {
     opts = {
         -- Formatters by file type
         formatters_by_ft = {
+            c = { "clang-format" },
             lua = { "stylua" },
             rust = { "rustfmt" },
             javascript = { "prettierd", "prettier", stop_after_first = true },
