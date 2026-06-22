@@ -164,3 +164,11 @@ alias grep="grep --color=auto"
 #
 # # The next line enables shell command completion for gcloud.
 # if [ -f '/home/ddimitrov/.local/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/ddimitrov/.local/google-cloud-sdk/completion.zsh.inc'; fi
+
+# pnpm
+export PNPM_HOME="/home/ddimitrov/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
