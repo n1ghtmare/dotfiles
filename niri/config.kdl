@@ -461,7 +461,7 @@ binds {
     Mod+Return  { spawn "kitty"; }
     // Mod+Space   { spawn "fuzzel"; }
     Mod+Space   { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-    Super+Alt+L { spawn "swaylock" "-c" "323232" "-l" "-k"; }
+    Super+Alt+L { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
     Mod+B       { spawn "firefox"; }
 
     // Change the desktop background to a random image from the
