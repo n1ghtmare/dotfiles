@@ -1,0 +1,206 @@
+[bar.default]
+capsule_radius = 0
+center = [ "active_window" ]
+concave_edge_corners = false
+end = [
+    "tray",
+    "clipboard",
+    "bluetooth",
+    "keyboard_layout",
+    "notifications",
+    "volume",
+    "spacer_3",
+    "group:g1",
+    "spacer_2",
+    "date",
+    "control-center"
+]
+font_family = "Berkeley Mono"
+margin_ends = 14
+radius = 0
+shadow = false
+start = [ "workspaces", "audio_visualizer", "media" ]
+widget_spacing = 13
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface"
+    id = "g1"
+    members = [ "cpu", "ram", "network_rx", "network_tx", "sysmon" ]
+    opacity = 1.0
+    padding = 6.0
+    radius = 0.0
+
+[control_center.calendar]
+show_events_card = false
+
+[dock]
+auto_hide = true
+background_opacity = 0.99999997764825821
+border_width = 2.0
+concave_edge_corners = false
+enabled = true
+radius = 0
+reserve_space = false
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 21600.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 1800.0
+
+[location]
+address = "Bulgaria, Primorsko"
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-3" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1920.0
+    cy = 1978.0
+    output = "DP-3"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[osd]
+background_opacity = 0.9499999787658453
+
+[shell]
+corner_radius_scale = 0.0
+font_family = "Berkeley Mono"
+password_style = "random"
+popup_shadows = false
+
+    [shell.animation]
+    speed = 1.3000000193715096
+
+    [shell.launcher]
+    provider_prefix = ">"
+
+        [shell.launcher.providers.calculator]
+        prefix = ""
+
+    [shell.shadow]
+    alpha = 0.0
+
+[theme]
+custom_palette = "Noirbuddy-Oxide"
+source = "custom"
+
+    [theme.templates]
+    enable_builtin_templates = false
+    enable_community_templates = false
+
+[wallpaper]
+directory = "/home/ddimitrov/Pictures/RiceWallpapers"
+
+    [wallpaper.automation]
+    enabled = true
+
+    [wallpaper.default]
+    path = "/home/ddimitrov/Pictures/RiceWallpapers/wallhaven-x63w8d.jpg"
+
+    [wallpaper.last]
+    path = "/home/ddimitrov/Pictures/RiceWallpapers/wallhaven-x63w8d.jpg"
+
+    [wallpaper.monitors.DP-3]
+    path = "/home/ddimitrov/Pictures/RiceWallpapers/wallhaven-x63w8d.jpg"
+
+[widget.active_window]
+icon_size = 18
+max_length = 771
+scale = 0.94999999999999996
+title_scroll = "on_hover"
+
+[widget.audio_visualizer]
+bands = 32
+show_when_idle = true
+width = 192
+
+[widget.control-center]
+color = "primary"
+
+[widget.cpu]
+show_value = false
+
+[widget.date]
+format = "{:%H:%M %a, %b %d}"
+scale = 0.94999999999999996
+
+[widget.keyboard_layout]
+show_label = false
+
+[widget.media]
+hide_album_art = true
+hide_when_no_media = true
+max_length = 347
+scale = 0.94999999999999996
+title_scroll = "always"
+
+[widget.network_rx]
+show_value = false
+
+[widget.network_tx]
+show_value = false
+
+[widget.ram]
+show_value = false
+
+[widget.spacer_2]
+type = "spacer"
+
+[widget.spacer_3]
+type = "spacer"
+
+[widget.sysmon]
+show_value = false
+stat = "disk_used_pct"
+
+[widget.tray]
+drawer = true
+
+[widget.volume]
+show_label = false
+
+[widget.workspaces]
+font_weight = 700
+scale = 0.94999999999999996
