@@ -468,7 +468,8 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return  { spawn "kitty"; }
     Mod+Space   { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
-    Super+Alt+L { spawn "noctalia" "msg" "session" "lock"; }
+    Mod+Alt+L   { spawn "noctalia" "msg" "session" "lock"; }
+    Mod+Alt+N   { spawn "noctalia" "msg" "wallpaper-next"; }
     Mod+B       { spawn "firefox"; }
 
     // Change the desktop background to a random image from the
