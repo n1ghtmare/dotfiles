@@ -63,6 +63,9 @@ vim.lsp.config["*"] = {
     capabilities = capabilities,
 }
 
+-- Servers whose formatting is handled by another tool (prettierd, etc.)
+local no_formatting = { vue_ls = true, bashls = true, ts_ls = true, tsc = true }
+
 vim.api.nvim_create_autocmd("LspAttach", {
     desc = "LSP actions",
     callback = function(event)
@@ -70,7 +73,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local bufnr = event.buf
 
         -- Disable formatting for specific servers to avoid conflicts
-        if client.name == "vue_ls" or client.name == "bashls" or client.name == "ts_ls" then
+        if no_formatting[client.name] then
             client.server_capabilities.documentFormattingProvider = false
             client.server_capabilities.documentRangeFormattingProvider = false
         end
@@ -78,17 +81,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- Setup keybindings
         require("keybindings").lsp_keybindings_for_buffer(bufnr)
 
-        -- Document Highlight (specific to ts_ls in your old config)
-        if client.name == "ts_ls" and client.server_capabilities.document_highlight then
-            local highlight_augroup = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = false })
+        -- Highlight references of the symbol under the cursor
+        if client:supports_method("textDocument/documentHighlight") then
+            local group = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = false })
+            vim.api.nvim_clear_autocmds({ group = group, buffer = bufnr })
             vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
                 buffer = bufnr,
-                group = highlight_augroup,
+                group = group,
                 callback = vim.lsp.buf.document_highlight,
             })
             vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
                 buffer = bufnr,
-                group = highlight_augroup,
+                group = group,
                 callback = vim.lsp.buf.clear_references,
             })
         end
@@ -118,11 +122,44 @@ vim.lsp.config["rust_analyzer"] = {
     },
 }
 
+-- Return the major version of the TypeScript package in the nearest node_modules.
+-- Return 0 if the buffer has no local TypeScript.
+local function workspace_ts_major(bufnr)
+    local root = vim.fs.root(bufnr, "node_modules")
+    if not root then
+        return 0
+    end
+    local pkg = vim.fs.joinpath(root, "node_modules/typescript/package.json")
+    local ok, data = pcall(function()
+        return vim.json.decode(table.concat(vim.fn.readfile(pkg), "\n"))
+    end)
+    local version = ok and data and vim.version.parse(data.version)
+    return version and version.major or 0
+end
+
+-- TypeScript 7+ has no tsserver.js, so ts_ls cannot use it.
+-- TS 7+ projects get the native server (tsc --lsp); older projects get ts_ls.
+local ts_ls_root_dir = vim.lsp.config.ts_ls.root_dir
+local tsc_root_dir = vim.lsp.config.tsc.root_dir
+
+vim.lsp.config["tsc"] = {
+    root_dir = function(bufnr, on_dir)
+        if workspace_ts_major(bufnr) >= 7 then
+            tsc_root_dir(bufnr, on_dir)
+        end
+    end,
+}
+
 -- TypeScript (Vue Hybrid Mode)
 local vue_language_server_path = vim.fn.expand("$MASON/packages/vue-language-server/node_modules/@vue/language-server")
 
 vim.lsp.config["ts_ls"] = {
     root_markers = { "package.json", "tsconfig.json", "jsconfig.json" },
+    root_dir = function(bufnr, on_dir)
+        if workspace_ts_major(bufnr) < 7 then
+            ts_ls_root_dir(bufnr, on_dir)
+        end
+    end,
     init_options = {
         plugins = {
             {
@@ -171,6 +208,7 @@ local servers = {
     "lua_ls",
     "rust_analyzer",
     "ts_ls",
+    "tsc",
     "denols",
 }
 
