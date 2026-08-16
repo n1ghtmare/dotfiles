@@ -8,3 +8,4 @@ email = "dimitrov2k@gmail.com"
 default-command = "log"
 # difftastic as the default diff tool
 diff-formatter = ["difft", "--color=always", "$left", "$right"]
+diff-editor = ":builtin"
