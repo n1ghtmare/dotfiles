@@ -71,6 +71,20 @@ else
     ln -sv $dotfiles_path/kitty/arch $kitty_path
 fi
 
+# ghostty
+# -------------------------------
+printf '\n=> Setting up ghostty\n'
+
+ghostty_path=$HOME/.config/ghostty
+
+if [[ -e $ghostty_path ]]; then
+    printf '=> An existing ghostty config folder exists - will delete it...\n'
+    rm -rf $ghostty_path
+fi
+
+printf '=> Creating ghostty config folder symlink\n'
+ln -sv $dotfiles_path/ghostty $ghostty_path
+
 # jj
 # -------------------------------
 printf "\n=> Setting up jj\n"

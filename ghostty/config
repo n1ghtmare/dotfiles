@@ -1,0 +1,36 @@
+theme = Noirbuddy-Oxide
+# theme = GruvboxDarkHard
+
+
+font-family = "Berkeley Mono"
+font-size = 12
+font-family-bold = "Berkeley Mono"
+font-family-italic = "Berkeley Mono"
+font-family-bold-italic = "Berkeley Mono"
+font-style = Regular
+font-style-bold = false
+font-style-bold-italic = false
+font-synthetic-style = no-bold,no-bold-italic
+
+# sRGB blending, same idea as kitty's text_composition_strategy legacy
+# alpha-blending = native
+
+freetype-load-flags = no-hinting
+
+window-decoration = false
+macos-titlebar-style = hidden
+gtk-titlebar = false
+window-padding-x = 13
+window-padding-y = 13
+
+quit-after-last-window-closed = true
+
+adjust-cursor-thickness = 2
+confirm-close-surface = false
+
+# will work after v1.2.x
+# custom-shader = shaders/cursor_smear.glsl
+custom-shader = shaders/cursor_warp.glsl
+
+# custom-shader = shaders/manga_slash.glsl
+

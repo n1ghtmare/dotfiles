@@ -1,0 +1,31 @@
+# Noirbuddy Oxide theme for Ghostty
+# Generated from kitty noirbuddy-oxide theme
+
+# Basic colors
+background = #070e11
+foreground = #d5d5d5
+
+# Cursor and selection
+cursor-color = #00d992
+selection-background = #b0b0b0
+selection-foreground = #070e11
+
+# Palette (ANSI colors)
+palette = 0=#070e11
+palette = 1=#fa5e86
+palette = 2=#00d992
+palette = 3=#ffffff
+palette = 4=#b0b0b0
+palette = 5=#90a7f8
+palette = 6=#787878
+palette = 7=#d5d5d5
+
+# Bright colors
+palette = 8=#737373
+palette = 9=#ff0088
+palette = 10=#00ff77
+palette = 11=#FDFDFD
+palette = 12=#BEBEBE
+palette = 13=#939393
+palette = 14=#919191
+palette = 15=#f5f5f5
