@@ -36,6 +36,60 @@ widget_spacing = 13
 [control_center.calendar]
 show_events_card = false
 
+[desktop_widgets]
+enabled = false
+schema_version = 2
+widget_order = [
+    "desktop-widget-0000000000000001",
+    "desktop-widget-0000000000000003",
+    "desktop-widget-0000000000000004",
+    "desktop-widget-0000000000000005"
+]
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1920.0
+    cy = 1080.0
+    output = "DP-3"
+    rotation = 0.0
+    type = "clock"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000003]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1920.0
+    cy = 1176.0
+    output = "DP-3"
+    rotation = 0.0
+    type = "weather"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000004]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1920.0
+    cy = 696.0
+    output = "DP-3"
+    rotation = 0.0
+    type = "fancy_audio_visualizer"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000004.settings]
+        background = false
+
+    [desktop_widgets.widget.desktop-widget-0000000000000005]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1920.0
+    cy = 952.0
+    output = "DP-3"
+    rotation = 0.0
+    type = "volume"
+
 [dock]
 auto_hide = true
 background_opacity = 0.99999997764825821
@@ -101,8 +155,11 @@ widget_order = [ "lockscreen-login-box@DP-3" ]
         show_unlock_hint = true
         show_weather = true
 
+[notification]
+background_opacity = 0.99999997764825821
+
 [osd]
-background_opacity = 0.9499999787658453
+background_opacity = 0.99999997764825821
 
 [shell]
 corner_radius_scale = 0.0
@@ -118,6 +175,10 @@ popup_shadows = false
 
         [shell.launcher.providers.calculator]
         prefix = ""
+
+    [shell.panel]
+    open_near_click_control_center = true
+    shadow = false
 
     [shell.shadow]
     alpha = 0.0
@@ -137,13 +198,13 @@ directory = "/home/ddimitrov/Pictures/RiceWallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/ddimitrov/Pictures/RiceWallpapers/wallhaven-x63w8d.jpg"
+    path = "/home/ddimitrov/Pictures/RiceWallpapers/wallhaven-o5j7v7.jpg"
 
     [wallpaper.last]
-    path = "/home/ddimitrov/Pictures/RiceWallpapers/wallhaven-x63w8d.jpg"
+    path = "/home/ddimitrov/Pictures/RiceWallpapers/wallhaven-o5j7v7.jpg"
 
     [wallpaper.monitors.DP-3]
-    path = "/home/ddimitrov/Pictures/RiceWallpapers/wallhaven-x63w8d.jpg"
+    path = "/home/ddimitrov/Pictures/RiceWallpapers/wallhaven-o5j7v7.jpg"
 
 [widget.active_window]
 icon_size = 18
@@ -170,6 +231,7 @@ scale = 0.94999999999999996
 show_label = false
 
 [widget.media]
+artist_first = true
 hide_album_art = true
 hide_when_no_media = true
 max_length = 347
