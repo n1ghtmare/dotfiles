@@ -17,6 +17,7 @@ return {
             css = { "prettierd", "prettier", stop_after_first = true },
             html = { "prettierd", "prettier", stop_after_first = true },
             handlebars = { "prettierd", "prettier", stop_after_first = true },
+            python = { "ruff_format" },
         },
         format_on_save = {
             timeout_ms = 500,

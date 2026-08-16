@@ -51,6 +51,8 @@ require("mason-tool-installer").setup({
         "eslint_d",
         "prettierd",
         "stylua",
+        "basedpyright",
+        "ruff",
     },
 })
 
@@ -163,6 +165,8 @@ local servers = {
     "tailwindcss",
     "vue_ls",
     "bashls",
+    "basedpyright",
+    "ruff",
     -- Complex configs
     "lua_ls",
     "rust_analyzer",
