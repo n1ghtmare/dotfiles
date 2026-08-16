@@ -143,6 +143,12 @@ local ts_ls_root_dir = vim.lsp.config.ts_ls.root_dir
 local tsc_root_dir = vim.lsp.config.tsc.root_dir
 
 vim.lsp.config["tsc"] = {
+    -- Use the tsc of the project. Overriding this config makes Neovim reload lsp/tsc.lua,
+    -- so the default cmd reads an empty binary cache and falls back to `tsc` on $PATH.
+    cmd = function(dispatchers, config)
+        local bin = vim.fs.joinpath(config.root_dir, "node_modules/.bin/tsc")
+        return vim.lsp.rpc.start({ bin, "--lsp", "--stdio" }, dispatchers)
+    end,
     root_dir = function(bufnr, on_dir)
         if workspace_ts_major(bufnr) >= 7 then
             tsc_root_dir(bufnr, on_dir)
