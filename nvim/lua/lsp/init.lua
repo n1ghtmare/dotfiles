@@ -53,6 +53,7 @@ require("mason-tool-installer").setup({
         "stylua",
         "basedpyright",
         "ruff",
+        "phpantom_lsp",
     },
 })
 
@@ -216,6 +217,7 @@ local servers = {
     "ts_ls",
     "tsc",
     "denols",
+    "phpantom_lsp",
 }
 
 for _, server in ipairs(servers) do
