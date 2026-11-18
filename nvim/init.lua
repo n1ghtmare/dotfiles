@@ -34,7 +34,7 @@ opt.backupcopy = "yes" -- different strategy of how backups are stored and copie
 vim.g.mapleader = " " -- map leader to space
 
 vim.cmd("filetype plugin on") -- allow autocommands to execute when a file matching a pattern is opened
-vim.cmd("autocmd FileType * setlocal formatoptions-=cro formatoptions-=t") -- disable auto comment insertion
+vim.cmd("autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o formatoptions-=t") -- disable auto comment insertion
 vim.cmd("autocmd FileType vim,txt setlocal foldmethod=marker") -- ensure that folding works on vim and txt filetypes on the folding marker
 
 -- when setting the cmdheight/ch=0, recording a macro doesn't display the message
