@@ -33,24 +33,28 @@
 [diff]
     ; colorMoved = default
     external = difft
+
 [gpg]
-	format = ssh
+    format = ssh
 
 [alias]
     # Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
     dlog = -c diff.external=difft log --ext-diff
     dshow = -c diff.external=difft show --ext-diff
     ddiff = -c diff.external=difft diff
+
 [credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+    helper =
+    helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+    helper =
+    helper = !/usr/bin/gh auth git-credential
+
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
 [init]
-	defaultBranch = master
+    defaultBranch = master

@@ -5,11 +5,11 @@ set -e
 printf 'Setting up window manager configs (for Linux!):\n'
 printf 'This script will delete existing config folders and create symlinks with the ones in this repo!\n'
 
-read -r -p "Are you sure you want to contine? [y/N] " response
+read -r -p "Are you sure you want to continue? [y/N] " response
 response=${response,,}    # tolower
 if [[ ! "$response" =~ ^(yes|y)$ ]]; then exit 0; fi
 
-dotfiles_path=$HOME/Dev-Config/dotfiles
+dotfiles_path=$(readlink -f "$(dirname "${BASH_SOURCE[0]}")")
 
 
 # niri (wayland)

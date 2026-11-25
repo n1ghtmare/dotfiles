@@ -1,117 +1,92 @@
 #!/bin/bash
+# Symlinks dev tool configs from this repo into ~/.config and $HOME.
+# Existing configs at the target locations are deleted.
+#
+# Run ./arch-dependencies-setup.sh first on a fresh machine.
+# Note: nvm (~/.nvm) and the zsh plugins are cloned here, everything else is a symlink.
 
-printf 'Setting up dev tool configs:\n'
-printf 'This script will delete existing config folders and create symlinks with the ones in this repo!\n'
+set -e
 
-read -r -p "Are you sure you want to contine? [y/N] " response
-response=${response,,}    # tolower
+read -r -p "This will delete existing configs and replace them with symlinks into this repo. Continue? [y/N] " response
+response=${response,,} # tolower
 if [[ ! "$response" =~ ^(yes|y)$ ]]; then exit 0; fi
 
-dotfiles_path=$HOME/Dev-Config/dotfiles
+dotfiles_path=$(readlink -f "$(dirname "${BASH_SOURCE[0]}")")
+zsh_plugins_path=$HOME/Dev-Config/zsh-plugins
 
+# Delete whatever is at $2 and symlink $1 there.
+link() {
+    local src=$1 dest=$2
+    if [[ -e $dest || -L $dest ]]; then
+        printf '=> Removing existing %s\n' "$dest"
+        rm -rf "$dest"
+    fi
+    ln -sv "$src" "$dest"
+}
+
+# Clone a plugin repo unless it already exists (keeps the script idempotent).
+clone() {
+    local url=$1 dest=$2
+    if [[ -d $dest ]]; then
+        printf '=> %s already cloned, skipping\n' "$dest"
+    else
+        git clone "$url" "$dest"
+    fi
+}
 
 # nvim
 # -------------------------------
-printf "\n=> Setting up nvim\n"
-nvim_path=$HOME/.config/nvim
+printf '\n=> Setting up nvim\n'
+link "$dotfiles_path/nvim" "$HOME/.config/nvim"
 
-if [[ -d $nvim_path ]]; then
-    printf "=> An existing nvim config folder exists - will delete it...\n"
-    rm -rf $nvim_path
-fi
-
-printf "=> Creating nvim config folder symlink\n"
-ln -sv $dotfiles_path/nvim $nvim_path
-
-
-# zsh
-# -------------------------------
-printf "\n=> Setting up zsh\n"
-printf "\n=> Cloning zsh plugins"
-git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/Dev-Config/zsh-plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/Dev-Config/zsh-plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-history-substring-search $HOME/Dev-Config/zsh-plugins/zsh-history-substring-search
-git clone https://github.com/rupa/z $HOME/Dev-Config/zsh-plugins/z
-printf "\n =>Creating zsh history file\n"
-mkdir -p $HOME/.cache/zsh && touch $HOME/.cache/zsh/history
-printf "Done!\n"
-rm -rf $HOME/.zshrc
-printf "=> Creating zsh config symlink\n"
-ln -sv $dotfiles_path/zsh/.zshrc $HOME/.zshrc
-
-
-# starship prompt
-# -------------------------------
-printf '\n=> Setting up starship prompt\n'
-rm -f $HOME/.config/starship.toml
-printf '=> Creating a starship prompt config symlink\n'
-ln -sv $dotfiles_path/starship/starship.toml $HOME/.config
-
-
-# kitty
+# kitty (arch and macos variants)
 # -------------------------------
 printf '\n=> Setting up kitty\n'
-
-# To check for macos
-# if [["$OSTYPE" == "darwin"*]]; then ... else ... fi
-
-kitty_path=$HOME/.config/kitty
-
-if [[ -d $kitty_path ]]; then
-    printf '=> An existing kitty config folder exists - will delete it...\n'
-    rm -rf $kitty_path
-fi
-
-printf '=> Creating kitty config folder symlink\n'
 if [[ "$OSTYPE" == "darwin"* ]]; then
     printf '=> Detected macOS (will use the macos kitty config)\n'
-    ln -sv $dotfiles_path/kitty/macos $kitty_path
+    link "$dotfiles_path/kitty/macos" "$HOME/.config/kitty"
 else
-    printf '=> Assuming Arch Linux (will use default kitty config)\n'
-    ln -sv $dotfiles_path/kitty/arch $kitty_path
+    printf '=> Assuming Arch Linux (will use the default kitty config)\n'
+    link "$dotfiles_path/kitty/arch" "$HOME/.config/kitty"
 fi
 
 # ghostty
 # -------------------------------
 printf '\n=> Setting up ghostty\n'
-
-ghostty_path=$HOME/.config/ghostty
-
-if [[ -e $ghostty_path ]]; then
-    printf '=> An existing ghostty config folder exists - will delete it...\n'
-    rm -rf $ghostty_path
-fi
-
-printf '=> Creating ghostty config folder symlink\n'
-ln -sv $dotfiles_path/ghostty $ghostty_path
+link "$dotfiles_path/ghostty" "$HOME/.config/ghostty"
 
 # jj
 # -------------------------------
-printf "\n=> Setting up jj\n"
-jj_path=$HOME/.config/jj
-
-if [[ -d $jj_path ]]; then
-    printf "=> An existing jj config folder exists - will delete it...\n"
-    rm -rf $jj_path
-fi
-
-printf "=> Creating jj config folder symlink\n"
-ln -sv $dotfiles_path/jj $jj_path
+printf '\n=> Setting up jj\n'
+link "$dotfiles_path/jj" "$HOME/.config/jj"
 
 # git
 # -------------------------------
-printf "\n=> Setting up git\n"
-rm -f $HOME/.gitconfig
-printf "=> Creating git config symlink\n"
-ln -sv $dotfiles_path/git/.gitconfig $HOME/.gitconfig
+printf '\n=> Setting up git\n'
+link "$dotfiles_path/git/.gitconfig" "$HOME/.gitconfig"
 
 # fontconfig
 # -------------------------------
-printf "\n=> Setting up fontconfig\n"
-fontconfig_path=$HOME/.config/fontconfig
-if [[ -d $fontconfig_path ]]; then
-    printf "=> An existing fontconfig folder exists - will delete it...\n"
-    rm -rf $fontconfig_path
-fi
-printf "=> Creating fontconfig folder symlink\n"
-ln -sv $dotfiles_path/fontconfig $fontconfig_path
+printf '\n=> Setting up fontconfig\n'
+link "$dotfiles_path/fontconfig" "$HOME/.config/fontconfig"
+
+# starship
+# -------------------------------
+printf '\n=> Setting up starship\n'
+link "$dotfiles_path/starship/starship.toml" "$HOME/.config/starship.toml"
+
+# ytfzf
+# -------------------------------
+printf '\n=> Setting up ytfzf\n'
+link "$dotfiles_path/ytfzf" "$HOME/.config/ytfzf"
+
+# zsh
+# -------------------------------
+printf '\n=> Setting up zsh\n'
+clone https://github.com/zsh-users/zsh-autosuggestions "$zsh_plugins_path/zsh-autosuggestions"
+clone https://github.com/zsh-users/zsh-syntax-highlighting "$zsh_plugins_path/zsh-syntax-highlighting"
+
+mkdir -p "$HOME/.cache/zsh" && touch "$HOME/.cache/zsh/history"
+link "$dotfiles_path/zsh/.zshrc" "$HOME/.zshrc"
+
+printf '\nDone!\n'

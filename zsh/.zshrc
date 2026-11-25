@@ -41,7 +41,7 @@ GO_BIN="$GOPATH/bin"
 GOBIN="${GOBIN:-$GO_BIN}"   # respects override
 DENO_BIN="$DENO_HOME/bin"
 PYENV_BIN="$PYENV_ROOT/bin"
-PNPM_BIN="$PNPM_HOME"
+PNPM_BIN="$PNPM_HOME/bin"
 LOCAL_BIN="$HOME/.local/bin"
 OPENCODE_BIN="$HOME/.opencode/bin"
 
@@ -71,7 +71,6 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{node_modules,.git
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Disable fzf colors (use terminal defaults)
 export FZF_DEFAULT_OPTS="--no-color"
-#export FZF_PREVIEW_COMMAND="bat --theme='base16' color=always {}"
 # fzf installer script
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -79,27 +78,22 @@ export FZF_DEFAULT_OPTS="--no-color"
 # default)
 ZSH_HIGHLIGHT_STYLES[arg0]="fg=red"
 
-# nvm setup
+# nvm setup - lazy loaded: the first `nvm` call or entering a dir with .nvmrc
+# sources it once, then the real nvm function replaces the stub
 export NVM_DIR="$HOME/.nvm"
-# lazy load nvm
 nvm() {
-  unset -f nvm
+  unfunction nvm
   source "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
   nvm "$@"
 }
 
-# auto use .nvmrc on cd (lazy)
+# auto use .nvmrc on cd (lazy, dispatches through the stub above)
 autoload -Uz add-zsh-hook
 
 load-nvmrc() {
-  if [[ -f .nvmrc ]]; then
-    # load nvm only when needed
-    if ! command -v nvm >/dev/null; then
-      source "$NVM_DIR/nvm.sh"
-    fi
-    nvm use --silent >/dev/null
-  fi
+  [[ -f .nvmrc ]] || return 0
+  nvm use --silent >/dev/null
 }
 
 add-zsh-hook chpwd load-nvmrc
@@ -156,19 +150,3 @@ cd() {
 alias ll="eza -lhg --git --group-directories-first"
 alias ..="cd .."
 alias grep="grep --color=auto"
-
-
-# Google Cloud SDK
-# # The next line updates PATH for the Google Cloud SDK.
-# if [ -f '/home/ddimitrov/.local/google-cloud-sdk/path.zsh.inc' ]; then . '/home/ddimitrov/.local/google-cloud-sdk/path.zsh.inc'; fi
-#
-# # The next line enables shell command completion for gcloud.
-# if [ -f '/home/ddimitrov/.local/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/ddimitrov/.local/google-cloud-sdk/completion.zsh.inc'; fi
-
-# pnpm
-export PNPM_HOME="/home/ddimitrov/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end

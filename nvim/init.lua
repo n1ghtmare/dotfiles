@@ -24,7 +24,7 @@ opt.ignorecase = true -- works in conjuction with smartcase
 opt.clipboard = "unnamedplus" -- share clipboard with OS
 opt.splitright = true -- force all vertical splits to go to the right of the current buffer
 opt.splitbelow = true -- force all horizontal splits to go below the current buffer
-opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
+opt.completeopt = { "menu", "menuone", "noselect" } -- for blink.cmp
 -- opt.cmdheight = 0                                          -- hide the command line on the bottom
 -- opt.ch = 0 -- hide the command line on the bottom
 opt.backupcopy = "yes" -- different strategy of how backups are stored and copied (was having issues with file watchers detecting changes to the file before this setting) run :help backupcopy TODO: See if we can remove this - keep a look at https://github.com/tailwindlabs/tailwindcss/issues/7759
@@ -42,7 +42,6 @@ vim.cmd("autocmd FileType vim,txt setlocal foldmethod=marker") -- ensure that fo
 -- vim.cmd("autocmd RecordingEnter * set cmdheight=1")
 -- vim.cmd("autocmd RecordingLeave * set cmdheight=0")
 
--- Highlight 121st character on lines that exceed 120
 vim.fn.matchadd("ColorColumn", "\\%121v")
 
 -- Highlight on yank
@@ -59,7 +58,7 @@ opt.titlestring = string.format("nvim - %s", title)
 
 -- Setup lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
     vim.fn.system({
         "git",
         "clone",

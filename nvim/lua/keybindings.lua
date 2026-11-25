@@ -1,84 +1,69 @@
 local m = {}
 
-local buf_set_keymap = vim.api.nvim_buf_set_keymap
-
-local merge_tables = function(t1, t2)
-    for k, v in pairs(t2) do
-        t1[k] = v
-    end
-    return t1
-end
-
-local set_keymap = function(mode, key, event, opts)
-    local default_opts = { noremap = true, silent = true }
-    local result = merge_tables(default_opts, opts)
-    vim.api.nvim_set_keymap(mode, key, event, result)
-end
-
 -- vim.g.mapleader = " " -- map leader to space
 
 -- Paste without losing yanked content
-set_keymap("x", "<leader>p", [["_dP]], {})
+vim.keymap.set("x", "<leader>p", [["_dP]], { silent = true })
 
 -- Basic
-set_keymap("n", "_", ":nohl<CR>", { desc = "Clear search results" })
+vim.keymap.set("n", "_", ":nohl<CR>", { silent = true, desc = "Clear search results" })
 
 -- Move line up and down and set the formatting correctly
-set_keymap("n", "<A-j>", ":move .+1<CR>==", {})
-set_keymap("n", "<A-k>", ":move .-2<CR>==", {})
+vim.keymap.set("n", "<A-j>", ":move .+1<CR>==", { silent = true })
+vim.keymap.set("n", "<A-k>", ":move .-2<CR>==", { silent = true })
 
 -- Move visual selection up and down (including a visual block)
-set_keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", {})
-set_keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", {})
+vim.keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv", { silent = true })
+vim.keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv", { silent = true })
 
 -- Sane split shortcuts
-set_keymap("n", "<C-j>", "<C-W><C-J>", {})
-set_keymap("n", "<C-k>", "<C-W><C-K>", {})
-set_keymap("n", "<C-l>", "<C-W><C-L>", {})
-set_keymap("n", "<C-h>", "<C-W><C-H>", {})
+vim.keymap.set("n", "<C-j>", "<C-W><C-J>", { silent = true })
+vim.keymap.set("n", "<C-k>", "<C-W><C-K>", { silent = true })
+vim.keymap.set("n", "<C-l>", "<C-W><C-L>", { silent = true })
+vim.keymap.set("n", "<C-h>", "<C-W><C-H>", { silent = true })
 
 -- MiniFiles (file browser in a floating window)
-set_keymap("n", "<leader>`", ":lua MiniFiles.open()<CR>", { desc = "Open MiniFiles file browser" }) -- MiniFiles toggle <leader>`
+vim.keymap.set("n", "<leader>`", ":lua MiniFiles.open()<CR>", { silent = true, desc = "Open MiniFiles file browser" }) -- MiniFiles toggle <leader>`
 
 -- Whitespace trim
-set_keymap("n", "<leader>wt", ":lua MiniTrailspace.trim()<CR>", {})
+vim.keymap.set("n", "<leader>wt", ":lua MiniTrailspace.trim()<CR>", { silent = true })
 
 -- Copilot Ctrl-l to accept the suggestion
-set_keymap("i", "<C-l>", "copilot#Accept(\"<CR>\")", { expr = true, script = true })
+vim.keymap.set("i", "<C-l>", "copilot#Accept(\"<CR>\")", { expr = true, script = true, silent = true })
 
 -- Mini Pick
--- set_keymap("n", "<C-p>", "<cmd>Pick files<CR>", { desc = "Find files [Ctrl-p]" })
--- set_keymap("n", "<C-p>", "<cmd>Pick fffiles<CR>", { desc = "Find files [Ctrl-p]" })
-set_keymap("n", "<C-p>", ":lua require('fff').find_files()<CR>", { desc = "Find files [Ctrl-p]" })
-set_keymap(
+-- vim.keymap.set("n", "<C-p>", "<cmd>Pick files<CR>", { desc = "Find files [Ctrl-p]" })
+-- vim.keymap.set("n", "<C-p>", "<cmd>Pick fffiles<CR>", { desc = "Find files [Ctrl-p]" })
+vim.keymap.set("n", "<C-p>", ":lua require('fff').find_files()<CR>", { silent = true, desc = "Find files [Ctrl-p]" })
+vim.keymap.set(
     "n",
     "<C-e>",
     ":lua require('fff').live_grep()<CR>",
-    { desc = "Search with grep (contents of files) [Ctrl-e]" }
+    { silent = true, desc = "Search with grep (contents of files) [Ctrl-e]" }
 )
--- set_keymap("n", "<C-e>", "<cmd>Pick grep_live<CR>", { desc = "Search with grep (contents of files) [Ctrl-e]" })
--- set_keymap("n", "<C-b>", "<cmd>Pick buffers<CR>", { desc = "Find [b]uffers [Ctrl-b]" })
-set_keymap("n", "<C-b>", "<cmd>Pick my_buffers<CR>", { desc = "Find [b]uffers [Ctrl-b]" })
-set_keymap("n", "<leader>ds", "<cmd>Pick lsp scope='document_symbol'<CR>", { desc = "Search [d]ocument [s]ymbols" })
-set_keymap("n", "<leader>hp", "<cmd>Pick help<CR>", { desc = "Search [h]el[p]" })
-set_keymap("n", "<leader>mk", "<cmd>Pick marks<CR>", { desc = "Search [m]ar[k]s" })
+-- vim.keymap.set("n", "<C-e>", "<cmd>Pick grep_live<CR>", { desc = "Search with grep (contents of files) [Ctrl-e]" })
+-- vim.keymap.set("n", "<C-b>", "<cmd>Pick buffers<CR>", { desc = "Find [b]uffers [Ctrl-b]" })
+vim.keymap.set("n", "<C-b>", "<cmd>Pick my_buffers<CR>", { silent = true, desc = "Find [b]uffers [Ctrl-b]" })
+vim.keymap.set("n", "<leader>ds", "<cmd>Pick lsp scope='document_symbol'<CR>", { silent = true, desc = "Search [d]ocument [s]ymbols" })
+vim.keymap.set("n", "<leader>hp", "<cmd>Pick help<CR>", { silent = true, desc = "Search [h]el[p]" })
+vim.keymap.set("n", "<leader>mk", "<cmd>Pick marks<CR>", { silent = true, desc = "Search [m]ar[k]s" })
 
 -- undotree
-set_keymap("n", "<leader>ut", "<cmd>UndotreeToggle<CR>", {})
+vim.keymap.set("n", "<leader>ut", "<cmd>UndotreeToggle<CR>", { silent = true })
 
 -- Better vertical movements
-set_keymap("n", "<C-d>", "<C-d>zz", {})
-set_keymap("n", "<C-u>", "<C-u>zz", {})
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { silent = true })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true })
 
 -- Better search jumps
-set_keymap("n", "n", "nzzzv", {})
-set_keymap("n", "N", "Nzzzv", {})
+vim.keymap.set("n", "n", "nzzzv", { silent = true })
+vim.keymap.set("n", "N", "Nzzzv", { silent = true })
 
 -- Todo Comments
-set_keymap("n", "<leader>td", "<cmd>TodoQuickFix<CR>", {})
+vim.keymap.set("n", "<leader>td", "<cmd>TodoQuickFix<CR>", { silent = true })
 
 -- Copy file path to clipboard
-set_keymap("n", "<leader>cfp", ":lua CopyCurrentFilePath()<CR>", { desc = "Copy current file path to clipboard" })
+vim.keymap.set("n", "<leader>cfp", ":lua CopyCurrentFilePath()<CR>", { silent = true, desc = "Copy current file path to clipboard" })
 
 -- Treesitter incremental selection
 vim.keymap.set("n", "<A-o>", "van", { remap = true, desc = "Init treesitter selection" })
@@ -107,7 +92,7 @@ end)
 vim.keymap.set({ "x", "o" }, "af", function()
     select_textobject("@function.outer", "textobjects")
 end)
--- In normal mode, `cif` (change inside function) or `via` (to visually
+-- In normal mode, `cif` (change inside function) or `vif` (to visually
 -- select inside function)
 vim.keymap.set({ "x", "o" }, "if", function()
     select_textobject("@function.inner", "textobjects")
@@ -163,6 +148,7 @@ end)
 vim.keymap.set("n", "<leader>A", function()
     swap.swap_previous("@parameter.inner")
 end)
+
 -- A global function to toggle LSP inlay hints for the provided buffer number
 -- This is used with the keybinding below
 function LspInlayHintsToggle(bufnr)
@@ -179,29 +165,29 @@ end
 
 -- LSP
 function m.lsp_keybindings_for_buffer(bufnr)
-    buf_set_keymap(bufnr, "n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>gd", "<cmd>Pick lsp scope='definition'<CR>", {})
-    buf_set_keymap(
-        bufnr,
+    vim.keymap.set("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>gd", "<cmd>Pick lsp scope='definition'<CR>", { buffer = bufnr, silent = true })
+    vim.keymap.set(
         "n",
         "<leader>k",
         "<cmd>lua vim.lsp.buf.hover({ max_width = 110, border = 'single' })<CR>",
-        {}
+        { buffer = bufnr, silent = true }
     )
-
-    buf_set_keymap(bufnr, "n", "<leader>gi", "<cmd>Pick lsp scope='implementation'<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>l", "<cmd>lua vim.lsp.buf.signature_help()<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>gr", "<cmd>Pick lsp scope='references'<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>ac", "<cmd>lua vim.lsp.buf.code_action()<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>", {})
-    buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", {})
-    buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>Pick diagnostic<CR>", {})
-    buf_set_keymap(bufnr, "n", "<leader>ff", "<cmd>lua vim.lsp.buf.format { async = true }<CR>", {})
+    vim.keymap.set("n", "<leader>gi", "<cmd>Pick lsp scope='implementation'<CR>", { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>l", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>gr", "<cmd>Pick lsp scope='references'<CR>", { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>ac", "<cmd>lua vim.lsp.buf.code_action()<CR>", { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>", { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>q", "<cmd>Pick diagnostic<CR>", { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>ff", "<cmd>lua vim.lsp.buf.format { async = true }<CR>", { buffer = bufnr, silent = true })
 
     -- Toggle Inlay Hints
-    buf_set_keymap(bufnr, "n", "<leader>ih", "<cmd>lua LspInlayHintsToggle(" .. bufnr .. ")<CR>", {
+    vim.keymap.set("n", "<leader>ih", "<cmd>lua LspInlayHintsToggle(" .. bufnr .. ")<CR>", {
+        buffer = bufnr,
+        silent = true,
         desc = "Toggle LSP Inlay Hints",
     })
 end
